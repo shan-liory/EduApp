@@ -20,7 +20,7 @@ public class Splash extends Activity {
             public void run() {
                 Intent intent = new Intent(Splash.this, MainActivity.class);
                 startActivity(intent);
-                Toast.makeText(Splash.this, "We are at splash sreen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Splash.this, "Wee are at splash sreen", Toast.LENGTH_SHORT).show();
                 finish();
             }
         },SPLASH_TIME_OUT);
