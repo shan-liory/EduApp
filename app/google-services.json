@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "795633292563",
+    "project_id": "kidoozeauth",
+    "storage_bucket": "kidoozeauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795633292563:android:e70f4eabda611c229676e6",
+        "android_client_info": {
+          "package_name": "com.example.eduapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795633292563-a28kj1tfo4vjo9h707hrl99g1dc65q88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApV3EgsNaEWhqvbT4UBxCXpmoNS_14cYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795633292563-a28kj1tfo4vjo9h707hrl99g1dc65q88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

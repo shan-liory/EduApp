@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EduApp">
+        android:theme="@style/Theme.Design.NoActionBar">
         <activity
             android:name=".Splash"
             android:exported="true"
@@ -20,6 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.eduapp.MainActivity"/>
+        <activity android:name="com.example.eduapp.WelcomeActivity"/>
+        <activity android:name="com.example.eduapp.RegisterActivity"/>
+        <activity android:name="com.example.eduapp.LoginActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"
