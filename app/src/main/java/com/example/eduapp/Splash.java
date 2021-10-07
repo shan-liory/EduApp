@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,7 @@ public class Splash extends Activity {
             public void run() {
                 Intent intent = new Intent(Splash.this, MainActivity.class);
                 startActivity(intent);
+                Toast.makeText(Splash.this, "We are at splash sreen", Toast.LENGTH_SHORT).show();
                 finish();
             }
         },SPLASH_TIME_OUT);
