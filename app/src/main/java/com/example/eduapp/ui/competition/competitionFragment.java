@@ -1,4 +1,4 @@
-package com.example.eduapp.ui.notifications;
+package com.example.eduapp.ui.competition;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,18 +12,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.eduapp.R;
 import com.example.eduapp.databinding.FragmentNotificationsBinding;
 
-public class NotificationsFragment extends Fragment {
+public class competitionFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
+    private competitionViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+                new ViewModelProvider(this).get(competitionViewModel.class);
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

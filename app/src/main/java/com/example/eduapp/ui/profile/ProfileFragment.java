@@ -2,7 +2,6 @@ package com.example.eduapp.ui.profile;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.eduapp.MainActivity;
-import com.example.eduapp.R;
-import com.example.eduapp.RegisterActivity;
-import com.example.eduapp.WelcomeActivity;
-import com.example.eduapp.databinding.FragmentNotificationsBinding;
 import com.example.eduapp.databinding.FragmentProfileBinding;
-import com.example.eduapp.ui.notifications.NotificationsViewModel;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
 

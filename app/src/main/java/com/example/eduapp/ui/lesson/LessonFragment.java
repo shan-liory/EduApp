@@ -1,4 +1,4 @@
-package com.example.eduapp.ui.dashboard;
+package com.example.eduapp.ui.lesson;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,18 +12,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.eduapp.R;
 import com.example.eduapp.databinding.FragmentDashboardBinding;
 
-public class DashboardFragment extends Fragment {
+public class LessonFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private LessonViewModel lessonViewModel;
     private FragmentDashboardBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        lessonViewModel =
+                new ViewModelProvider(this).get(LessonViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -34,7 +33,7 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        lessonViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
