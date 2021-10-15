@@ -1,13 +1,13 @@
-package com.example.eduapp.ui.profile;
+package com.example.eduapp;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,36 +17,52 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.eduapp.MainActivity;
+import com.example.eduapp.MainViewModel;
 import com.example.eduapp.R;
-import com.example.eduapp.RegisterActivity;
-import com.example.eduapp.WelcomeActivity;
-import com.example.eduapp.databinding.FragmentNotificationsBinding;
-import com.example.eduapp.databinding.FragmentProfileBinding;
-import com.example.eduapp.ui.notifications.NotificationsViewModel;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
 
-    private ProfileViewModel profileViewModel;
-    private FragmentProfileBinding binding;
+
     FirebaseAuth mAuth;
+    TextView text_profile;
+    Button logout_btn;
+
+    private MainViewModel mainViewModel;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        logout_btn= view.findViewById(R.id.logout_btn);
+        text_profile=view.findViewById(R.id.text_profile);
+
+        text_profile.setText(mainViewModel.getTest());
 
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        mAuth = FirebaseAuth.getInstance();
-        profileViewModel =
-                new ViewModelProvider(this).get(ProfileViewModel.class);
-
-        binding = FragmentProfileBinding.inflate(inflater, container, false);
 
 
 
+        logout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logoutUser();
+            }
+        });
 
-        View root = binding.getRoot();
 
-        return root;
+
     }
 
     private void logoutUser() {
@@ -75,33 +91,7 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        final TextView textView = binding.textProfile;
-        final Button button = binding.logoutBtn;
-
-        profileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logoutUser();
-            }
-        });
 
 
 
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 }
