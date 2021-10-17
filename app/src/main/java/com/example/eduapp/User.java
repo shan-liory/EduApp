@@ -3,9 +3,9 @@ package com.example.eduapp;
 public class User {
     String username;
     String email;
-    String image;
     String dob;
     String uid;
+    String url;
 
     public String getUrl(String s) {
         return url;
@@ -15,7 +15,7 @@ public class User {
         this.url = url;
     }
 
-    String url;
+
 
     public String getDob() {
         return dob;
@@ -41,13 +41,7 @@ public class User {
         this.email = email;
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public String getUid() {
         return uid;

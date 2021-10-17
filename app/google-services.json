@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "795633292563",
-    "project_id": "kidoozeauth",
-    "storage_bucket": "kidoozeauth.appspot.com"
+    "project_number": "771152736870",
+    "firebase_url": "https://kidoozedatabase-default-rtdb.firebaseio.com",
+    "project_id": "kidoozedatabase",
+    "storage_bucket": "kidoozedatabase.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:795633292563:android:e70f4eabda611c229676e6",
+        "mobilesdk_app_id": "1:771152736870:android:082e8431d7b14e2f1d73a7",
         "android_client_info": {
           "package_name": "com.example.eduapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "795633292563-a28kj1tfo4vjo9h707hrl99g1dc65q88.apps.googleusercontent.com",
+          "client_id": "771152736870-ccs8rq9rra32oqo5jb0ubjbgqithmcpj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyApV3EgsNaEWhqvbT4UBxCXpmoNS_14cYc"
+          "current_key": "AIzaSyB2LEma2zO19Gft4rY9DRxLWTjG_DZdTwI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "795633292563-a28kj1tfo4vjo9h707hrl99g1dc65q88.apps.googleusercontent.com",
+              "client_id": "771152736870-ccs8rq9rra32oqo5jb0ubjbgqithmcpj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

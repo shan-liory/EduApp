@@ -58,8 +58,7 @@ public class LoginFragment extends Fragment {
         login_btn = view.findViewById(R.id.login_btn);
 
         progressDialog = new ProgressDialog(getContext());
-        mAuth = FirebaseAuth.getInstance();
-        mUser = mAuth.getCurrentUser();
+
 
 
         login_back_btn.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +79,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void performLogin() {
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
         String email = login_email.getText().toString();
 
         String password = login_password.getText().toString();
@@ -110,9 +111,21 @@ public class LoginFragment extends Fragment {
                                                   if (task.isSuccessful()) {
                                                       progressDialog.dismiss();
                                                       //here is where u will query for user data after login
-//                                                      User user = new User();
-//                                                      user.setPassword("mypassword");
-//                                                      mainViewModel.setUser(user);
+//
+//                                                      if (mUser != null) {
+//                                                          String email = mUser.getEmail();
+//                                                          String id = mUser.getUid();
+//                                                          User user = new User();
+//                                                          user.setEmail(email);
+//                                                          mainViewModel.setUser(user);
+//                                                          user.setUid(id);
+//                                                          Toast.makeText(getContext(), id + email, Toast.LENGTH_SHORT).show();
+//                                                      }
+//                                                      else{
+//                                                          Toast.makeText(getContext(), "Empty!", Toast.LENGTH_SHORT).show();
+//                                                      }
+
+
                                                       sendUserToNextActivity();
                                                       Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                                                   } else {

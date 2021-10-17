@@ -59,13 +59,13 @@ public class RegisterFragment extends Fragment {
     UploadTask uploadTask;
     StorageReference storageReference;
     DatabaseReference databaseReference;
-    FirebaseDatabase database = FirebaseDatabase.getInstance("https://kidoozeauth-default-rtdb.asia-southeast1.firebasedatabase.app/");
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference documentReference;
     ProgressDialog progressDialog;
     User user;
     private static final int PICK_IMAGE = 1;
-    String currentUserId;
+   String currentUserId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,6 +77,7 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        user = new User();
         haveAccount = view.findViewById(R.id.haveAccount_text);
         editText_name_register = view.findViewById(R.id.editText_name_register);
         editText_dob_register = view.findViewById(R.id.editText_dob_register);
@@ -86,13 +87,9 @@ public class RegisterFragment extends Fragment {
         register_btn = view.findViewById(R.id.register_btn);
         profileImage_register = view.findViewById(R.id.profileImage_register);
         progressDialog = new ProgressDialog(getContext());
+
         mAuth = FirebaseAuth.getInstance();
-        mUser = mAuth.getCurrentUser();
-        currentUserId = mUser.getUid();
-        user = new User();
-        documentReference = db.collection("User").document(currentUserId);
-        storageReference = FirebaseStorage.getInstance().getReference("Profile images");
-        databaseReference = database.getReference("All User");
+
 
         register_back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,11 +119,6 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AuthenticateUser();
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                firebaseDatabase.setLogLevel(Logger.Level.DEBUG);
-
-
-
             }
         });
 
@@ -154,74 +146,77 @@ public class RegisterFragment extends Fragment {
         return mimeTypeMap.getExtensionFromMimeType((contentResolver.getType(uri)));
     }
 
-    private void uploadData() {
-        String username = editText_name_register.getText().toString();
-        String email = editText_email_register.getText().toString();
-        String dob = editText_dob_register.getText().toString();
+//    private void uploadData() {
+//        String username = editText_name_register.getText().toString();
+//        String email = editText_email_register.getText().toString();
+//        String dob = editText_dob_register.getText().toString();
+//
+//        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(dob) && !TextUtils.isEmpty(email) && imageUri != null){
+//            final StorageReference reference = storageReference.child(System.currentTimeMillis() + "."+ getFileExt(imageUri));
+//            uploadTask = reference.putFile(imageUri);
+//
+//
+//            Task<Uri> uriTask= uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+//                @Override
+//                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+//                    if (!task.isSuccessful()){
+//                        throw  task.getException();
+//                    }
+//                    return reference.getDownloadUrl();
+//                }
+//            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Uri> task) {
+//                    if (task.isSuccessful()){
+//                        Uri downloadUri = task.getResult();
+//
+//                        Map <String,String> profile = new HashMap<>();
+//                        profile.put("name" ,username);
+//                        profile.put("email",email);
+//                        profile.put("dob",dob);
+//                        profile.put("url", downloadUri.toString());
+//
+//                        //profile.put("privacy", "Public");
+//
+//                        user.setDob(dob);
+//                        user.setEmail(email);
+//                        user.setUsername(username);
+//                        user.setUid(currentUserId);
+//                        user.getUrl(downloadUri.toString());
+//
+//                        databaseReference.push().setValue(user);
+//
+//                        documentReference.set(profile)
+//                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                    @Override
+//                                    public void onSuccess(Void unused) {
+//
+//                                        Toast.makeText(getContext(), "Profile Created", Toast.LENGTH_SHORT).show();
+//
+//
+//                                        Handler handler = new Handler();
+//                                        handler.postDelayed(new Runnable() {
+//                                            @Override
+//                                            public void run() {
+//                                                Navigation.findNavController(getView()).navigate(R.id.action_registerFragment_to_navigation_home);
+//                                            }
+//                                        },2000);
+//                                    }
+//                                });
+//
+//                    }
+//                }
+//            });
+//
+//        }else{
+//            Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
 
-        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(dob) && !TextUtils.isEmpty(email) && imageUri != null){
-            final StorageReference reference = storageReference.child(System.currentTimeMillis() + "."+ getFileExt(imageUri));
-            uploadTask = reference.putFile(imageUri);
-
-
-            Task<Uri> uriTask= uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if (!task.isSuccessful()){
-                        throw  task.getException();
-                    }
-                    return reference.getDownloadUrl();
-                }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()){
-                        Uri downloadUri = task.getResult();
-
-                        Map <String,String> profile = new HashMap<>();
-                        profile.put("name" ,username);
-                        profile.put("email",email);
-                        profile.put("dob",dob);
-                        profile.put("url", downloadUri.toString());
-
-                        //profile.put("privacy", "Public");
-
-                        user.setDob(dob);
-                        user.setEmail(email);
-                        user.setUsername(username);
-                        user.setUid(currentUserId);
-                        user.getUrl(downloadUri.toString());
-
-                        databaseReference.push().setValue(user);
-
-                        documentReference.set(profile)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-
-                                        Toast.makeText(getContext(), "Profile Created", Toast.LENGTH_SHORT).show();
-
-
-                                        Handler handler = new Handler();
-                                        handler.postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Navigation.findNavController(getView()).navigate(R.id.action_registerFragment_to_navigation_home);
-                                            }
-                                        },2000);
-                                    }
-                                });
-
-                    }
-                }
-            });
-
-        }else{
-            Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
-        }
-
-    }
     private void AuthenticateUser() {
+
+
         String email = editText_email_register.getText().toString();
         String name = editText_name_register.getText().toString();
         String dob = editText_dob_register.getText().toString();
@@ -255,6 +250,13 @@ public class RegisterFragment extends Fragment {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
 
+                        mUser = mAuth.getCurrentUser();
+                        currentUserId = mUser.getUid();
+
+                        documentReference = db.collection("User").document(currentUserId);
+                        storageReference = FirebaseStorage.getInstance().getReference("Profile images");
+                        databaseReference = database.getReference("All Users");
+
                         final StorageReference reference = storageReference.child(System.currentTimeMillis() + "." + getFileExt(imageUri));
                         uploadTask = reference.putFile(imageUri);
 
@@ -277,6 +279,7 @@ public class RegisterFragment extends Fragment {
                                     profile.put("name", name);
                                     profile.put("email", email);
                                     profile.put("dob", dob);
+                                    profile.put("uid",currentUserId);
                                     profile.put("url", downloadUri.toString());
 
                                     //profile.put("privacy", "Public");
@@ -285,9 +288,9 @@ public class RegisterFragment extends Fragment {
                                     user.setEmail(email);
                                     user.setUsername(name);
                                     user.setUid(currentUserId);
-                                    user.getUrl(downloadUri.toString());
+                                    user.setUrl(downloadUri.toString());
 
-                                    databaseReference.push().setValue(user);
+                                    databaseReference.child(currentUserId).setValue(user);
 
                                     documentReference.set(profile)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
