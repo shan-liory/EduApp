@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-public class Splash extends Fragment {
+public class Splash extends BaseFragment {
     private static int SPLASH_TIME_OUT =3000;
 
     @Override
@@ -29,16 +30,19 @@ public class Splash extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Navigation.findNavController(view).navigate(R.id.action_splash_to_welcomeActivity);
-//                Intent intent = new Intent(Splash.this, WelcomeActivity.class);
-//                startActivity(intent);
-//                finish();
-                //((MainActivity)getActivity()).setBottomNavVisibility(true);
-            }
-        },SPLASH_TIME_OUT);
+        if(user!=null) {
+          Navigation.findNavController(view).navigate(R.id.action_splash_to_navigation_home);
+            Toast.makeText(getContext(), user.getUid(), Toast.LENGTH_SHORT).show();
+
+        }
+        else{
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                        Navigation.findNavController(view).navigate(R.id.action_splash_to_welcomeActivity);
+                }
+            }, SPLASH_TIME_OUT);
+        }
     }
 
     @Override

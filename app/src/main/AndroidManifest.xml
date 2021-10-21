@@ -22,7 +22,6 @@
         <activity android:name="com.example.eduapp.Splash"/>
         <activity android:name="com.example.eduapp.WelcomeFragment"/>
         <activity android:name="com.example.eduapp.RegisterFragment"/>
-        <activity android:name="com.example.eduapp.LoginActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

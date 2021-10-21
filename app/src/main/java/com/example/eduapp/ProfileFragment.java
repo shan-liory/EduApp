@@ -32,23 +32,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends BaseFragment {
 
 
-    FirebaseAuth mAuth;
     TextView text_profile, text_dob;
     Button logout_btn;
     ImageView profile_image;
     ImageButton edit_btn;
 
-    private MainViewModel mainViewModel;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
-
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,7 +77,7 @@ public class ProfileFragment extends Fragment {
         super.onStart();
 
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+       // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentId = user.getUid();
 
 
@@ -120,28 +112,33 @@ public class ProfileFragment extends Fragment {
     }
 
     private void logoutUser() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-        alertDialogBuilder.setTitle("Exit Application?");
-        alertDialogBuilder
-                .setMessage("Confirm Signing Out?")
-                .setCancelable(false)
-                .setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                FirebaseAuth.getInstance().signOut();
-                                android.os.Process.killProcess(android.os.Process.myPid());
-                                System.exit(1);
-                            }
-                        })
-
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+//        alertDialogBuilder.setTitle("Exit Application?");
+//        alertDialogBuilder
+//                .setMessage("Confirm Signing Out?")
+//                .setCancelable(false)
+//                .setPositiveButton("Yes",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                FirebaseAuth.getInstance().signOut();
+//                                android.os.Process.killProcess(android.os.Process.myPid());
+//                                System.exit(1);
+//
+//                            }
+//                        })
+//
+//                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        dialog.cancel();
+//                    }
+//                });
+//
+//        AlertDialog alertDialog = alertDialogBuilder.create();
+//        alertDialog.show();
+//
+        FirebaseAuth.getInstance().signOut();
+        Navigation.findNavController(getView()).navigate(R.id.action_navigation_profile_to_welcomeActivity);
+        ((MainActivity)requireActivity()).setBottomNavVisibility(false);
 
     }
 

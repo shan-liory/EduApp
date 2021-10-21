@@ -13,17 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.eduapp.MainViewModel;
 import com.example.eduapp.R;
 
-public class CompetitionFragment extends Fragment {
+public class CompetitionFragment extends BaseFragment {
 
-    private MainViewModel mainViewModel;
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
-
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,6 +24,7 @@ public class CompetitionFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 
 }

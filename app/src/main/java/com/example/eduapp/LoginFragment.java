@@ -33,13 +33,14 @@ public class LoginFragment extends Fragment {
     ImageView login_back_btn;
     String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
 
-    MainViewModel mainViewModel;
+    private MainViewModel mainViewModel;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
 
+        mainViewModel =
+                new ViewModelProvider(requireActivity()).get(MainViewModel.class);
     }
 
     @Override
@@ -58,7 +59,6 @@ public class LoginFragment extends Fragment {
         login_btn = view.findViewById(R.id.login_btn);
 
         progressDialog = new ProgressDialog(getContext());
-
 
 
         login_back_btn.setOnClickListener(new View.OnClickListener() {
@@ -91,12 +91,7 @@ public class LoginFragment extends Fragment {
         } else if (password.isEmpty() || password.length() < 6) {
             login_password.setError("Enter proper password");
         }
-       /* else if(dob.isEmpty()){
-            editText_dob_register.setError("Enter your Date of Birth");
-        }
-        else if(name.isEmpty()){
-            editText_dob_register.setError("Enter your name");
-        }*/
+
         else {
             progressDialog.setMessage("Please wait for login");
             progressDialog.setTitle("Login");
@@ -110,21 +105,16 @@ public class LoginFragment extends Fragment {
                                               public void onComplete(@NonNull Task<AuthResult> task) {
                                                   if (task.isSuccessful()) {
                                                       progressDialog.dismiss();
-                                                      //here is where u will query for user data after login
-//
-//                                                      if (mUser != null) {
-//                                                          String email = mUser.getEmail();
-//                                                          String id = mUser.getUid();
-//                                                          User user = new User();
-//                                                          user.setEmail(email);
-//                                                          mainViewModel.setUser(user);
-//                                                          user.setUid(id);
-//                                                          Toast.makeText(getContext(), id + email, Toast.LENGTH_SHORT).show();
-//                                                      }
-//                                                      else{
-//                                                          Toast.makeText(getContext(), "Empty!", Toast.LENGTH_SHORT).show();
-//                                                      }
 
+
+                                                      String email = mAuth.getCurrentUser().getEmail();
+                                                      String id = mAuth.getCurrentUser().getUid();
+                                                      User user = new User();
+                                                      user.setEmail(email);
+                                                      user.setUid(id);
+                                                      mainViewModel.setUser(user);
+                                                      Toast.makeText(getContext(), id + email, Toast.LENGTH_SHORT).show();
+//
 
                                                       sendUserToNextActivity();
                                                       Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
