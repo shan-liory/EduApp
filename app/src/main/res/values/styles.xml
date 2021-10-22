@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Introduce_Font" >
+        <item name="font">@font/poppins</item>
+        <item name="android:textSize">40sp</item>
+        <item name="color">@color/black</item>
+    </style>
+
+    <style name="Introduce_Heading">
+        <item name="font">@font/poppins</item>
+        <item name="android:textSize">42sp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="color">@color/black</item>
+    </style>
+</resources>
