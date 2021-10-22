@@ -6,7 +6,8 @@
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
-        android:layout_height="304dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         android:layout_marginTop="50dp"
         android:src="@drawable/lesson" />
 
@@ -16,4 +17,5 @@
         android:text="Start your learning journey with Kidooze!"
         style="@style/Introduce_Font"
         android:layout_marginTop="50dp" />
+
 </LinearLayout>
