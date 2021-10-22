@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Complete quizzes in every lessons!"
+        style="@style/Introduce_Font"
+        android:layout_marginBottom="50dp"
+        android:gravity="end"
+        android:paddingEnd="20dp"/>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="304dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/quiz"
+        android:rotation="17.94"/>
+
+</LinearLayout>
