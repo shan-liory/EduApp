@@ -7,7 +7,7 @@ public class User {
     String uid;
     String url;
 
-    public String getUrl(String s) {
+    public String getUrl() {
         return url;
     }
 
