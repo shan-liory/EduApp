@@ -14,6 +14,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Start your learning journey with Kidooze!"
-        style="@style/Introduce_Font"
-        android:layout_marginTop="50dp" />
+        style="@style/Introduce_Font" />
 </LinearLayout>

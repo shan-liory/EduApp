@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:text="Complete quizzes in every lessons!"
         style="@style/Introduce_Font"
-        android:layout_marginBottom="50dp"
         android:gravity="end"
         android:paddingEnd="20dp"/>
 

@@ -3,8 +3,40 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/EduApp/app/src/main/res/layout/activity_main.xml" value="0.17239583333333333" />
-        <entry key="..\:/EduApp/app/src/main/res/layout/activity_register.xml" value="0.27219202898550726" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_baseline_arrow_back_ios_new_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_baseline_circle_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/reward_gif_background.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/rounded_button.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/rounded_corner.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/activity_register.xml" value="0.2477355072463768" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_competition.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.2477355072463768" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_home.xml" value="0.2477355072463768" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_introduce.xml" value="0.264" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_lesson.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_notifications.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_profile.xml" value="0.2477355072463768" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_competition.xml" value="0.2" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_lesson.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_pages.xml" value="0.6" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_quiz.xml" value="0.2" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_rewards.xml" value="0.2" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/login.xml" value="0.2477355072463768" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/splash_page.xml" value="0.152" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/welcome_page.xml" value="0.536" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/drawable/app_name_background.xml" value="0.1" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.19583333333333333" />
@@ -20,34 +52,6 @@
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/mipmap-anydpi-v26/app_name_round.xml" value="0.22239583333333332" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/mipmap-anydpi-v26/mascot.xml" value="0.22239583333333332" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/mipmap-anydpi-v26/mascot_round.xml" value="0.22239583333333332" />
-        <entry key="..\:/Users/shan/Documents/GitHub/EduApp/app/src/main/res/layout/activity_main.xml" value="0.3671875" />
-        <entry key="..\:/Users/shan/Documents/GitHub/EduApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.3671875" />
-        <entry key="..\:/Users/shan/Documents/GitHub/EduApp/app/src/main/res/layout/fragment_home.xml" value="0.30364583333333334" />
-        <entry key="..\:/Users/shan/Documents/GitHub/EduApp/app/src/main/res/layout/fragment_notifications.xml" value="0.3671875" />
-        <entry key="..\:/Users/shan/Documents/GitHub/EduApp/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
-        <entry key="..\:/Users/shan/Documents/GitHub/EduApp/app/src/main/res/layout/login.xml" value="0.26510416666666664" />
-        <entry key="..\:/Users/shan/Documents/GitHub/EduApp/app/src/main/res/layout/welcome_page.xml" value="0.20572916666666666" />
-        <entry key="..\:/Users/shan/Documents/GitHub/EduApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3671875" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19583333333333333" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.11354166666666667" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.19583333333333333" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/drawable/ic_baseline_arrow_back_ios_new_24.xml" value="0.1" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.11354166666666667" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_register.xml" value="0.1796875" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_competition.xml" value="0.1" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.1796875" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_home.xml" value="0.1796875" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_introduce.xml" value="0.10666666666666667" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_introduce_quiz.xml" value="0.11096014492753623" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_lesson.xml" value="0.1" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_notifications.xml" value="0.1796875" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/introduce_lesson.xml" value="0.22" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/introduce_quiz.xml" value="0.1796875" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/introduce_rewards.xml" value="0.1" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/login.xml" value="0.1796875" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/splash_page.xml" value="0.1796875" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/welcome_page.xml" value="0.1796875" />
       </map>
     </option>
   </component>
@@ -60,7 +64,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.10666666666666667" />
+        <option name="scale" value="0.264" />
       </ProjectState>
     </option>
   </component>
