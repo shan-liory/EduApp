@@ -122,7 +122,7 @@
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:clickable="true"
-                        android:text="Boy"
+                        android:text="Male"
 
                         />
 
