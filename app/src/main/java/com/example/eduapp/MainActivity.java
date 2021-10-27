@@ -59,5 +59,8 @@ public class MainActivity extends AppCompatActivity {
         navView.setVisibility(visible ? View.VISIBLE:View.GONE);
     }
 
-
+    public void startLesson(View v) {
+        Intent i = new Intent(this, QuestionActivity.class);
+        startActivity(i);
+    }
 }
