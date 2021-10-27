@@ -62,5 +62,6 @@ public class MainActivity extends AppCompatActivity {
     public void startLesson(View v) {
         Intent i = new Intent(this, QuestionActivity.class);
         startActivity(i);
+        finish();
     }
 }
