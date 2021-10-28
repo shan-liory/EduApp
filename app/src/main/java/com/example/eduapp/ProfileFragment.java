@@ -39,6 +39,7 @@ public class ProfileFragment extends BaseFragment {
     Button logout_btn;
     ImageView profile_image;
     ImageButton edit_btn;
+    Button settings_btn;
 
 
     @Override
@@ -56,6 +57,7 @@ public class ProfileFragment extends BaseFragment {
         profile_image = view.findViewById(R.id.profile_image);
         text_dob = view.findViewById(R.id.text_dob);
         edit_btn = view.findViewById(R.id.edit_button);
+        settings_btn = view.findViewById(R.id.settings_btn);
 
         text_profile.setText(mainViewModel.getTest());
         edit_btn.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +70,12 @@ public class ProfileFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 logoutUser();
+            }
+        });
+        settings_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_navigation_profile_to_settingsFragment);
             }
         });
     }

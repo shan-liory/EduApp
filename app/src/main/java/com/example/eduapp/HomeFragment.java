@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.eduapp.MainActivity;
 import com.example.eduapp.MainViewModel;
@@ -20,6 +22,7 @@ import com.example.eduapp.User;
 public class HomeFragment extends Fragment {
 
     private MainViewModel mainViewModel;
+    ImageButton guide_btn;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +44,15 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final TextView textView = view.findViewById(R.id.text_home);
         textView.setText(mainViewModel.getTest());
+
+        guide_btn = view.findViewById(R.id.guide_btn);
+
+        guide_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_guideFragment);
+            }
+        });
 
     }
 }
