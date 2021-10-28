@@ -1,5 +1,7 @@
 package com.example.eduapp;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,13 +12,13 @@ public class Question {
     private String rightAnswer;
     private int mAnswered;
 
-    public Question(String question,String rightAnswer, String ... answers ) {
+    public Question(String question,String rightAnswer, ArrayList<String> answers ) {
         this.question = question;
         this.rightAnswer = rightAnswer;
-        this.answers.add(answers[0]);
-        this.answers.add(answers[1]);
-        this.answers.add(answers[2]);
-        this.answers.add(answers[3]);
+        this.answers.add(answers.get(0));
+        this.answers.add(answers.get(1));
+        this.answers.add(answers.get(2));
+        this.answers.add(answers.get(3));
         mAnswered = 0;
     }
 
