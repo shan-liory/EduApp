@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F9E000">
+    <ImageView
+        android:id="@+id/login_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="23dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/imageView"
@@ -21,35 +31,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/user_email"
+        android:id="@+id/login_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:drawableStart="@drawable/ic_baseline_email_24"
         android:drawablePadding="10dp"
-        android:fontFamily="@font/poppins"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:text="Email"
+        android:hint="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/user_password"
+        android:id="@+id/login_password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:text="Password"
-        android:fontFamily="@font/poppins"
+        android:hint="Password"
         android:drawableStart="@drawable/ic_baseline_lock_24"
         android:drawablePadding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_email" />
+        app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
     <Button
         android:id="@+id/login_btn"
@@ -57,18 +65,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Login"
-        android:fontFamily="@font/poppins"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_password" />
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <TextView
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgot Password?"
-        android:fontFamily="@font/poppins"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,0 +1,196 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9E000"
+    >
+
+
+    <ImageView
+        android:id="@+id/editProfile_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="23dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="Edit Profile"
+        android:id="@+id/editProfile_title"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editProfile_back_btn"
+        app:layout_constraintTop_toBottomOf="@+id/editProfile_back_btn" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/editProfile_title"
+        android:background="#FFEAEAEA">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:id="@+id/editProfile_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/name_tv_profile"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/poppins"
+                        android:hint="Mike"
+                        android:textColor="@color/black"
+                        android:textColorHint="#AFA7A7"
+                        android:textSize="25sp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp">
+                    <ImageView
+                        android:id="@+id/editProfileImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/status"
+                        app:srcCompat="@drawable/ic_baseline_account_circle_24"
+                        tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck" />
+                        </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/hori_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/black"
+                    android:orientation="horizontal"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfile_first"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Choose your gender"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:id="@+id/editProfile_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+
+                    <Button
+                        android:id="@+id/male_btn"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:clickable="true"
+                        android:text="Boy"
+
+                        />
+
+                    <Button
+                        android:id="@+id/female_btn"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:clickable="true"
+                        android:text="Female"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/hori_line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/black"
+                    android:orientation="horizontal"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfile_second"></LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/editProfile_third"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/editProfile_dob_tv"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Date of Birth"
+                        android:textColor="@color/black"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/editProfile_dob"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:hint="2019-08-31"
+                        android:textColor="@color/black"
+                        android:textColorHint="#AFA7A7"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/updateProfile_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Update Profile"
+
+                    >
+
+                </Button>
+            </LinearLayout>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

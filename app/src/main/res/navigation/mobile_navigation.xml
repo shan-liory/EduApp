@@ -3,29 +3,94 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/splash">
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.eduapp.ui.home.HomeFragment"
+        android:name="com.example.eduapp.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.eduapp.ui.dashboard.DashboardFragment"
+        android:name="com.example.eduapp.LessonFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_lesson" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.eduapp.ui.notifications.NotificationsFragment"
+        android:name="com.example.eduapp.CompetitionFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_competition" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.eduapp.ui.profile.ProfileFragment"
+        android:name="com.example.eduapp.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_welcomeActivity"
+            app:destination="@id/welcomeActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/splash"
+        android:name="com.example.eduapp.Splash"
+        android:label="Splash" >
+        <action
+            android:id="@+id/action_splash_to_fragment_introduce"
+            app:destination="@id/introduceLesson"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splash_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeActivity"
+        android:name="com.example.eduapp.WelcomeFragment"
+        android:label="WelcomeActivity" >
+        <action
+            android:id="@+id/action_welcomeActivity_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_welcomeActivity_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.eduapp.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/login" >
+        <action
+            android:id="@+id/action_loginFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.eduapp.RegisterFragment"
+        android:label="RegisterActivity" >
+        <action
+            android:id="@+id/action_registerFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.eduapp.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/introduceLesson"
+        android:name="com.example.eduapp.IntroduceFragment"
+        android:label="introduce_activity"
+        tools:layout="@layout/fragment_introduce">
+        <action
+            android:id="@+id/action_introduceLesson_to_welcomeActivity"
+            app:destination="@id/welcomeActivity"
+            app:popUpTo="@id/mobile_navigation" />
+    </fragment>
 </navigation>
