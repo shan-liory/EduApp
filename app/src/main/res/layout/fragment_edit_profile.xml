@@ -3,29 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9E000"
-    >
+    android:background="@color/backgroundColor">
 
 
     <ImageView
         android:id="@+id/editProfile_back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:layout_marginLeft="23dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
+        android:id="@+id/editProfile_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
         android:text="Edit Profile"
-        android:id="@+id/editProfile_title"
+        android:textColor="@color/textColor"
         android:textSize="30sp"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editProfile_back_btn"
         app:layout_constraintTop_toBottomOf="@+id/editProfile_back_btn" />
@@ -34,14 +33,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/editProfile_title"
-        android:background="#FFEAEAEA">
+        android:background="#FFEAEAEA"
+        app:layout_constraintTop_toBottomOf="@+id/editProfile_title">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/editProfile_first"
@@ -67,24 +65,25 @@
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/poppins"
                         android:hint="Mike"
-                        android:textColor="@color/black"
+                        android:textColor="@color/textColor"
                         android:textColorHint="#AFA7A7"
                         android:textSize="25sp" />
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp">
-                    <ImageView
-                        android:id="@+id/editProfileImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:clickable="true"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/status"
-                        app:srcCompat="@drawable/ic_baseline_account_circle_24"
-                        tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck" />
-                        </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+
+                        <ImageView
+                            android:id="@+id/editProfileImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/status"
+                            app:srcCompat="@drawable/ic_baseline_account_circle_24"
+                            tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck" />
+                    </androidx.cardview.widget.CardView>
 
 
                 </LinearLayout>
@@ -107,15 +106,15 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins"
                     android:text="Choose your gender"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textColor"
                     android:textSize="25sp" />
 
                 <LinearLayout
                     android:id="@+id/editProfile_second"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/male_btn"
@@ -159,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:text="Date of Birth"
-                        android:textColor="@color/black"
+                        android:textColor="@color/textColor"
                         android:textSize="25sp" />
 
                     <EditText
@@ -168,7 +167,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:hint="2019-08-31"
-                        android:textColor="@color/black"
+                        android:textColor="@color/textColor"
                         android:textColorHint="#AFA7A7"
                         android:textSize="25sp" />
 
@@ -185,8 +184,6 @@
 
                 </Button>
             </LinearLayout>
-
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

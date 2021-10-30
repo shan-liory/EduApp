@@ -22,6 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
 
         // Set the settings
         playMusic(bgm);
+        setDarkMode(darkMode);
     }
 
     @Override
@@ -114,4 +116,13 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
         }
     }
 
+    @Override
+    public void setDarkMode(boolean darkMode) {
+        if (darkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
 }

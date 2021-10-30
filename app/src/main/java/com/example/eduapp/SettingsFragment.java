@@ -1,5 +1,6 @@
 package com.example.eduapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +13,11 @@ import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -88,18 +93,37 @@ public class SettingsFragment extends Fragment {
                 }
             }
         });
+        darkMode_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                preferencesEditor.putBoolean(getString(R.string.darkMode), b);
+                preferencesEditor.apply();
+                if (settingsChangedListener != null) {
+                    settingsChangedListener.setDarkMode(b);
+                    //reloadFragment();
+                }
+            }
+        });
     }
 
     @Override
     public void onPause() {
         super.onPause();
-//        SharedPreferences.Editor preferencesEditor = kidoozePrefs.edit();
+        SharedPreferences.Editor preferencesEditor = kidoozePrefs.edit();
 
 //        preferencesEditor.putBoolean(getString(R.string.bgm), bgm_switch.isChecked());
-//        preferencesEditor.putBoolean(getString(R.string.soundFX), soundFX_switch.isChecked());
-//        preferencesEditor.putBoolean(getString(R.string.notifs), notifications_switch.isChecked());
+        preferencesEditor.putBoolean(getString(R.string.soundFX), soundFX_switch.isChecked());
+        preferencesEditor.putBoolean(getString(R.string.notifs), notifications_switch.isChecked());
 //        preferencesEditor.putBoolean(getString(R.string.darkMode), darkMode_switch.isChecked());
 //        preferencesEditor.apply();
+    }
+
+    public void reloadFragment() {
+        Fragment currentFragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.settingsFragment);
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.detach(currentFragment);
+        fragmentTransaction.attach(currentFragment);
+        fragmentTransaction.commit();
     }
 
 }
