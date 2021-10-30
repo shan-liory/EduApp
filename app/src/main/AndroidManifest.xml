@@ -19,11 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.example.eduapp.QuestionActivity"/>
-        <activity android:name="com.example.eduapp.WrongActivity"/>
-        <activity android:name="com.example.eduapp.ShowScoreActivity"/>
-        <activity android:name="com.example.eduapp.RightActivity"/>
+        <activity android:name=".QuestionActivity" />
+        <activity android:name=".WrongActivity" />
+        <activity android:name=".ShowScoreActivity" />
+        <activity android:name=".RightActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

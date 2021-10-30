@@ -3,6 +3,7 @@ package com.example.eduapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,9 +60,45 @@ public class MainActivity extends AppCompatActivity {
         navView.setVisibility(visible ? View.VISIBLE:View.GONE);
     }
 
-    public void startLesson(View v) {
+    public void selectLesson(View v) {
         Intent i = new Intent(this, QuestionActivity.class);
+
+        switch (v.getId()) {
+            case R.id.AbsL1_btn:
+                i.putExtra("Course", "Abstraction");
+                i.putExtra("Lesson", "Lesson 1");
+                Log.d("lololol", "ran yea");
+                break;
+            case R.id.AbsL2_btn:
+                i.putExtra("Course", "Abstraction");
+                i.putExtra("Lesson", "Lesson 2");
+                break;
+            case R.id.AlgL1_btn:
+                i.putExtra("Course", "Algorithmic Thinking");
+                i.putExtra("Lesson", "Lesson 1");
+                break;
+            case R.id.AlgL2_btn:
+                i.putExtra("Course", "Algorithmic Thinking");
+                i.putExtra("Lesson", "Lesson 2");
+                break;
+            case R.id.DecL1_btn:
+                i.putExtra("Course", "Decomposition");
+                i.putExtra("Lesson", "Lesson 1");
+                break;
+            case R.id.DecL2_btn:
+                i.putExtra("Course", "Decomposition");
+                i.putExtra("Lesson", "Lesson 2");
+                break;
+            case R.id.PatL1_btn:
+                i.putExtra("Course", "Pattern Recognition");
+                i.putExtra("Lesson", "Lesson 1");
+                break;
+            case R.id.PatL2_btn:
+                i.putExtra("Course", "Pattern Recognition");
+                i.putExtra("Lesson", "Lesson 2");
+                break;
+        }
+
         startActivity(i);
-        finish();
     }
 }

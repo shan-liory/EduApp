@@ -44,29 +44,13 @@ public class QuestionActivity extends AppCompatActivity {
     List<Question> questions = new ArrayList<Question>();
     int score;
 
-    ArrayList<String> courses = new ArrayList<String>() {
-        {
-//            add("Abstraction");
-//            add("Algorithmic Thinking");
-//            add("Decomposition");
-            add("Pattern Recognition");
-        }
-    };
-
-    ArrayList<String> lessons = new ArrayList<String>() {
-        {
-            add("Lesson 1");
-            add("Lesson 2");
-        }
-    };
-
+    Intent intent;
+    String course;
+    String lesson;
     String questionText = null;
     String correctAns = null;
     String questionImage = null;
     ArrayList<String> answers = new ArrayList<String>();
-
-
-//    PreloadQuestions loadDBQuestions = new PreloadQuestions();
 
     //test hints
     Button mHintButton;
@@ -117,7 +101,6 @@ public class QuestionActivity extends AppCompatActivity {
         optionC = findViewById(R.id.choice3);
         optionD = findViewById(R.id.choice4);
         score = 0;
-//        radioGroup = findViewById(R.id.radioGroup);
 
         //put into array
         all = new int[]{R.id.choice1,R.id.choice2,R.id.choice3,R.id.choice4};
@@ -136,8 +119,13 @@ public class QuestionActivity extends AppCompatActivity {
 ////                add(new Question("Quem foi o primeiro programador?", "3", "Steve Jobs", "Linus Torvalds", "Alan Turing", "Ada Lovelace"));
 //            }
 //        };
-//        loadDBQuestions.execute();
 
+        intent = getIntent();
+        course = intent.getStringExtra("Course");
+        lesson = intent.getStringExtra("Lesson");
+        Log.d("olo", course + lesson);
+
+        //This ref is not used, it is only used as input due to parameter requirements.
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Abstraction").child("Lesson 1").child("Q1").child("Correct Choice");
         readData(ref, new OnGetDataListener() {
             @Override
@@ -159,65 +147,6 @@ public class QuestionActivity extends AppCompatActivity {
 
     }
 
-
-//    protected class PreloadQuestions extends AsyncTask<Void, Void, String> {
-//
-//
-//        @Override
-//        protected String doInBackground(Void... params) {
-//
-//            for (String course : courses) {
-//                for (String lesson : lessons) {
-//                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(course).child(lesson).child("Q1");
-//
-//                    ref.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                                if (snapshot.getKey().equals("Correct Choice")) {
-//                                    correctAns = snapshot.getValue().toString();
-//
-//                                } else if (snapshot.getKey().equals("Question Image")) {
-//                                    questionImage = snapshot.getValue().toString();
-//
-//                                } else if (snapshot.getKey().equals("Wrong Choice")) {
-//                                    //need to randomize answer location
-//                                    wrongAns.add(correctAns);
-//
-//                                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-//                                        wrongAns.add(snapshot1.getValue().toString());
-//                                    }
-//                                }
-//                            }
-//
-////                            Log.d("lolo", "Correct " + correctAns);
-////                            Log.d("lolo", "QI " + questionImage);
-////                            Log.d("lolo", course + " " + lesson);
-//                            Question question = new Question("Question", correctAns, wrongAns);
-//                            q.add(question);
-//                            Log.d("lolo", String.valueOf(q.size()) + "added");
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
-//                    Log.d("lolo", String.valueOf(q.size()) + "iteration");
-//                }
-//            }
-//            Log.d("lolo", String.valueOf(q.size()) + "before return");
-//            return correctAns;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//            Log.d("lolo", result + "final");
-//            //loadQuestion();
-//        }
-//    }
-
     public interface OnGetDataListener {
         //this is for callbacks
         void onSuccess(ArrayList<Question> dataSnapshotValue);
@@ -225,99 +154,96 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void readData(DatabaseReference ref, final OnGetDataListener listener) {
         ArrayList<Question> q = new ArrayList<Question>();
-//        for (String course : courses) {
-//            for (String lesson : lessons) {
-//                DatabaseReference r = FirebaseDatabase.getInstance().getReference().child(course).child(lesson).child("Q1");
-//
-//                r.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//
-//                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                                if (snapshot.getKey().equals("Correct Choice")) {
-//                                    correctAns = snapshot.getValue().toString();
-//
-//                                } else if (snapshot.getKey().equals("Question Image")) {
-//                                    questionImage = snapshot.getValue().toString();
-//
-//                                } else if (snapshot.getKey().equals("Wrong Choice")) {
-//                                    //need to randomize answer location
-//                                    wrongAns.add(correctAns);
-//
-//                                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-//                                        wrongAns.add(snapshot1.getValue().toString());
-//                                        Log.d("lololo", snapshot1.getValue().toString());
-//                                    }
-//                                }
-//                            }
-//
-////                            Log.d("lolo", "Correct " + correctAns);
-////                            Log.d("lolo", "QI " + questionImage);
-//                            Log.d("lolo", course + " " + lesson);
-//                            Question question = new Question(questionImage, correctAns, wrongAns);
-//                            q.add(question);
-//
-//                        Log.d("lolo", String.valueOf(q.size()) + " adding");
-//                        if (q.size() == 2) {
-//                            for (Question qu : q) {
-//                                for (String s : qu.getAnswers()) {
-//                                    Log.d("lolololo", s);
-//                                }
-//                            }
-//                            listener.onSuccess(q);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//            }
-//        }
 
-        DatabaseReference r = FirebaseDatabase.getInstance().getReference().child("Question");
+        // Use this way when need to load according to courses and lessons.
+//      DatabaseReference r = FirebaseDatabase.getInstance().getReference().child(course).child(lesson).child("Q1");
+//        DatabaseReference r = FirebaseDatabase.getInstance().getReference().child("Question");
+//
+//        r.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                for (DataSnapshot course : dataSnapshot.getChildren()) {
+//                    for (DataSnapshot lesson : course.getChildren()) {
+//                        answers = new ArrayList<String>();
+//                        for (DataSnapshot questionInfo : lesson.child("Q1").getChildren()) {
+//                            Log.d("lololo", "loop 3");
+//                            if (questionInfo.getKey().equals("Question Text")) {
+//                                questionText = questionInfo.getValue().toString();
+//
+//                            } else if (questionInfo.getKey().equals("Correct Choice")) {
+//                                correctAns = questionInfo.getValue().toString();
+//
+//                            } else if (questionInfo.getKey().equals("Question Image")) {
+//                                questionImage = questionInfo.getValue().toString();
+//
+//                            } else if (questionInfo.getKey().equals("Answers")) {
+//                                for (DataSnapshot ans : questionInfo.getChildren()) {
+//                                    answers.add(ans.getValue().toString());
+//                                    Log.d("answers", ans.getValue().toString());
+//                                }
+//                            }
+//                        }
+//
+//                        Question question = new Question(questionText, questionImage, correctAns, answers);
+//                        q.add(question);
+//                    }
+//                }
+//
+//                for (Question qu : q) {
+//                    for (String s : qu.getAnswers()) {
+//                        Log.d("lolololo", s);
+//                    }
+//                }
+////                if (q.size() == 8) {
+////                    listener.onSuccess(q);
+////                }
+//                listener.onSuccess(q);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+        DatabaseReference r = FirebaseDatabase.getInstance().getReference().child("Question").child(course).child(lesson).child("Q1");
 
         r.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                answers = new ArrayList<String>();
 
-                for (DataSnapshot course : dataSnapshot.getChildren()) {
-                    for (DataSnapshot lesson : course.getChildren()) {
-                        answers = new ArrayList<String>();
-                        for (DataSnapshot questionInfo : lesson.child("Q1").getChildren()) {
-                            Log.d("lololo", "loop 3");
-                            if (questionInfo.getKey().equals("Question Text")) {
-                                questionText = questionInfo.getValue().toString();
+                for (DataSnapshot questionInfo : dataSnapshot.getChildren()) {
+                    if (questionInfo.getKey().equals("Question Text")) {
+                        questionText = questionInfo.getValue().toString();
 
-                            } else if (questionInfo.getKey().equals("Correct Choice")) {
-                                correctAns = questionInfo.getValue().toString();
+                    } else if (questionInfo.getKey().equals("Correct Choice")) {
+                        correctAns = questionInfo.getValue().toString();
 
-                            } else if (questionInfo.getKey().equals("Question Image")) {
-                                questionImage = questionInfo.getValue().toString();
+                    } else if (questionInfo.getKey().equals("Question Image")) {
+                        questionImage = questionInfo.getValue().toString();
 
-                            } else if (questionInfo.getKey().equals("Answers")) {
-                                for (DataSnapshot ans : questionInfo.getChildren()) {
-                                    answers.add(ans.getValue().toString());
-                                    Log.d("answers", ans.getValue().toString());
-                                }
-                            }
+                    } else if (questionInfo.getKey().equals("Answers")) {
+                        for (DataSnapshot ans : questionInfo.getChildren()) {
+                            answers.add(ans.getValue().toString());
+                            Log.d("answers", ans.getValue().toString());
                         }
-
-                        Question question = new Question(questionText, questionImage, correctAns, answers);
-                        q.add(question);
                     }
+                    Log.d("olo", "inside");
                 }
+
+                Question question = new Question(questionText, questionImage, correctAns, answers);
+                q.add(question);
+
 
                 for (Question qu : q) {
                     for (String s : qu.getAnswers()) {
                         Log.d("lolololo", s);
                     }
                 }
-                if (q.size() == 8) {
-                    listener.onSuccess(q);
-                }
+
+                listener.onSuccess(q);
             }
 
             @Override
@@ -341,25 +267,11 @@ public class QuestionActivity extends AppCompatActivity {
             lblQuestion.setText(displayQuestion.getQuestion());
             List<String> answers = displayQuestion.getAnswers();
 
-//            Picasso.get().invalidate(q.getQuestion());
-//            Picasso.get().invalidate(answers.get(0));
-//            Picasso.get().invalidate(answers.get(1));
-//            Picasso.get().invalidate(answers.get(2));
-//            Picasso.get().invalidate(answers.get(3));
-//            Log.d("lolo", answers.get(0));
-//            Log.d("lolo", answers.get(1));
-//            Log.d("lolo", answers.get(2));
-//            Log.d("lolo", answers.get(3));
-
             Picasso.get().load(displayQuestion.getQuestionImage()).into((ImageView) findViewById(R.id.questionImage));
             Picasso.get().load(answers.get(0)).into((ImageView) findViewById(R.id.choice1));
             Picasso.get().load(answers.get(1)).into((ImageView) findViewById(R.id.choice2));
             Picasso.get().load(answers.get(2)).into((ImageView) findViewById(R.id.choice3));
             Picasso.get().load(answers.get(3)).into((ImageView) findViewById(R.id.choice4));
-//            optionA.setText(answers.get(0));
-//            optionB.setText(answers.get(1));
-//            optionC.setText(answers.get(2));
-//            optionD.setText(answers.get(3));
 
             rightAnswer = displayQuestion.getRightAnswer();
 
@@ -376,37 +288,6 @@ public class QuestionActivity extends AppCompatActivity {
         // setButton crashes because index error when it tries to remove from empty array.
 //        setButton(true);
     }
-
-//    public void loadAnswer(View view) {
-//        int op = radioGroup.getCheckedRadioButtonId();
-//
-//        switch (op){
-//            case R.id.choice1:
-//                Answer="0";
-//                break;
-//
-//            case R.id.choice2:
-//                Answer="1";
-//                break;
-//
-//            case R.id.choice3:
-//                Answer="2";
-//                break;
-//
-//            case R.id.choice4:
-//                Answer="3";
-//                break;
-//
-//            default:
-//                return;
-//
-//        }
-//
-//        radioGroup.clearCheck();
-//
-//        this.startActivity(isRightOrWrong(Answer));
-//
-//    }
 
     public void selectChoice(View view) {
         int op = view.getId();
@@ -479,3 +360,5 @@ public class QuestionActivity extends AppCompatActivity {
         }
     }
 }
+
+
