@@ -8,12 +8,14 @@ import java.util.List;
 public class Question {
 
     private String question;
+    private String questionImage;
     private List<String> answers = new ArrayList<>();
     private String rightAnswer;
     private int mAnswered;
 
-    public Question(String question,String rightAnswer, ArrayList<String> answers ) {
+    public Question(String question, String questionImage, String rightAnswer, ArrayList<String> answers ) {
         this.question = question;
+        this.questionImage = questionImage;
         this.rightAnswer = rightAnswer;
         this.answers.add(answers.get(0));
         this.answers.add(answers.get(1));
@@ -25,6 +27,10 @@ public class Question {
 
     public String getQuestion() {
         return question;
+    }
+
+    public String getQuestionImage() {
+        return questionImage;
     }
 
     public List<String> getAnswers() {
