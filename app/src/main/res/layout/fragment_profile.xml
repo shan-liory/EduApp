@@ -24,59 +24,126 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:text="hello"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/profile_cV"
         tools:ignore="TextContrastCheck" />
 
-    <TextView
-        android:id="@+id/text_dob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="BOD"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+    <LinearLayout
+        android:id="@+id/profile_linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/profile_cV"
+        app:layout_constraintStart_toStartOf="@+id/profile_cV"
+        app:layout_constraintTop_toBottomOf="@+id/text_profile">
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_profile"
-        tools:ignore="TextContrastCheck" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+
+            android:src="@mipmap/mascot">
+
+        </ImageView>
+
+        <LinearLayout
+
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="Star Collecred"
+                android:textColor="#000000">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="1000"
+                android:textColor="#000000">
+
+            </TextView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:id="@+id/text_dob"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:text="BOD"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="20sp"-->
+
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/text_profile"-->
+<!--        tools:ignore="TextContrastCheck" />-->
 
     <Button
         android:id="@+id/logout_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:text="Log Out"
 
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/profile_cV"
+        android:layout_height="100dp"
+        android:backgroundTint="#FFFFFF"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_profile" />
-
+        app:layout_constraintTop_toTopOf="@id/edit_button"
+        >
     <ImageView
         android:id="@+id/profile_image"
-        android:layout_width="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="80dp"
-        android:src="@drawable/ic_baseline_account_circle_24"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_baseline_account_circle_24" />
 
 
-        />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Settings"
+        app:layout_constraintEnd_toEndOf="@+id/profile_linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/profile_linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/profile_linearLayout" />
 
 
 
