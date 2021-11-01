@@ -3,17 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/introCompetition">
-
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/competition" />
+    android:id="@+id/introCompetition"
+    android:background="@color/light_gray">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Competition"
+        style="@style/Introduce_Heading"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"/>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/competition"
+        android:adjustViewBounds="true"
+        android:layout_weight="7"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
         android:text="Add friends, join competitions and win coins to be on top of the leaderboard!"
-        style="@style/Introduce_Font"/>
+        style="@style/Introduce_Font"
+        android:autoSizeTextType="uniform"/>
 </LinearLayout>

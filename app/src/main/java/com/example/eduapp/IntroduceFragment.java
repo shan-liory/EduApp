@@ -1,28 +1,27 @@
 package com.example.eduapp;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
+
 
 
 public class IntroduceFragment extends Fragment {
     private Button start;
     private ImageButton back,next;
-    private ViewPager2 viewPager2;
-    private TextView title;
+    private static int page = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,25 +33,22 @@ public class IntroduceFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        title = view.findViewById(R.id.introH);
         back = view.findViewById(R.id.back);
         back.setVisibility(View.INVISIBLE);
         next = view.findViewById(R.id.next);
         start = view.findViewById(R.id.startBtn);
         start.setVisibility(View.INVISIBLE);
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(getView()).navigate(R.id.action_introduceLesson_to_welcomeActivity);
-            }
-        });
+        start.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(R.id.action_introduceLesson_to_welcomeActivity));
+
+        int colorFilter = getResources().getColor(R.color.white);
+        int selectedColorFilter = getResources().getColor(R.color.orange);
+
         // find views by id
         ViewPager viewPager = view.findViewById(R.id.pager);
         TabLayout tabLayout = view.findViewById(R.id.tabLayout);
 
         // attach tablayout with viewpager
         tabLayout.setupWithViewPager(viewPager);
-
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
 
@@ -68,7 +64,26 @@ public class IntroduceFragment extends Fragment {
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             tabLayout.getTabAt(i).setIcon(R.drawable.ic_baseline_circle_24);
         }
-        System.out.println(adapter.getCount());
+        // default choosing first tab
+        tabLayout.getTabAt(0).getIcon().setColorFilter(selectedColorFilter, PorterDuff.Mode.SRC_IN);
+        tabLayout.addOnTabSelectedListener( new TabLayout.ViewPagerOnTabSelectedListener(viewPager){
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(selectedColorFilter, PorterDuff.Mode.SRC_IN);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(colorFilter, PorterDuff.Mode.SRC_IN);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -77,19 +92,21 @@ public class IntroduceFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                if(position == 3){
+                page = position;
+
+                // default settings
+                back.setVisibility(View.VISIBLE);
+                next.setVisibility(View.VISIBLE);
+                start.setVisibility(View.INVISIBLE);
+
+                // control the display of buttons
+                if(position == 0){
+                    back.setVisibility(View.INVISIBLE);
+                }
+                else if(position == adapter.getCount()-1){
                     start.setVisibility(View.VISIBLE);
                     next.setVisibility(View.INVISIBLE);
                     back.setVisibility(View.VISIBLE);
-                }
-                else{
-                    if(position == 0){
-                        back.setVisibility(View.INVISIBLE);
-                    }
-                    else
-                        back.setVisibility(View.VISIBLE);
-                    next.setVisibility(View.VISIBLE);
-                    start.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -98,12 +115,12 @@ public class IntroduceFragment extends Fragment {
 
             }
         });
+
+        back.setOnClickListener(v -> tabLayout.getTabAt(page-1).select());
+
+        next.setOnClickListener(v -> tabLayout.getTabAt(page+1).select());
     }
 
-
-    public void startBtn(){
-
-    }
 }
 
 
