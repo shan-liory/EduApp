@@ -19,13 +19,12 @@
         android:layout_height="match_parent"
         android:src="@drawable/competition"
         android:adjustViewBounds="true"
-        android:layout_weight="7"/>
+        android:layout_weight="4"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="6"
-        android:text="Add friends, join competitions and win coins to be on top of the leaderboard!"
-        style="@style/Introduce_Font"
-        android:autoSizeTextType="uniform"/>
+        android:text="Unlock games by learning!"
+        style="@style/Introduce_Font"/>
 </LinearLayout>

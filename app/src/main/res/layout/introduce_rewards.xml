@@ -19,8 +19,7 @@
         android:text="Get your rewards after you complete a course!"
         style="@style/Introduce_Font"
         android:adjustViewBounds="true"
-        android:layout_weight="6"
-        android:autoSizeTextType="uniform"/>
+        android:layout_weight="6"/>
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"

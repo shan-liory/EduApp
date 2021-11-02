@@ -21,8 +21,7 @@
         style="@style/Introduce_Font"
         android:layout_weight="6"
         android:gravity="end"
-        android:paddingEnd="20dp"
-        android:autoSizeTextType="uniform"/>
+        android:paddingEnd="20dp"/>
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
