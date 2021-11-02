@@ -74,7 +74,8 @@
                     android:layout_gravity="center"
                     android:id="@+id/tabLayout"
                     app:tabIndicatorColor="@color/orange"
-                    app:tabIconTint="@color/white"/>
+                    app:tabIconTint="@color/white"
+                    app:tabRippleColor="@android:color/transparent"/>
 
                 <ImageButton
                     android:id="@+id/next"
