@@ -104,9 +104,8 @@ public class IntroduceFragment extends Fragment {
                     back.setVisibility(View.INVISIBLE);
                 }
                 else if(position == adapter.getCount()-1){
-                    start.setVisibility(View.VISIBLE);
                     next.setVisibility(View.INVISIBLE);
-                    back.setVisibility(View.VISIBLE);
+                    start.setVisibility(View.VISIBLE);
                 }
             }
 
