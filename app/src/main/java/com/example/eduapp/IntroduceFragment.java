@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Objects;
 
 
 public class IntroduceFragment extends Fragment {
@@ -26,8 +27,7 @@ public class IntroduceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return (ViewGroup) inflater.inflate(
-                R.layout.fragment_introduce, container, false);
+        return inflater.inflate(R.layout.fragment_introduce, container, false);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class IntroduceFragment extends Fragment {
         next = view.findViewById(R.id.next);
         start = view.findViewById(R.id.startBtn);
         start.setVisibility(View.INVISIBLE);
-        start.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(R.id.action_introduceLesson_to_welcomeActivity));
+        start.setOnClickListener(v -> Navigation.findNavController(requireView()).navigate(R.id.action_introduceLesson_to_welcomeActivity));
 
         int colorFilter = getResources().getColor(R.color.white);
         int selectedColorFilter = getResources().getColor(R.color.orange);
@@ -47,7 +47,7 @@ public class IntroduceFragment extends Fragment {
         ViewPager viewPager = view.findViewById(R.id.pager);
         TabLayout tabLayout = view.findViewById(R.id.tabLayout);
 
-        // attach tablayout with viewpager
+        // attach tab layout with viewpager
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
@@ -62,19 +62,19 @@ public class IntroduceFragment extends Fragment {
         viewPager.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            tabLayout.getTabAt(i).setIcon(R.drawable.ic_baseline_circle_24);
+            Objects.requireNonNull(tabLayout.getTabAt(i)).setIcon(R.drawable.ic_baseline_circle_24);
         }
         // default choosing first tab
-        tabLayout.getTabAt(0).getIcon().setColorFilter(selectedColorFilter, PorterDuff.Mode.SRC_IN);
+        Objects.requireNonNull(Objects.requireNonNull(tabLayout.getTabAt(0)).getIcon()).setColorFilter(selectedColorFilter, PorterDuff.Mode.SRC_IN);
         tabLayout.addOnTabSelectedListener( new TabLayout.ViewPagerOnTabSelectedListener(viewPager){
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                tab.getIcon().setColorFilter(selectedColorFilter, PorterDuff.Mode.SRC_IN);
+            public void onTabSelected(@NonNull TabLayout.Tab tab) {
+                Objects.requireNonNull(tab.getIcon()).setColorFilter(selectedColorFilter, PorterDuff.Mode.SRC_IN);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                tab.getIcon().setColorFilter(colorFilter, PorterDuff.Mode.SRC_IN);
+                Objects.requireNonNull(tab.getIcon()).setColorFilter(colorFilter, PorterDuff.Mode.SRC_IN);
             }
 
             @Override
@@ -115,9 +115,9 @@ public class IntroduceFragment extends Fragment {
             }
         });
 
-        back.setOnClickListener(v -> tabLayout.getTabAt(page-1).select());
+        back.setOnClickListener(v -> Objects.requireNonNull(tabLayout.getTabAt(page - 1)).select());
 
-        next.setOnClickListener(v -> tabLayout.getTabAt(page+1).select());
+        next.setOnClickListener(v -> Objects.requireNonNull(tabLayout.getTabAt(page + 1)).select());
     }
 
 }
