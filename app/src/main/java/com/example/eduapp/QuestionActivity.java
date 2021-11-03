@@ -4,6 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
@@ -40,7 +47,7 @@ public class QuestionActivity extends AppCompatActivity {
     ImageView optionD;
     Button confirm;
     String rightAnswer;
-    String Answer;
+    String Answer = null;
     List<Question> questions = new ArrayList<Question>();
     int score;
 
@@ -85,6 +92,7 @@ public class QuestionActivity extends AppCompatActivity {
 
                     int id = all[rand];
                     findViewById(id).setEnabled(false);
+                    ((ImageView) findViewById(id)).setColorFilter(Color.parseColor("#656565"));
 
                     //limit to 2 hints
                     mRemainingHints--;
@@ -285,28 +293,36 @@ public class QuestionActivity extends AppCompatActivity {
         except = new HashSet();
         setHintButton(true);
 
-        // setButton crashes because index error when it tries to remove from empty array.
-//        setButton(true);
+        setButton(true);
     }
 
     public void selectChoice(View view) {
         int op = view.getId();
+        int[] choices = new int[]{R.id.choice1,R.id.choice2,R.id.choice3,R.id.choice4};
+
+        for (int choice : choices) {
+            findViewById(choice).setBackgroundColor(Color.TRANSPARENT);
+        }
 
         switch (op){
             case R.id.choice1:
                 Answer="0";
+                findViewById(R.id.choice1).setBackgroundColor(Color.rgb(255, 235, 59));
                 break;
 
             case R.id.choice2:
                 Answer="1";
+                findViewById(R.id.choice2).setBackgroundColor(Color.rgb(255, 235, 59));
                 break;
 
             case R.id.choice3:
                 Answer="2";
+                findViewById(R.id.choice3).setBackgroundColor(Color.rgb(255, 235, 59));
                 break;
 
             case R.id.choice4:
                 Answer="3";
+                findViewById(R.id.choice4).setBackgroundColor(Color.rgb(255, 235, 59));
                 break;
 
             default:
@@ -317,7 +333,13 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     public void loadAnswer(View view) {
-        this.startActivity(isRightOrWrong(Answer));
+        if (Answer != null) {
+            this.startActivity(isRightOrWrong(Answer));
+
+        } else {
+            Log.d("loloo", "ran");
+            Toast.makeText(QuestionActivity.this, "Please choose an answer", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -337,19 +359,22 @@ public class QuestionActivity extends AppCompatActivity {
 
     //set button to enable or disable
     private void setButton(boolean b) {
-        Question q = questions.remove(0);
-        if (q.getAnswered() > 0 || b == false) {
-            //disable buttons
-            optionA.setEnabled(false);
-            optionB.setEnabled(false);
-            optionC.setEnabled(false);
-            optionD.setEnabled(false);
-        } else {
-            optionA.setEnabled(true);
-            optionB.setEnabled(true);
-            optionC.setEnabled(true);
-            optionD.setEnabled(true);
+        if (questions.size() > 0) {
+            Question q = questions.remove(0);
+            if (q.getAnswered() > 0 || b == false) {
+                //disable buttons
+                optionA.setEnabled(false);
+                optionB.setEnabled(false);
+                optionC.setEnabled(false);
+                optionD.setEnabled(false);
+            } else {
+                optionA.setEnabled(true);
+                optionB.setEnabled(true);
+                optionC.setEnabled(true);
+                optionD.setEnabled(true);
+            }
         }
+
     }
 
     private void setHintButton(boolean b) {
