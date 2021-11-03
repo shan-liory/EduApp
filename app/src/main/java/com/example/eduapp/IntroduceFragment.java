@@ -56,7 +56,7 @@ public class IntroduceFragment extends Fragment {
         adapter.addFrag(new IntroduceLesson());
         adapter.addFrag(new IntroduceQuiz());
         adapter.addFrag(new IntroduceRewards());
-        adapter.addFrag(new IntroduceCompetition());
+        adapter.addFrag(new IntroducePlayground());
 
         // set adapter on viewpager
         viewPager.setAdapter(adapter);
