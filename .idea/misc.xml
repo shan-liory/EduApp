@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/EduApp/app/src/main/res/layout/activity_main.xml" value="0.17239583333333333" />
-        <entry key="..\:/EduApp/app/src/main/res/layout/activity_register.xml" value="0.27219202898550726" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_introduce.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_profile.xml" value="0.1265625" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_competition.xml" value="0.16304347826086957" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_quiz.xml" value="0.16304347826086957" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/drawable/app_name_background.xml" value="0.1" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.19583333333333333" />
