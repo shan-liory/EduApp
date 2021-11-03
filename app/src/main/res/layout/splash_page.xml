@@ -26,7 +26,7 @@
         android:rotation="-12"
         android:contentDescription="@string/fox"
         android:layout_weight="3"
-        android:src="@mipmap/mascot_foreground"
+        android:src="@drawable/mascot"
         android:paddingBottom="20dp"/>
 
 </LinearLayout>
