@@ -39,7 +39,7 @@ public class Splash extends BaseFragment {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                        Navigation.findNavController(view).navigate(R.id.action_splash_to_welcomeActivity);
+                        Navigation.findNavController(view).navigate(R.id.action_splash_to_fragment_introduce);
                 }
             }, SPLASH_TIME_OUT);
         }

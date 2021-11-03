@@ -42,8 +42,8 @@
         android:name="com.example.eduapp.Splash"
         android:label="Splash" >
         <action
-            android:id="@+id/action_splash_to_welcomeActivity"
-            app:destination="@id/welcomeActivity"
+            android:id="@+id/action_splash_to_fragment_introduce"
+            app:destination="@id/introduceLesson"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
         <action
@@ -89,4 +89,14 @@
         android:name="com.example.eduapp.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/introduceLesson"
+        android:name="com.example.eduapp.IntroduceFragment"
+        android:label="introduce_activity"
+        tools:layout="@layout/fragment_introduce">
+        <action
+            android:id="@+id/action_introduceLesson_to_welcomeActivity"
+            app:destination="@id/welcomeActivity"
+            app:popUpTo="@id/mobile_navigation" />
+    </fragment>
 </navigation>
