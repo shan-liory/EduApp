@@ -2,8 +2,11 @@ package com.example.eduapp;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,12 +16,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,6 +46,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
+
 
 public class EditProfileFragment extends Fragment {
 
@@ -51,7 +58,7 @@ public class EditProfileFragment extends Fragment {
     String genderString;
     final int PICK_IMAGE = 1;
     Uri imageUri;
-
+    DatePickerDialog picker;
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://kidoozedatabase-default-rtdb.firebaseio.com/");
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
@@ -123,6 +130,28 @@ public class EditProfileFragment extends Fragment {
                     changeGender(true);
                 }
             });
+        editProfile_dob.setInputType(InputType.TYPE_NULL);
+        editProfile_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                editProfile_dob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                picker.show();
+
+            }
+
+        });
 
             documentReference = db.collection("User").document(currentUserId);
             documentReference.get()

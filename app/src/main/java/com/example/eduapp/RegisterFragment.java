@@ -2,19 +2,24 @@ package com.example.eduapp;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,6 +47,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,6 +70,7 @@ public class RegisterFragment extends Fragment {
     DocumentReference documentReference;
     ProgressDialog progressDialog;
     User user;
+    DatePickerDialog picker;
     private static final int PICK_IMAGE = 1;
    String currentUserId;
 
@@ -121,7 +128,28 @@ public class RegisterFragment extends Fragment {
                 AuthenticateUser();
             }
         });
+        editText_dob_register.setInputType(InputType.TYPE_NULL);
+        editText_dob_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                editText_dob_register.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                picker.show();
 
+            }
+
+        });
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

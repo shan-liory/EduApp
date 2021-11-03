@@ -54,7 +54,7 @@ public class ProfileFragment extends BaseFragment {
         logout_btn= view.findViewById(R.id.logout_btn);
         text_profile=view.findViewById(R.id.text_profile);
         profile_image = view.findViewById(R.id.profile_image);
-        text_dob = view.findViewById(R.id.text_dob);
+
         edit_btn = view.findViewById(R.id.edit_button);
 
         text_profile.setText(mainViewModel.getTest());
@@ -98,7 +98,6 @@ public class ProfileFragment extends BaseFragment {
 
                             Picasso.get().load(urlResult).into(profile_image);
                             text_profile.setText(nameResult);
-                            text_dob.setText((dobResult));
 
 
                         }else{
