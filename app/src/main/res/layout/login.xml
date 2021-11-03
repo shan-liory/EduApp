@@ -7,7 +7,6 @@
     android:background="#F9E000"
     android:orientation="vertical">
 
-
     <ImageView
         android:id="@+id/login_back_btn"
         android:layout_width="wrap_content"
