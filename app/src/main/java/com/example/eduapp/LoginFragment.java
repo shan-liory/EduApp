@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginFragment extends Fragment {
     EditText login_email, login_password;
+    TextView forgotPassword;
     Button login_btn;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
@@ -53,10 +55,12 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         login_email = view.findViewById(R.id.login_email);
         login_password = view.findViewById(R.id.login_password);
         login_back_btn = view.findViewById(R.id.login_back_btn);
         login_btn = view.findViewById(R.id.login_btn);
+        forgotPassword=view.findViewById(R.id.forgotPassword);
 
         progressDialog = new ProgressDialog(getContext());
 
@@ -68,6 +72,12 @@ public class LoginFragment extends Fragment {
             }
 
 
+        });
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_forgotPasswordFragment);
+            }
         });
 
         login_btn.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +114,7 @@ public class LoginFragment extends Fragment {
                                               @Override
                                               public void onComplete(@NonNull Task<AuthResult> task) {
                                                   if (task.isSuccessful()) {
+
                                                       progressDialog.dismiss();
 
 

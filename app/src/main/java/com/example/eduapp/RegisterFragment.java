@@ -144,7 +144,7 @@ public class RegisterFragment extends Fragment {
                                 editText_dob_register.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
                         }, year, month, day);
-                picker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                picker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 picker.show();
 
             }
@@ -174,73 +174,6 @@ public class RegisterFragment extends Fragment {
         return mimeTypeMap.getExtensionFromMimeType((contentResolver.getType(uri)));
     }
 
-//    private void uploadData() {
-//        String username = editText_name_register.getText().toString();
-//        String email = editText_email_register.getText().toString();
-//        String dob = editText_dob_register.getText().toString();
-//
-//        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(dob) && !TextUtils.isEmpty(email) && imageUri != null){
-//            final StorageReference reference = storageReference.child(System.currentTimeMillis() + "."+ getFileExt(imageUri));
-//            uploadTask = reference.putFile(imageUri);
-//
-//
-//            Task<Uri> uriTask= uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-//                @Override
-//                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-//                    if (!task.isSuccessful()){
-//                        throw  task.getException();
-//                    }
-//                    return reference.getDownloadUrl();
-//                }
-//            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//                @Override
-//                public void onComplete(@NonNull Task<Uri> task) {
-//                    if (task.isSuccessful()){
-//                        Uri downloadUri = task.getResult();
-//
-//                        Map <String,String> profile = new HashMap<>();
-//                        profile.put("name" ,username);
-//                        profile.put("email",email);
-//                        profile.put("dob",dob);
-//                        profile.put("url", downloadUri.toString());
-//
-//                        //profile.put("privacy", "Public");
-//
-//                        user.setDob(dob);
-//                        user.setEmail(email);
-//                        user.setUsername(username);
-//                        user.setUid(currentUserId);
-//                        user.getUrl(downloadUri.toString());
-//
-//                        databaseReference.push().setValue(user);
-//
-//                        documentReference.set(profile)
-//                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void unused) {
-//
-//                                        Toast.makeText(getContext(), "Profile Created", Toast.LENGTH_SHORT).show();
-//
-//
-//                                        Handler handler = new Handler();
-//                                        handler.postDelayed(new Runnable() {
-//                                            @Override
-//                                            public void run() {
-//                                                Navigation.findNavController(getView()).navigate(R.id.action_registerFragment_to_navigation_home);
-//                                            }
-//                                        },2000);
-//                                    }
-//                                });
-//
-//                    }
-//                }
-//            });
-//
-//        }else{
-//            Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
-//        }
-//
-//    }
 
     private void AuthenticateUser() {
 

@@ -22,7 +22,7 @@ import java.util.Objects;
 public class IntroduceFragment extends Fragment {
     private Button start;
     private ImageButton back,next;
-    private static int page = 0;
+    private int page = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -115,9 +115,9 @@ public class IntroduceFragment extends Fragment {
             }
         });
 
-        back.setOnClickListener(v -> Objects.requireNonNull(tabLayout.getTabAt(page - 1)).select());
+        back.setOnClickListener(v -> tabLayout.getTabAt(page - 1).select());
 
-        next.setOnClickListener(v -> Objects.requireNonNull(tabLayout.getTabAt(page + 1)).select());
+        next.setOnClickListener(v -> tabLayout.getTabAt(page + 1).select());
     }
 
 }

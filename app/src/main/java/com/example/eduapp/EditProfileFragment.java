@@ -1,6 +1,7 @@
 package com.example.eduapp;
 
 import static android.app.Activity.RESULT_OK;
+import static android.view.View.GONE;
 
 import android.app.DatePickerDialog;
 import android.content.ContentResolver;
@@ -52,7 +53,7 @@ import java.util.Calendar;
 public class EditProfileFragment extends Fragment {
 
     EditText name_tv_profile, editProfile_dob;
-    TextView gender, editProfile_dob_tv, editProfile_title;
+    TextView gender, editProfile_dob_tv, editProfile_title,desc_profileImage;
     Button male_btn, female_btn, updateProfile_btn;
     ImageView editProfile_back_btn, editProfileImage;
     String genderString;
@@ -71,7 +72,7 @@ public class EditProfileFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((MainActivity)requireActivity()).setBottomNavVisibility(true);
+
         mainViewModel =
                 new ViewModelProvider(requireActivity()).get(MainViewModel.class);
     }
@@ -98,6 +99,7 @@ public class EditProfileFragment extends Fragment {
             updateProfile_btn = view.findViewById(R.id.updateProfile_btn);
             editProfile_back_btn = view.findViewById(R.id.editProfile_back_btn);
             editProfileImage = view.findViewById(R.id.editProfileImage);
+            desc_profileImage = view.findViewById(R.id.desc_profileImage);
 
             editProfile_back_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -255,6 +257,7 @@ public class EditProfileFragment extends Fragment {
             try {
                 if (requestCode == PICK_IMAGE || resultCode == RESULT_OK || data != null || data.getData() != null) {
                     imageUri = data.getData();
+                    desc_profileImage.setVisibility(GONE);
                     Picasso.get().load(imageUri).into(editProfileImage);
                 }
             } catch (Exception e) {
