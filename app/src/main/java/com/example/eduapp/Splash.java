@@ -31,7 +31,8 @@ public class Splash extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(user!=null) {
-          Navigation.findNavController(view).navigate(R.id.action_splash_to_navigation_home);
+
+            Navigation.findNavController(view).navigate(R.id.action_splash_to_navigation_home);
             Toast.makeText(getContext(), user.getUid(), Toast.LENGTH_SHORT).show();
 
         }
@@ -45,13 +46,5 @@ public class Splash extends BaseFragment {
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
 }

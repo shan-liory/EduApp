@@ -137,7 +137,7 @@ public class ProfileFragment extends BaseFragment {
 //
         FirebaseAuth.getInstance().signOut();
         Navigation.findNavController(getView()).navigate(R.id.action_navigation_profile_to_welcomeActivity);
-        ((MainActivity)requireActivity()).setBottomNavVisibility(false);
+
 
     }
 

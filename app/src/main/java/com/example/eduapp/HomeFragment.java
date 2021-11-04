@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((MainActivity)requireActivity()).setBottomNavVisibility(true);
+
         mainViewModel =
                 new ViewModelProvider(requireActivity()).get(MainViewModel.class);
     }
