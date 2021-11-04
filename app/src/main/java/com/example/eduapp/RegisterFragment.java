@@ -108,6 +108,7 @@ public class RegisterFragment extends Fragment {
         haveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(R.id.action_registerFragment_to_loginFragment);
                 // startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
