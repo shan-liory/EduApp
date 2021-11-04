@@ -2,6 +2,8 @@ package com.example.eduapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -286,6 +288,8 @@ public class QuestionActivity extends AppCompatActivity {
         } else {
             Intent intent = new Intent(this, ShowScoreActivity.class);
             intent.putExtra("score", score);
+            intent.putExtra("Course", course);
+            intent.putExtra("Lesson", lesson);
             startActivity(intent);
             finish();
         }
