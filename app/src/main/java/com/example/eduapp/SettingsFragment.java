@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
@@ -29,15 +30,14 @@ public class SettingsFragment extends Fragment {
 
     private boolean bgm = true;
     private boolean soundFX = true;
-    private boolean notifications = true;
     private boolean darkMode = false;
 
     private OnSettingsChangedListener settingsChangedListener;
 
     ImageButton back_btn;
+    Button credits_btn;
     Switch bgm_switch;
     Switch soundFX_switch;
-    Switch notifications_switch;
     Switch darkMode_switch;
 
     @Override
@@ -65,9 +65,9 @@ public class SettingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         back_btn = view.findViewById(R.id.guideback_btn);
+        credits_btn = view.findViewById(R.id.credits_btn);
         bgm_switch = view.findViewById(R.id.bgm_switch);
         soundFX_switch = view.findViewById(R.id.soundfx_switch);
-        notifications_switch = view.findViewById(R.id.notif_switch);
         darkMode_switch = view.findViewById(R.id.darkmode_switch);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -76,10 +76,15 @@ public class SettingsFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_settingsFragment_to_navigation_profile);
             }
         });
+        credits_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_settingsFragment_to_creditsFragment);
+            }
+        });
 
         bgm_switch.setChecked(kidoozePrefs.getBoolean(getString(R.string.bgm), true));
         soundFX_switch.setChecked(kidoozePrefs.getBoolean(getString(R.string.soundFX), true));
-        notifications_switch.setChecked(kidoozePrefs.getBoolean(getString(R.string.notifs), true));
         darkMode_switch.setChecked(kidoozePrefs.getBoolean(getString(R.string.darkMode), false));
 
         SharedPreferences.Editor preferencesEditor = kidoozePrefs.edit();
@@ -113,7 +118,6 @@ public class SettingsFragment extends Fragment {
 
 //        preferencesEditor.putBoolean(getString(R.string.bgm), bgm_switch.isChecked());
         preferencesEditor.putBoolean(getString(R.string.soundFX), soundFX_switch.isChecked());
-        preferencesEditor.putBoolean(getString(R.string.notifs), notifications_switch.isChecked());
 //        preferencesEditor.putBoolean(getString(R.string.darkMode), darkMode_switch.isChecked());
 //        preferencesEditor.apply();
     }
