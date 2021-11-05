@@ -38,4 +38,3 @@ public class CreditsFragment extends Fragment {
         });
     }
 }
-
