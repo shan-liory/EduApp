@@ -102,6 +102,9 @@
             app:destination="@id/navigation_profile"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_settingsFragment_to_creditsFragment"
+            app:destination="@id/creditsFragment" />
     </fragment>
     <fragment
         android:id="@+id/guideFragment"
@@ -111,5 +114,14 @@
         <action
             android:id="@+id/action_guideFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/creditsFragment"
+        android:name="com.example.eduapp.CreditsFragment"
+        android:label="@string/credits"
+        tools:layout="@layout/fragment_credits">
+        <action
+            android:id="@+id/action_creditsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 </navigation>

@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
     // Preferences
     private boolean bgm = true;
     private boolean soundFX = true;
-    private boolean notifications = true;
     private boolean darkMode = false;
 
     @Override
@@ -75,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
 
         bgm = kidoozePrefs.getBoolean(getString(R.string.bgm), true);
         soundFX = kidoozePrefs.getBoolean(getString(R.string.soundFX), true);
-        notifications = kidoozePrefs.getBoolean(getString(R.string.notifs), true);
         darkMode = kidoozePrefs.getBoolean(getString(R.string.darkMode), false);
 
         // Set the settings

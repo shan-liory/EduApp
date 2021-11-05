@@ -22,26 +22,15 @@
         app:layout_constraintVertical_bias="0.1" />
 
     <Button
-        android:id="@+id/faq_btn"
+        android:id="@+id/credits_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="FAQ"
+        android:layout_marginTop="28dp"
+        android:text="Credits"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/darkmode_switch" />
-
-    <Button
-        android:id="@+id/contactus_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Contact Us"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/faq_btn" />
 
     <Button
         android:id="@+id/rateus_btn"
@@ -49,12 +38,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Rate Us"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactus_btn"
-        app:layout_constraintVertical_bias="0.111" />
+        app:layout_constraintTop_toBottomOf="@+id/credits_btn" />
 
     <ImageButton
         android:id="@+id/guideback_btn"
@@ -69,18 +56,6 @@
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24"
         tools:ignore="SpeakableTextPresentCheck,VectorDrawableCompat" />
-
-    <Switch
-        android:id="@+id/notif_switch"
-        android:layout_width="341dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="18dp"
-        android:checked="true"
-        android:text="@string/notifs"
-        android:textColor="@color/textColor"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/soundfx_switch"
-        app:layout_constraintTop_toBottomOf="@+id/soundfx_switch" />
 
     <Switch
         android:id="@+id/bgm_switch"
@@ -100,7 +75,7 @@
         android:id="@+id/soundfx_switch"
         android:layout_width="344dp"
         android:layout_height="48dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="24dp"
         android:checked="true"
         android:text="@string/soundFX"
         android:textColor="@color/textColor"
@@ -112,10 +87,11 @@
         android:id="@+id/darkmode_switch"
         android:layout_width="341dp"
         android:layout_height="48dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="24dp"
         android:text="@string/darkMode"
         android:textColor="@color/textColor"
         android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/notif_switch"
-        app:layout_constraintTop_toBottomOf="@+id/notif_switch" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/soundfx_switch" />
 </androidx.constraintlayout.widget.ConstraintLayout>

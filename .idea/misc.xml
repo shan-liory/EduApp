@@ -56,6 +56,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16203703703703703" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_competition.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_credits.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_guide.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28229166666666666" />
