@@ -1,7 +1,9 @@
 package com.example.eduapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ public class SettingsFragment extends Fragment {
 
     ImageButton back_btn;
     Button credits_btn;
+    Button rateus_btn;
     Switch bgm_switch;
     Switch soundFX_switch;
     Switch darkMode_switch;
@@ -61,6 +64,7 @@ public class SettingsFragment extends Fragment {
 
         back_btn = view.findViewById(R.id.guideback_btn);
         credits_btn = view.findViewById(R.id.credits_btn);
+        rateus_btn = view.findViewById(R.id.rateus_btn);
         bgm_switch = view.findViewById(R.id.bgm_switch);
         soundFX_switch = view.findViewById(R.id.soundfx_switch);
         darkMode_switch = view.findViewById(R.id.darkmode_switch);
@@ -75,6 +79,24 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.action_settingsFragment_to_creditsFragment);
+            }
+        });
+        rateus_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(
+                        "https://play.google.com/store/"));
+                intent.setPackage("com.android.vending");
+                startActivity(intent);
+
+//                // If App is listed on play store
+//                final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+//                try {
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+//                } catch (android.content.ActivityNotFoundException anfe) {
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+//                }
             }
         });
 

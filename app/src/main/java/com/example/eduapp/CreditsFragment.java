@@ -1,5 +1,7 @@
 package com.example.eduapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,13 +29,23 @@ public class CreditsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        contactus_btn= view.findViewById(R.id.contactus_btn);
-        back_btn=view.findViewById(R.id.credsback_btn);
+        contactus_btn = view.findViewById(R.id.contactus_btn);
+        back_btn = view.findViewById(R.id.credsback_btn);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.action_creditsFragment_to_settingsFragment);
+            }
+        });
+        contactus_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent email= new Intent(Intent.ACTION_SENDTO);
+                email.setData(Uri.parse("mailto:enquiries@kidooze.com"));
+                email.putExtra(Intent.EXTRA_SUBJECT, "Enquiries regarding Kidooze");
+                email.putExtra(Intent.EXTRA_TEXT, "My Email message");
+                startActivity(email);
             }
         });
     }
