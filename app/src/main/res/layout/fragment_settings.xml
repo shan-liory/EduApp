@@ -13,20 +13,20 @@
         android:fontFamily="@font/poppins"
         android:text="@string/settings_label"
         android:textColor="@color/textColor"
-        android:textSize="48sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideback_btn"
         app:layout_constraintVertical_bias="0.1" />
 
     <Button
         android:id="@+id/faq_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="50dp"
         android:text="FAQ"
+        android:fontFamily="@font/poppins"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Contact Us"
+        android:fontFamily="@font/poppins"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Rate Us"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +61,7 @@
         android:id="@+id/guideback_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +80,8 @@
         android:checked="true"
         android:text="@string/notifs"
         android:textColor="@color/textColor"
-        android:textSize="34sp"
+        android:fontFamily="@font/poppins"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="@+id/soundfx_switch"
         app:layout_constraintTop_toBottomOf="@+id/soundfx_switch" />
 
@@ -90,8 +93,9 @@
         android:checked="true"
         android:text="@string/bgm"
         android:textAlignment="viewStart"
+        android:fontFamily="@font/poppins"
         android:textColor="@color/textColor"
-        android:textSize="34sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -104,7 +108,8 @@
         android:checked="true"
         android:text="@string/soundFX"
         android:textColor="@color/textColor"
-        android:textSize="34sp"
+        android:fontFamily="@font/poppins"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="@+id/bgm_switch"
         app:layout_constraintTop_toBottomOf="@+id/bgm_switch" />
 
@@ -115,7 +120,7 @@
         android:layout_marginTop="18dp"
         android:text="@string/darkMode"
         android:textColor="@color/textColor"
-        android:textSize="34sp"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="@+id/notif_switch"
         app:layout_constraintTop_toBottomOf="@+id/notif_switch" />
 </androidx.constraintlayout.widget.ConstraintLayout>
