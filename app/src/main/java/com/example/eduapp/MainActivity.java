@@ -2,7 +2,11 @@ package com.example.eduapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -20,6 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -35,11 +40,23 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnSettingsChangedListener {
 
     BottomNavigationView navView;
     MainViewModel mainViewModel;
     NavController navController;
+
+    MediaPlayer mediaPlayer;
+
+    // Shared preferences file for settings to play bgm, sound fx, dark mode
+    private SharedPreferences kidoozePrefs;
+    private String kidoozePrefFile = "com.example.android.kidoozePrefs";
+
+    // Preferences
+    private boolean bgm = true;
+    private boolean soundFX = true;
+    private boolean notifications = true;
+    private boolean darkMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-        Log.d("LAUNCH","yoyo");
+        Log.d("LAUNCH", "yoyo");
         navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -88,7 +105,58 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Load and read shared preference file
+        kidoozePrefs = getSharedPreferences(kidoozePrefFile, MODE_PRIVATE);
+
+        bgm = kidoozePrefs.getBoolean(getString(R.string.bgm), true);
+        soundFX = kidoozePrefs.getBoolean(getString(R.string.soundFX), true);
+        notifications = kidoozePrefs.getBoolean(getString(R.string.notifs), true);
+        darkMode = kidoozePrefs.getBoolean(getString(R.string.darkMode), false);
+
+        // Set the settings
+        playMusic(bgm);
+        setDarkMode(darkMode);
     }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        playMusic(false);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bgm = kidoozePrefs.getBoolean(getString(R.string.bgm), true);
+        playMusic(bgm);
+    }
+
+    @Override
+    // Plays bgm if bgm settings is true, overrode from OnSettingsChangedListener interface
+    public void playMusic(boolean bgm) {
+        if (bgm) {
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.kidoozebgm);
+            }
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+        } else {
+            if (mediaPlayer != null) {
+                mediaPlayer.pause();
+            }
+        }
+    }
+
+    @Override
+    public void setDarkMode(boolean darkMode) {
+        if (darkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         //top level destinations
@@ -102,7 +170,5 @@ public class MainActivity extends AppCompatActivity {
             default:
                 super.onBackPressed();
         }
-
     }
-
 }

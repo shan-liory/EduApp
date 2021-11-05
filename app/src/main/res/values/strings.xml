@@ -10,4 +10,10 @@
     <string name="back_btn">Back button</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings_label">Settings</string>
+    <string name="bgm">Background Music</string>
+    <string name="soundFX">Sound Effects</string>
+    <string name="darkMode">Dark Mode</string>
+    <string name="notifs">Notifications</string>
+    <string name="guide_label">Guide</string>
 </resources>
