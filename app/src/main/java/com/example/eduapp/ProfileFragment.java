@@ -3,6 +3,7 @@ package com.example.eduapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import com.example.eduapp.MainActivity;
 import com.example.eduapp.MainViewModel;
 import com.example.eduapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,6 +34,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class ProfileFragment extends BaseFragment {
 
@@ -143,6 +151,111 @@ public class ProfileFragment extends BaseFragment {
     }
 
 
+    private void updateStreak(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserId = user.getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        final DocumentReference doc = db.collection("User").document(currentUserId);
+
+
+        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Calendar c = Calendar.getInstance();
+                        int thisDay = c.get((Calendar.DAY_OF_YEAR));
+                        int lastDay;
+
+                        //get lastdayfield from firestore document
+                        lastDay = Integer.parseInt(document.getString("lastStreakDay"));
+                        int counterOfConsecutiveDays = Integer.parseInt(document.getString("consecutiveStreakDays"));
+                        //if last day played was yesterday
+                        if (lastDay == thisDay - 1){
+                            counterOfConsecutiveDays = counterOfConsecutiveDays + 1;
+                            lastDay = thisDay;
+                            writeIntoDatabaseStreak(counterOfConsecutiveDays,lastDay);
+                        }
+                    } else {
+                        Log.d("bobo", "No such document");
+                    }
+                } else {
+                    Log.d("bobo", "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+    }
+
+    private void writeIntoDatabaseStreak(int counterOfConsecutiveDays, int lastDay){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserId = user.getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        final DocumentReference doc = db.collection("User").document(currentUserId);
+
+        doc
+                .update("consecutiveStreakDays", counterOfConsecutiveDays)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("dodo", "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("dodo", "Error updating document", e);
+                    }
+                });
+        doc
+                .update("lastStreakDay", lastDay)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("dodo", "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("dodo", "Error updating document", e);
+                    }
+                });
+
+
+    }
 
 }
+
+// database, there is consecutive days field, and there is last played date field
+// first initialzie last played date to 0
+// get current day
+// do checking - for consecutive days as well
+// update db with new last played date, and consecutive days
+
+
+//ideally i'd like to add 2 fields - lastDay (last played date) & consecutivedays (streak days)
+// these 2 ^ initialize inside register fragment
+// when user completes a game, do updatestreak (which will do checking inside the function)
+// check streak method is just to retrieve lastDay from db & count consecutive days
+// update streak method shld be just to overwrite db
+// update streak method shld only be called when user finishes game
+
+//need to initialize in db int counterOfConsecutiveDays++;
+//if last day is yesterday, then add one into the counter        if (lastDay == thisDay-1){
+////                //CONSECUTIVE DAYS
+////                counterOfConsecutiveDays = counterOfConsecutiveDays +1;
+////                writeIntoDatabaseStreak(counterofConsecutiveDays);
+////                }
+////                //if not, then reset counter
+////                else {
+////                counterOfConsecutiveDays = 0;
+////                writeIntoDatabaseStreak(counterOfConsecutiveDays);
+////                }
+////                //whut am i doing
+////                //whut is this??
+////                transaction.update(doc, "lastStreakDay", thisDay);
+//
