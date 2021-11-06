@@ -294,6 +294,8 @@ public class QuestionActivity extends AppCompatActivity {
             rightAnswer = displayQuestion.getRightAnswer();
 
         } else {
+            ProfileFragment profile = new ProfileFragment();
+            ((ProfileFragment) profile).updateStreak();
             String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("score", FieldValue.increment(this.score));
 

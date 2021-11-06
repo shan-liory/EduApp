@@ -42,6 +42,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -221,6 +222,8 @@ public class RegisterFragment extends Fragment {
         String name = editText_name_register.getText().toString();
         String dob = editText_dob_register.getText().toString();
         String password = editText_password_register.getText().toString();
+        Calendar c = Calendar.getInstance();
+        String lastDay = String.valueOf(c.get((Calendar.DAY_OF_YEAR)));
 
 
 
@@ -282,6 +285,8 @@ public class RegisterFragment extends Fragment {
                                     profile.put("uid",currentUserId);
                                     profile.put("url", downloadUri.toString());
                                     profile.put("score", "0");
+                                    profile.put("lastStreakDay",lastDay);
+                                    profile.put("consecutiveStreakDays","0");
 
                                     //profile.put("privacy", "Public");
 
@@ -291,6 +296,9 @@ public class RegisterFragment extends Fragment {
                                     user.setUid(currentUserId);
                                     user.setUrl(downloadUri.toString());
                                     user.setScore("0");
+                                    user.setlastStreakDay(lastDay);
+                                    user.setconsecutiveStreakDays("0");
+
 
                                     databaseReference.child(currentUserId).setValue(user);
 

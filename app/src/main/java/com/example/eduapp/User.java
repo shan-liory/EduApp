@@ -7,6 +7,8 @@ public class User {
     String uid;
     String url;
     String score;
+    String lastStreakDay;
+    String consecutiveStreakDays;
 
     public String getUrl() {
         return url;
@@ -53,6 +55,15 @@ public class User {
     }
 
     public void setScore(String score) {this.score = score;}
+
+    public void setlastStreakDay(String lastStreakDay) {
+        this.lastStreakDay = lastStreakDay;
+    }
+
+    public void setconsecutiveStreakDays(String consecutiveStreakDays) {
+        this.consecutiveStreakDays = consecutiveStreakDays;
+    }
+
 
 
     public User() {

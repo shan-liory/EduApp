@@ -151,7 +151,7 @@ public class ProfileFragment extends BaseFragment {
     }
 
 
-    private void updateStreak(){
+    public void updateStreak(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -165,6 +165,7 @@ public class ProfileFragment extends BaseFragment {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
+                        Log.d("bobo", "Document Exists");
                         Calendar c = Calendar.getInstance();
                         int thisDay = c.get((Calendar.DAY_OF_YEAR));
                         int lastDay;
@@ -173,11 +174,19 @@ public class ProfileFragment extends BaseFragment {
                         lastDay = Integer.parseInt(document.getString("lastStreakDay"));
                         int counterOfConsecutiveDays = Integer.parseInt(document.getString("consecutiveStreakDays"));
                         //if last day played was yesterday
-                        if (lastDay == thisDay - 1){
+                        Log.d("bobo",String.valueOf(thisDay));
+                        Log.d("bobo", String.valueOf(lastDay));
+
+                        if (lastDay == (thisDay-1) || lastDay == thisDay){
+                            Log.d("bobo", "Win win");
                             counterOfConsecutiveDays = counterOfConsecutiveDays + 1;
                             lastDay = thisDay;
-                            writeIntoDatabaseStreak(counterOfConsecutiveDays,lastDay);
+                        } else {
+                            Log.d("bobo","Streak ended");
+                            counterOfConsecutiveDays = 0;
+                            lastDay = 0;
                         }
+                        writeIntoDatabaseStreak(counterOfConsecutiveDays,lastDay);
                     } else {
                         Log.d("bobo", "No such document");
                     }
@@ -195,37 +204,36 @@ public class ProfileFragment extends BaseFragment {
         String currentUserId = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         final DocumentReference doc = db.collection("User").document(currentUserId);
+        Log.d("zozo", String.valueOf(counterOfConsecutiveDays));
 
         doc
-                .update("consecutiveStreakDays", counterOfConsecutiveDays)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("dodo", "DocumentSnapshot successfully updated!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("dodo", "Error updating document", e);
-                    }
-                });
+            .update("consecutiveStreakDays", counterOfConsecutiveDays)
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d("dodo", "DocumentSnapshot successfully updated!");
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w("dodo", "Error updating document", e);
+                }
+            });
         doc
-                .update("lastStreakDay", lastDay)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("dodo", "DocumentSnapshot successfully updated!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("dodo", "Error updating document", e);
-                    }
-                });
-
-
+            .update("lastStreakDay", lastDay)
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d("dodo", "DocumentSnapshot successfully updated!");
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w("dodo", "Error updating document", e);
+                }
+            });
     }
 
 }
