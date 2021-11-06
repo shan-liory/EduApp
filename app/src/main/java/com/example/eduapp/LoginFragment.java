@@ -1,14 +1,13 @@
 package com.example.eduapp;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,9 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -32,7 +28,7 @@ public class LoginFragment extends Fragment {
     FirebaseUser mUser;
     ProgressDialog progressDialog;
 
-    ImageView login_back_btn;
+    ImageButton login_back_btn;
     String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
 
     private MainViewModel mainViewModel;
@@ -65,27 +61,10 @@ public class LoginFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
 
 
-        login_back_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requireActivity().onBackPressed();
-            }
+        login_back_btn.setOnClickListener(v -> requireActivity().onBackPressed());
+        forgotPassword.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_forgotPasswordFragment));
 
-
-        });
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_forgotPasswordFragment);
-            }
-        });
-
-        login_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                performLogin();
-            }
-        });
+        login_btn.setOnClickListener(v -> performLogin());
     }
 
     private void performLogin() {
@@ -110,31 +89,28 @@ public class LoginFragment extends Fragment {
             progressDialog.show();
 
             mAuth.signInWithEmailAndPassword(email, password).
-                    addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                              @Override
-                                              public void onComplete(@NonNull Task<AuthResult> task) {
-                                                  if (task.isSuccessful()) {
+                    addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
 
-                                                      progressDialog.dismiss();
+                            progressDialog.dismiss();
 
 
-                                                      String email = mAuth.getCurrentUser().getEmail();
-                                                      String id = mAuth.getCurrentUser().getUid();
-                                                      User user = new User();
-                                                      user.setEmail(email);
-                                                      user.setUid(id);
-                                                      mainViewModel.setUser(user);
-                                                      Toast.makeText(getContext(), id + email, Toast.LENGTH_SHORT).show();
+                            String email1 = mAuth.getCurrentUser().getEmail();
+                            String id = mAuth.getCurrentUser().getUid();
+                            User user = new User();
+                            user.setEmail(email1);
+                            user.setUid(id);
+                            mainViewModel.setUser(user);
+                            Toast.makeText(getContext(), id + email1, Toast.LENGTH_SHORT).show();
 //
 
-                                                      sendUserToNextActivity();
-                                                      Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                                                  } else {
-                                                      progressDialog.dismiss();
-                                                      Toast.makeText(getContext(), "" + task.getException(), Toast.LENGTH_SHORT).show();
-                                                  }
-                                              }
-                                          }
+                            sendUserToNextActivity();
+                            Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(getContext(), "" + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
                     );
         }
 
