@@ -19,9 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.eduapp.Splash"/>
-        <activity android:name="com.example.eduapp.WelcomeFragment"/>
-        <activity android:name="com.example.eduapp.RegisterFragment"/>
+        <activity android:name=".QuestionActivity" />
+        <activity android:name=".WrongActivity" />
+        <activity android:name=".ShowScoreActivity" />
+        <activity android:name=".RightActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

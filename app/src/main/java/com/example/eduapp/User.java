@@ -6,6 +6,7 @@ public class User {
     String dob;
     String uid;
     String url;
+    String score;
 
     public String getUrl() {
         return url;
@@ -51,7 +52,7 @@ public class User {
         this.uid = uid;
     }
 
-
+    public void setScore(String score) {this.score = score;}
 
 
     public User() {

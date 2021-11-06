@@ -7,7 +7,7 @@
     android:background="#F9E000">
 
     <TextView
-        android:id="@+id/imageView"
+        android:id="@+id/questionImage"
         android:layout_width="268dp"
         android:layout_height="219dp"
         android:layout_marginTop="80dp"
@@ -31,7 +31,7 @@
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/questionImage" />
 
     <Button
         android:id="@+id/welcome_signUp_btn"
