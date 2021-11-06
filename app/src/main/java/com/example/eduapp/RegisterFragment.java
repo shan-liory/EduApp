@@ -281,6 +281,7 @@ public class RegisterFragment extends Fragment {
                                     profile.put("dob", dob);
                                     profile.put("uid",currentUserId);
                                     profile.put("url", downloadUri.toString());
+                                    profile.put("score", "0");
 
                                     //profile.put("privacy", "Public");
 
@@ -289,6 +290,7 @@ public class RegisterFragment extends Fragment {
                                     user.setUsername(name);
                                     user.setUid(currentUserId);
                                     user.setUrl(downloadUri.toString());
+                                    user.setScore("0");
 
                                     databaseReference.child(currentUserId).setValue(user);
 
