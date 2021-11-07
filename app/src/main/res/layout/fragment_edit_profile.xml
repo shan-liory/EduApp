@@ -27,11 +27,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins"
         android:text="Edit Profile"
         android:id="@+id/editProfile_title"
-        android:textSize="30sp"
-        android:textColor="@color/black"
+        style="@style/Heading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editProfile_back_btn"
         app:layout_constraintTop_toBottomOf="@+id/editProfile_back_btn" />
@@ -59,11 +57,8 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:fontFamily="@font/poppins"
                         android:hint="Mike"
-                        android:textColor="@color/black"
-                        android:textColorHint="#AFA7A7"
-                        android:textSize="25sp" />
+                        android:textColorHint="#AFA7A7" />
                     <androidx.cardview.widget.CardView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
@@ -94,7 +89,7 @@
                     android:orientation="horizontal"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/editProfile_first"></LinearLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/editProfile_first" />
 
                 <TextView
                     android:id="@+id/gender"
@@ -102,10 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="Choose your gender"
-                    android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:text="Choose your gender" />
 
                 <LinearLayout
                     android:id="@+id/editProfile_second"
@@ -145,7 +137,7 @@
                     android:orientation="horizontal"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/editProfile_second"></LinearLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/editProfile_second" />
 
                 <LinearLayout
                     android:id="@+id/editProfile_third"
@@ -158,10 +150,7 @@
                         android:id="@+id/editProfile_dob_tv"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="Date of Birth"
-                        android:textColor="@color/black"
-                        android:textSize="25sp" />
+                        android:text="Date of Birth" />
 
                     <EditText
                         android:id="@+id/editProfile_dob"
@@ -169,9 +158,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:hint="2019-08-31"
-                        android:textColor="@color/black"
-                        android:textColorHint="#AFA7A7"
-                        android:textSize="25sp" />
+                        android:textColorHint="#AFA7A7" />
 
                 </LinearLayout>
 

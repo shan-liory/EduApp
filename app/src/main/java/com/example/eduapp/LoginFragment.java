@@ -61,7 +61,7 @@ public class LoginFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
 
 
-        login_back_btn.setOnClickListener(v -> requireActivity().onBackPressed());
+        login_back_btn.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_welcomeActivity));
         forgotPassword.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_forgotPasswordFragment));
 
         login_btn.setOnClickListener(v -> performLogin());
