@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/drawable/rounded_edit_text.xml" value="0.2703125" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_introduce.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_playground_facts.xml" value="0.1598731884057971" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/fragment_profile.xml" value="0.1265625" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_competition.xml" value="0.16304347826086957" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_lesson.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/introduce_quiz.xml" value="0.16304347826086957" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/playground_facts.xml" value="0.2" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/layout/splash_page.xml" value="0.16168478260869565" />
+        <entry key="..\:/Users/Forge-15/Desktop/Sunway/Human Computer Interaction/EduApp/app/src/main/res/mipmap-anydpi-v26/mascot.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/drawable/app_name_background.xml" value="0.1" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/shan/AndroidStudioProjects/EduApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.19583333333333333" />

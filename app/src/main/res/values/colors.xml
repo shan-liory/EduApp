@@ -16,4 +16,5 @@
     <color name="blue">#45AAF2</color>
     <color name="backgroundColor">#F9E000</color>
     <color name="textColor">#000000</color>
+    <color name="red">#FD6363</color>
 </resources>

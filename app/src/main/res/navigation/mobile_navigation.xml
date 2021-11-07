@@ -148,4 +148,13 @@
             android:id="@+id/action_guideFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/factsFragment"
+        android:name="com.example.eduapp.PlaygroundFactsFragment"
+        android:label="Facts"
+        tools:layout="@layout/playground_facts">
+        <action
+            android:id="@+id/action_factsFragment_to_"
+            app:destination="@+id/"/>
+    </fragment>
 </navigation>
