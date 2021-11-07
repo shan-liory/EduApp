@@ -37,11 +37,12 @@
             android:id="@+id/welcome_signUp_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:gravity="top"
+            android:layout_centerHorizontal="true"
+            style="?attr/materialButtonOutlinedStyle"
             android:outlineAmbientShadowColor="@color/black"
             android:text="Create an account"
-            android:textColor="@color/black"
-            app:backgroundTint="#F1ECC4" />
+            android:textColor="@color/black" />
     </RelativeLayout>
 
     <ImageView

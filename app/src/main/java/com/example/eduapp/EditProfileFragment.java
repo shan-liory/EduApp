@@ -101,92 +101,57 @@ public class EditProfileFragment extends Fragment {
             editProfileImage = view.findViewById(R.id.editProfileImage);
             desc_profileImage = view.findViewById(R.id.desc_profileImage);
 
-            editProfile_back_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    requireActivity().onBackPressed();
-                }
-            });
+            editProfile_back_btn.setOnClickListener(v -> requireActivity().onBackPressed());
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String currentUserId = user.getUid();
 
             storageReference = FirebaseStorage.getInstance().getReference("Profile images");
-            editProfileImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    chooseImage();
-                }
-            });
+            editProfileImage.setOnClickListener(v -> chooseImage());
 
-            male_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    changeGender(false);
-                }
-            });
+            male_btn.setOnClickListener(v -> changeGender(false));
 
-            female_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    changeGender(true);
-                }
-            });
+            female_btn.setOnClickListener(v -> changeGender(true));
         editProfile_dob.setInputType(InputType.TYPE_NULL);
-        editProfile_dob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar cldr = Calendar.getInstance();
-                int day = cldr.get(Calendar.DAY_OF_MONTH);
-                int month = cldr.get(Calendar.MONTH);
-                int year = cldr.get(Calendar.YEAR);
-                // date picker dialog
-                picker = new DatePickerDialog(getContext(),
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                editProfile_dob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                            }
-                        }, year, month, day);
-                picker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                picker.show();
-
-            }
+        editProfile_dob.setOnClickListener(v -> {
+            final Calendar cldr = Calendar.getInstance();
+            int day = cldr.get(Calendar.DAY_OF_MONTH);
+            int month = cldr.get(Calendar.MONTH);
+            int year = cldr.get(Calendar.YEAR);
+            // date picker dialog
+            picker = new DatePickerDialog(getContext(),
+                    (view1, year1, monthOfYear, dayOfMonth) -> editProfile_dob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1), year, month, day);
+            picker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            picker.show();
 
         });
 
             documentReference = db.collection("User").document(currentUserId);
             documentReference.get()
-                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.getResult().exists()) {
-                                String nameResult = task.getResult().getString("name");
-                                String dob_result = task.getResult().getString("dob");
-                                String url = task.getResult().getString("url");
-                                String gender = task.getResult().getString("gender");
+                    .addOnCompleteListener(task -> {
+                        if (task.getResult().exists()) {
+                            String nameResult = task.getResult().getString("name");
+                            String dob_result = task.getResult().getString("dob");
+                            String url = task.getResult().getString("url");
+                            String gender = task.getResult().getString("gender");
 
-                                Picasso.get().load(url).into(editProfileImage);
-                                name_tv_profile.setText(nameResult);
-                                editProfile_dob.setText(dob_result);
+                            Picasso.get().load(url).into(editProfileImage);
+                            name_tv_profile.setText(nameResult);
+                            editProfile_dob.setText(dob_result);
 
-                                setGenderBackground(gender);
-                            } else {
-                                Toast.makeText(getContext(), "No profile exist!", Toast.LENGTH_SHORT).show();
-                            }
+                            setGenderBackground(gender);
+                        } else {
+                            Toast.makeText(getContext(), "No profile exist!", Toast.LENGTH_SHORT).show();
                         }
                     });
 
-            updateProfile_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (imageUri == null){
+            updateProfile_btn.setOnClickListener(v -> {
+                if (imageUri == null){
 
-                        updateProfile(null,null );
-                    }
-                    else {
-                        uploadImage();
-                    }
+                    updateProfile(null,null );
+                }
+                else {
+                    uploadImage();
                 }
             });
         }
@@ -225,24 +190,11 @@ public class EditProfileFragment extends Fragment {
         public void uploadImage() {
 
             final StorageReference reference = storageReference.child(System.currentTimeMillis() + "." + getFileExt(imageUri));
-            reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri downloadUri) {
+            reference.putFile(imageUri).addOnSuccessListener(taskSnapshot -> reference.getDownloadUrl().addOnSuccessListener(downloadUri -> {
 //                            Log.d("HTTP", "onSuccess: " + downloadUri);
-                            Toast.makeText(getContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
-                            updateProfile(downloadUri.toString(), reference);
-                        }
-                    });
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+                Toast.makeText(getContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
+                updateProfile(downloadUri.toString(), reference);
+            })).addOnFailureListener(e -> Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show());
         }
 
         public void chooseImage() {
@@ -274,34 +226,22 @@ public class EditProfileFragment extends Fragment {
 
             final DocumentReference doc = db.collection("User").document(currentUserId);
 
-            db.runTransaction(new Transaction.Function<Void>() {
-                @Nullable
-                @Override
-                public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
-                    DocumentSnapshot snapshot = transaction.get(doc);
-                    if (downloadUrl != null) {
-                        transaction.update(doc, "url", downloadUrl);
+            db.runTransaction((Transaction.Function<Void>) transaction -> {
+                DocumentSnapshot snapshot = transaction.get(doc);
+                if (downloadUrl != null) {
+                    transaction.update(doc, "url", downloadUrl);
 
-                    }
-                        transaction.update(doc, "name", new_name);
-                        transaction.update(doc, "dob", new_dob);
-                        transaction.update(doc, "gender", genderString);
+                }
+                    transaction.update(doc, "name", new_name);
+                    transaction.update(doc, "dob", new_dob);
+                    transaction.update(doc, "gender", genderString);
 
-                    return null;
-                }
-            }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void avoid) {
-                    Toast.makeText(getContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show();
-                }
-            })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getContext(), "Transaction Failed" + e, Toast.LENGTH_SHORT).show();
-                            if (reference != null){
-                            reference.delete();}
-                        }
+                return null;
+            }).addOnSuccessListener(avoid -> Toast.makeText(getContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show())
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(getContext(), "Transaction Failed" + e, Toast.LENGTH_SHORT).show();
+                        if (reference != null){
+                        reference.delete();}
                     });
 
         }

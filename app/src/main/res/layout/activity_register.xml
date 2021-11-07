@@ -26,24 +26,20 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins"
-            android:text="Hello, friends!"
-            android:textColor="#000"
-            android:textSize="30sp"
+            style="@style/Heading"
+            android:text="Hello, friend!"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_back_btn" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
             android:fontFamily="@font/poppins"
             android:gravity="center"
             android:text="Enter your details and start your journey with us."
-            android:textColor="#000"
             app:layout_constraintEnd_toEndOf="@+id/textView1"
             app:layout_constraintStart_toStartOf="@+id/textView1"
             app:layout_constraintTop_toBottomOf="@+id/textView1" />
@@ -54,11 +50,10 @@
             android:id="@+id/desc_profileImage"
             android:layout_height="wrap_content"
             android:text="Choose your profile image"
-            android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:visibility="visible"
-            app:layout_constraintTop_toBottomOf="@+id/register_cV"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/register_cV" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
@@ -150,21 +145,17 @@
             android:layout_marginStart="23dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="23dp"
-            android:capitalize="none"
-            android:fontFamily="@font/poppins"
             android:text="Create an account"
-            android:textSize="12dp"
-            app:cornerRadius="30dp"
             app:layout_constraintEnd_toEndOf="@+id/editText_password_register"
             app:layout_constraintStart_toStartOf="@+id/editText_password_register"
             app:layout_constraintTop_toBottomOf="@+id/editText_password_register" />
 
         <TextView
             android:id="@+id/haveAccount_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Have an account?"
-            android:textColor="@color/white"
+            style="@style/Underline_text"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
