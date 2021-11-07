@@ -298,6 +298,7 @@ public class QuestionActivity extends AppCompatActivity {
             ((ProfileFragment) profile).updateStreak();
             String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("score", FieldValue.increment(this.score));
+            FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("lessonsCompleted", FieldValue.arrayUnion(course + " " + lesson));
 
             Intent intent = new Intent(this, ShowScoreActivity.class);
             intent.putExtra("score", score);

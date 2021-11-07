@@ -36,12 +36,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -287,6 +289,8 @@ public class RegisterFragment extends Fragment {
                                     profile.put("score", "0");
                                     profile.put("lastStreakDay",lastDay);
                                     profile.put("consecutiveStreakDays","0");
+                                    profile.put("lessonsCompleted", "null");
+
 
                                     //profile.put("privacy", "Public");
 
@@ -298,6 +302,7 @@ public class RegisterFragment extends Fragment {
                                     user.setScore("0");
                                     user.setlastStreakDay(lastDay);
                                     user.setconsecutiveStreakDays("0");
+                                    user.setLessonsCompleted(new ArrayList<String>());
 
 
                                     databaseReference.child(currentUserId).setValue(user);

@@ -40,7 +40,6 @@ public class ShowScoreActivity extends AppCompatActivity {
 
     private String setStatus(String scores){
         int score = Integer.parseInt(scores);
-
         if(score >= 8){
             audio = MediaPlayer.create(this, R.raw.high_score);
             return "Você é muito inteligente!";

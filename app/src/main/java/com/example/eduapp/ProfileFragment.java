@@ -207,7 +207,7 @@ public class ProfileFragment extends BaseFragment {
         Log.d("zozo", String.valueOf(counterOfConsecutiveDays));
 
         doc
-            .update("consecutiveStreakDays", counterOfConsecutiveDays)
+            .update("consecutiveStreakDays", String.valueOf(counterOfConsecutiveDays))
             .addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
@@ -221,7 +221,7 @@ public class ProfileFragment extends BaseFragment {
                 }
             });
         doc
-            .update("lastStreakDay", lastDay)
+            .update("lastStreakDay", String.valueOf(lastDay))
             .addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {

@@ -1,5 +1,10 @@
 package com.example.eduapp;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
     String username;
     String email;
@@ -9,6 +14,7 @@ public class User {
     String score;
     String lastStreakDay;
     String consecutiveStreakDays;
+    ArrayList<String> lessonsCompleted;
 
     public String getUrl() {
         return url;
@@ -60,11 +66,9 @@ public class User {
         this.lastStreakDay = lastStreakDay;
     }
 
-    public void setconsecutiveStreakDays(String consecutiveStreakDays) {
-        this.consecutiveStreakDays = consecutiveStreakDays;
-    }
+    public void setconsecutiveStreakDays(String consecutiveStreakDays) { this.consecutiveStreakDays = consecutiveStreakDays; }
 
-
+    public void setLessonsCompleted(ArrayList<String> lessonsCompleted) {this.lessonsCompleted = lessonsCompleted; }
 
     public User() {
 
