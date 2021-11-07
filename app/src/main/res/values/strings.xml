@@ -24,4 +24,8 @@
     <string name="cred6">Yeow Hui Wen</string>
     <string name="cred7">Brian Ooi Jian Wei</string>
     <string name="cred8">Leanne Corrine Leong</string>
+    <string name="welcome">Welcome!</string>
+    <string name="yourProgress">Here\'s your progress so far..</string>
+    <string name="lessonsCompleted">0 out of 8 lessons completed</string>
+    <string name="hardWork">That\'s a lot of hard work! Keep it up!</string>
 </resources>
