@@ -177,16 +177,21 @@ public class ProfileFragment extends BaseFragment {
                         Log.d("bobo",String.valueOf(thisDay));
                         Log.d("bobo", String.valueOf(lastDay));
 
-                        if (lastDay == (thisDay-1) || lastDay == thisDay){
+                        //if they played yesterday, add 1
+                        if (lastDay == (thisDay-1)){
                             Log.d("bobo", "Win win");
                             counterOfConsecutiveDays = counterOfConsecutiveDays + 1;
                             lastDay = thisDay;
-                        } else {
+                            writeIntoDatabaseStreak(counterOfConsecutiveDays,lastDay);
+                        } // if they played today, do nothing
+                        else if (lastDay == thisDay){
+                            //do nothing
+                        } // if they played more than two days ago, end streak by setting counter to 0
+                        else if (lastDay <= (thisDay -2)) {
                             Log.d("bobo","Streak ended");
                             counterOfConsecutiveDays = 0;
-                            lastDay = 0;
+                            writeIntoDatabaseStreak(counterOfConsecutiveDays,lastDay);
                         }
-                        writeIntoDatabaseStreak(counterOfConsecutiveDays,lastDay);
                     } else {
                         Log.d("bobo", "No such document");
                     }
