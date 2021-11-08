@@ -149,46 +149,6 @@ public class ProfileFragment extends BaseFragment {
         ((MainActivity)requireActivity()).setBottomNavVisibility(false);
 
     }
-    //check streak should be called upon app loading to check if last day played was >=2 days ago
-    public void checkStreak(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUserId = user.getUid();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        final DocumentReference doc = db.collection("User").document(currentUserId);
-
-
-        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-
-                        Calendar c = Calendar.getInstance();
-                        int thisDay = c.get((Calendar.DAY_OF_YEAR));
-                        int lastDay;
-
-                        //get lastdayfield from firestore document
-                        lastDay = Integer.parseInt(document.getString("lastStreakDay"));
-                        int counterOfConsecutiveDays = Integer.parseInt(document.getString("consecutiveStreakDays"));
-                        //if last day played was yesterday
-
-
-                        if (lastDay <= (thisDay -2)) {
-                            counterOfConsecutiveDays = 0;
-                            writeIntoDatabaseStreakDays(counterOfConsecutiveDays);
-                        }
-                    } else {
-                        Log.d("bobo", "No such document");
-                    }
-                } else {
-                    Log.d("bobo", "get failed with ", task.getException());
-                }
-            }
-        });
-
-    }
 
     //add streak is just to +1 into streak days
     public void addStreak(){
