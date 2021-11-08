@@ -22,10 +22,14 @@
         tools:layout="@layout/fragment_lesson" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_playground"
         android:name="com.example.eduapp.PlaygroundFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_playground" />
+        android:label="@string/title_playground"
+        tools:layout="@layout/fragment_playground" >
+        <action
+            android:id="@+id/action_playground_to_factsFragment"
+            app:destination="@+id/factsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -154,7 +158,7 @@
         android:label="Facts"
         tools:layout="@layout/playground_facts">
         <action
-            android:id="@+id/action_factsFragment_to_"
-            app:destination="@+id/"/>
+            android:id="@+id/action_factsFragment_to_playground"
+            app:destination="@+id/navigation_playground"/>
     </fragment>
 </navigation>

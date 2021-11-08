@@ -96,21 +96,18 @@ public class ProfileFragment extends BaseFragment {
         documentReference = firestore.collection("User").document(currentId);
 
         documentReference.get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.getResult().exists()){
-                            String nameResult = task.getResult().getString("name");
-                            String urlResult = task.getResult().getString("url");
-                            String dobResult = task.getResult().getString(("dob"));
+                .addOnCompleteListener(task -> {
+                    if (task.getResult().exists()){
+                        String nameResult = task.getResult().getString("name");
+                        String urlResult = task.getResult().getString("url");
+                        String dobResult = task.getResult().getString(("dob"));
 
-                            Picasso.get().load(urlResult).into(profile_image);
-                            text_profile.setText(nameResult);
+                        Picasso.get().load(urlResult).into(profile_image);
+                        text_profile.setText(nameResult);
 
 
-                        }else{
-                            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
-                        }
+                    }else{
+                        Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 

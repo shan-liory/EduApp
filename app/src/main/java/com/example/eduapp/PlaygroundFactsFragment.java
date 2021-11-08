@@ -53,7 +53,7 @@ public class PlaygroundFactsFragment extends Fragment {
 
         facts.setText(factsList[randNum]);
         picture.setImageResource(pics[randNum]);
-        wow.setOnClickListener(v -> Navigation.findNavController(requireView()).navigate(R.id.action_factsFragment_to_));
+        wow.setOnClickListener(v -> Navigation.findNavController(requireView()).navigate(R.id.action_factsFragment_to_playground));
 
     }
 }
