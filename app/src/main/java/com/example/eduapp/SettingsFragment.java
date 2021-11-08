@@ -136,7 +136,7 @@ public class SettingsFragment extends Fragment {
 //        preferencesEditor.putBoolean(getString(R.string.bgm), bgm_switch.isChecked());
         preferencesEditor.putBoolean(getString(R.string.soundFX), soundFX_switch.isChecked());
 //        preferencesEditor.putBoolean(getString(R.string.darkMode), darkMode_switch.isChecked());
-//        preferencesEditor.apply();
+        preferencesEditor.apply();
     }
 
     public void reloadFragment() {
