@@ -28,4 +28,5 @@
     <string name="yourProgress">Here\'s your progress so far..</string>
     <string name="lessonsCompleted">0 out of 8 lessons completed</string>
     <string name="hardWork">That\'s a lot of hard work! Keep it up!</string>
+    <string name="streaks">Streaks</string>
 </resources>

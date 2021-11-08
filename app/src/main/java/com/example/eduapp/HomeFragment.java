@@ -129,14 +129,20 @@ public class HomeFragment extends BaseFragment {
         });
         playground_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Set Navigation.findNavController after playground fragment is revamped
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_notifications);
             }
         });
         lesson_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+        streaks_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_streaksFragment);
             }
         });
         progressBar.setMax(total_lessons);
