@@ -149,15 +149,54 @@ public class ProfileFragment extends BaseFragment {
         ((MainActivity)requireActivity()).setBottomNavVisibility(false);
 
     }
-
-
-    public void updateStreak(){
+    //check streak should be called upon app loading to check if last day played was >=2 days ago
+    public void checkStreak(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         final DocumentReference doc = db.collection("User").document(currentUserId);
 
+
+        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+                        Calendar c = Calendar.getInstance();
+                        int thisDay = c.get((Calendar.DAY_OF_YEAR));
+                        int lastDay;
+
+                        //get lastdayfield from firestore document
+                        lastDay = Integer.parseInt(document.getString("lastStreakDay"));
+                        int counterOfConsecutiveDays = Integer.parseInt(document.getString("consecutiveStreakDays"));
+                        //if last day played was yesterday
+
+
+                        if (lastDay <= (thisDay -2)) {
+                            counterOfConsecutiveDays = 0;
+                            writeIntoDatabaseStreakDays(counterOfConsecutiveDays);
+                        }
+                    } else {
+                        Log.d("bobo", "No such document");
+                    }
+                } else {
+                    Log.d("bobo", "get failed with ", task.getException());
+                }
+            }
+        });
+
+    }
+
+    //add streak is just to +1 into streak days
+    public void addStreak(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserId = user.getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        final DocumentReference doc = db.collection("User").document(currentUserId);
 
         doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -174,23 +213,16 @@ public class ProfileFragment extends BaseFragment {
                         lastDay = Integer.parseInt(document.getString("lastStreakDay"));
                         int counterOfConsecutiveDays = Integer.parseInt(document.getString("consecutiveStreakDays"));
                         //if last day played was yesterday
-                        Log.d("bobo",String.valueOf(thisDay));
-                        Log.d("bobo", String.valueOf(lastDay));
 
                         //if they played yesterday, add 1
-                        if (lastDay == (thisDay-1)){
-                            Log.d("bobo", "Win win");
+                        if (lastDay != thisDay){
+
                             counterOfConsecutiveDays = counterOfConsecutiveDays + 1;
-                            lastDay = thisDay;
-                            writeIntoDatabaseStreak(counterOfConsecutiveDays,lastDay);
+                            writeIntoDatabaseStreakDays(counterOfConsecutiveDays);
+                            writeIntoDatabaseLastDay(thisDay);
                         } // if they played today, do nothing
                         else if (lastDay == thisDay){
                             //do nothing
-                        } // if they played more than two days ago, end streak by setting counter to 0
-                        else if (lastDay <= (thisDay -2)) {
-                            Log.d("bobo","Streak ended");
-                            counterOfConsecutiveDays = 0;
-                            writeIntoDatabaseStreak(counterOfConsecutiveDays,lastDay);
                         }
                     } else {
                         Log.d("bobo", "No such document");
@@ -204,12 +236,12 @@ public class ProfileFragment extends BaseFragment {
 
     }
 
-    private void writeIntoDatabaseStreak(int counterOfConsecutiveDays, int lastDay){
+    private void writeIntoDatabaseStreakDays(int counterOfConsecutiveDays){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         final DocumentReference doc = db.collection("User").document(currentUserId);
-        Log.d("zozo", String.valueOf(counterOfConsecutiveDays));
+
 
         doc
             .update("consecutiveStreakDays", String.valueOf(counterOfConsecutiveDays))
@@ -225,50 +257,29 @@ public class ProfileFragment extends BaseFragment {
                     Log.w("dodo", "Error updating document", e);
                 }
             });
-        doc
-            .update("lastStreakDay", String.valueOf(lastDay))
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d("dodo", "DocumentSnapshot successfully updated!");
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w("dodo", "Error updating document", e);
-                }
-            });
+
     }
 
+    public void writeIntoDatabaseLastDay(int lastDay){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserId = user.getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        final DocumentReference doc = db.collection("User").document(currentUserId);
+
+        doc
+                .update("lastStreakDay", String.valueOf(lastDay))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("dodo", "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("dodo", "Error updating document", e);
+                    }
+                });
+    }
 }
 
-// database, there is consecutive days field, and there is last played date field
-// first initialzie last played date to 0
-// get current day
-// do checking - for consecutive days as well
-// update db with new last played date, and consecutive days
-
-
-//ideally i'd like to add 2 fields - lastDay (last played date) & consecutivedays (streak days)
-// these 2 ^ initialize inside register fragment
-// when user completes a game, do updatestreak (which will do checking inside the function)
-// check streak method is just to retrieve lastDay from db & count consecutive days
-// update streak method shld be just to overwrite db
-// update streak method shld only be called when user finishes game
-
-//need to initialize in db int counterOfConsecutiveDays++;
-//if last day is yesterday, then add one into the counter        if (lastDay == thisDay-1){
-////                //CONSECUTIVE DAYS
-////                counterOfConsecutiveDays = counterOfConsecutiveDays +1;
-////                writeIntoDatabaseStreak(counterofConsecutiveDays);
-////                }
-////                //if not, then reset counter
-////                else {
-////                counterOfConsecutiveDays = 0;
-////                writeIntoDatabaseStreak(counterOfConsecutiveDays);
-////                }
-////                //whut am i doing
-////                //whut is this??
-////                transaction.update(doc, "lastStreakDay", thisDay);
-//

@@ -225,7 +225,7 @@ public class RegisterFragment extends Fragment {
         String dob = editText_dob_register.getText().toString();
         String password = editText_password_register.getText().toString();
         Calendar c = Calendar.getInstance();
-        String lastDay = String.valueOf(c.get((Calendar.DAY_OF_YEAR)));
+        String lastDay = String.valueOf(c.get((Calendar.DAY_OF_YEAR))-1); //set last day played to the day before
 
 
 

@@ -295,7 +295,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         } else {
             ProfileFragment profile = new ProfileFragment();
-            ((ProfileFragment) profile).updateStreak();
+            ((ProfileFragment) profile).addStreak();
             String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("score", FieldValue.increment(this.score));
             FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("lessonsCompleted", FieldValue.arrayUnion(course + " " + lesson));
