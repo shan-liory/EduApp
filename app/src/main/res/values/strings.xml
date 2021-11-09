@@ -29,4 +29,5 @@
     <string name="lessonsCompleted">0 out of 8 lessons completed</string>
     <string name="hardWork">That\'s a lot of hard work! Keep it up!</string>
     <string name="streaks">Streaks</string>
+    <string name="confirm">Confirm</string>
 </resources>
