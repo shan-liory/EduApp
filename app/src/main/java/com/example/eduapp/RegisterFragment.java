@@ -247,10 +247,10 @@ public class RegisterFragment extends Fragment {
                                     profile.put("dob", dob);
                                     profile.put("uid",currentUserId);
                                     profile.put("url", downloadUri.toString());
-                                    profile.put("score", "0");
+                                    profile.put("score", 0);
                                     profile.put("lastStreakDay",lastDay);
                                     profile.put("consecutiveStreakDays","0");
-                                    profile.put("lessonsCompleted", "null");
+                                    profile.put("lessonsCompleted", new ArrayList<String>());
 
 
                                     //profile.put("privacy", "Public");
@@ -281,7 +281,7 @@ public class RegisterFragment extends Fragment {
                                                     handler.postDelayed(new Runnable() {
                                                         @Override
                                                         public void run() {
-                                                            FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("lessonsCompleted", FieldValue.arrayUnion("Dummy"));
+                                                            //FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("lessonsCompleted", FieldValue.arrayUnion("Dummy"));
                                                             Navigation.findNavController(getView()).navigate(R.id.action_registerFragment_to_navigation_home);
                                                         }
                                                     },2000);
