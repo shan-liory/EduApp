@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_playground_to_factsFragment"
             app:destination="@+id/factsFragment" />
+        <action
+            android:id="@+id/action_playground_to_popCatFragment"
+            app:destination="@+id/popcatFragment" />
     </fragment>
 
     <fragment
@@ -160,5 +163,13 @@
         <action
             android:id="@+id/action_factsFragment_to_playground"
             app:destination="@+id/navigation_playground"/>
+    </fragment>
+    <fragment
+        android:id="@+id/popcatFragment"
+        android:name="com.example.eduapp.PopcatFragment"
+        tools:layout="@layout/fragment_popcat" >
+        <action
+            android:id="@+id/action_popcatFragment_to_playground"
+            app:destination="@id/navigation_playground" />
     </fragment>
 </navigation>

@@ -154,7 +154,7 @@
             android:id="@+id/haveAccount_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Have an account?"
+            android:text="@string/HaveAcc"
             style="@style/Underline_text"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"

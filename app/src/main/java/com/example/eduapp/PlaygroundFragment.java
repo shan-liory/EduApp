@@ -78,7 +78,7 @@ public class PlaygroundFragment extends BaseFragment {
                 3,
                 getResources().getString(R.string.playground_card2),
                 view.findViewById(R.id.lock_card2),
-                R.id.action_playground_to_factsFragment
+                R.id.action_playground_to_popCatFragment
         );
         Card c3 = new Card(
                 card3,
@@ -127,7 +127,7 @@ public class PlaygroundFragment extends BaseFragment {
                             for(Card c:cardlist){
                                 if (c.lock.getVisibility() == View.VISIBLE){
                                     String message = "You need to reach " + c.required_points + " score to unlock " + c.title;
-                                    c.card.setOnClickListener(v -> Toast.makeText(getContext(),message,Toast.LENGTH_LONG).show());
+                                    c.card.setOnClickListener(v -> Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show());
                                 }
                                 else{
                                     c.card.setOnClickListener(v -> Navigation.findNavController(requireView()).navigate(c.linking_page));

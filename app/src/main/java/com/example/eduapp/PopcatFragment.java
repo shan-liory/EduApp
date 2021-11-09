@@ -58,7 +58,7 @@ public class PopcatFragment extends BaseFragment {
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_popcatFragment_to_competition);
+                Navigation.findNavController(view).navigate(R.id.action_popcatFragment_to_playground);
             }
         });
     }
