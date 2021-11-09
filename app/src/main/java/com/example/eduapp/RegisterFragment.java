@@ -41,12 +41,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -183,6 +185,8 @@ public class RegisterFragment extends Fragment {
         String name = editText_name_register.getText().toString();
         String dob = editText_dob_register.getText().toString();
         String password = editText_password_register.getText().toString();
+        Calendar c = Calendar.getInstance();
+        String lastDay = String.valueOf(c.get((Calendar.DAY_OF_YEAR))-1); //set last day played to the day before
 
 
 
@@ -243,6 +247,11 @@ public class RegisterFragment extends Fragment {
                                     profile.put("dob", dob);
                                     profile.put("uid",currentUserId);
                                     profile.put("url", downloadUri.toString());
+                                    profile.put("score", "0");
+                                    profile.put("lastStreakDay",lastDay);
+                                    profile.put("consecutiveStreakDays","0");
+                                    profile.put("lessonsCompleted", "null");
+
 
                                     //profile.put("privacy", "Public");
 
@@ -251,6 +260,11 @@ public class RegisterFragment extends Fragment {
                                     user.setUsername(name);
                                     user.setUid(currentUserId);
                                     user.setUrl(downloadUri.toString());
+                                    user.setScore("0");
+                                    user.setlastStreakDay(lastDay);
+                                    user.setconsecutiveStreakDays("0");
+                                    user.setLessonsCompleted(new ArrayList<String>());
+
 
                                     databaseReference.child(currentUserId).setValue(user);
 
