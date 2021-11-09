@@ -123,7 +123,7 @@ public class PlaygroundFragment extends BaseFragment {
                             }
 
 
-                            // for those still be locked
+                            // Add different onclick output
                             for(Card c:cardlist){
                                 if (c.lock.getVisibility() == View.VISIBLE){
                                     String message = "You need to reach " + c.required_points + " score to unlock " + c.title;
