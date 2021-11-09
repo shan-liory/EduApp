@@ -57,7 +57,7 @@ public class HomeFragment extends BaseFragment {
     int num_compLessons = 0;
     int total_lessons = 8;
     int streaks = 0;
-    int score = 0;
+    Long scoreResult = Long.valueOf(0);
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -147,7 +147,7 @@ public class HomeFragment extends BaseFragment {
                         if (task.getResult().exists()){
                             String nameResult = task.getResult().getString("name");
                             String streakResult = task.getResult().getString("consecutiveStreakDays");
-                            Long scoreResult = task.getResult().getLong("score");
+                            scoreResult = task.getResult().getLong("score");
                             lessonsCompleted = (List<String>) task.getResult().get("lessonsCompleted");
 
                             name = String.valueOf(nameResult);

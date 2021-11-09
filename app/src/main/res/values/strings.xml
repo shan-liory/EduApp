@@ -30,4 +30,6 @@
     <string name="hardWork">That\'s a lot of hard work! Keep it up!</string>
     <string name="streaks">Streaks</string>
     <string name="confirm">Confirm</string>
+    <string name="streakEmoji">&#128293;</string>
+    <string name="glowingStarEmoji">🌟</string>
 </resources>
