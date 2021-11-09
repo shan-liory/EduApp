@@ -147,13 +147,12 @@ public class HomeFragment extends BaseFragment {
                         if (task.getResult().exists()){
                             String nameResult = task.getResult().getString("name");
                             String streakResult = task.getResult().getString("consecutiveStreakDays");
-                            String scoreResult = task.getResult().getString("score");
+                            Long score = task.getResult().getLong("score");
                             lessonsCompleted = (List<String>) task.getResult().get("lessonsCompleted");
 
                             name = String.valueOf(nameResult);
                             streaks = Integer.parseInt(streakResult);
-                            score = Integer.parseInt(scoreResult);
-                            num_compLessons = lessonsCompleted.size();
+                            num_compLessons = lessonsCompleted.size() - 1;
 
                             welcome_text.setText("Welcome, " + name + "!");
                             streaks_btn.setText(streaks + " " + new String(Character.toChars(fire_unicode)));

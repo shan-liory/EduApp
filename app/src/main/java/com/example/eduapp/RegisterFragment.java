@@ -300,6 +300,7 @@ public class RegisterFragment extends Fragment {
                     }
                 }
             });
+            //FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("lessonsCompleted", FieldValue.arrayUnion("Dummy"));
         }
     }
 
