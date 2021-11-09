@@ -59,7 +59,7 @@ public class QuestionActivity extends AppCompatActivity {
     String rightAnswer;
     String Answer = null;
     List<Question> questions = new ArrayList<Question>();
-    int score;
+    static int score;
 
     Intent intent;
     String course;
@@ -297,7 +297,27 @@ public class QuestionActivity extends AppCompatActivity {
             ProfileFragment profile = new ProfileFragment();
             ((ProfileFragment) profile).addStreak();
             String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("score", FieldValue.increment(this.score));
+            //FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("score", FieldValue.increment(this.score));
+            DocumentReference doc = FirebaseFirestore.getInstance().collection("User").document(currentUserId);
+
+            doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            Log.d("bobo", "Document Exists");
+                            QuestionActivity.score = Integer.parseInt(document.getString("score"));
+                        } else {
+                            Log.d("bobo", "No such document");
+                        }
+                    } else {
+                        Log.d("bobo", "get failed with ", task.getException());
+                    }
+                }
+            });
+
+            FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("score", String.valueOf(this.score));
             FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("lessonsCompleted", FieldValue.arrayUnion(course + " " + lesson));
 
             Intent intent = new Intent(this, ShowScoreActivity.class);

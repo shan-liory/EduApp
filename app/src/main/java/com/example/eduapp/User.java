@@ -11,7 +11,7 @@ public class User {
     String dob;
     String uid;
     String url;
-    String score;
+    int score;
     String lastStreakDay;
     String consecutiveStreakDays;
     ArrayList<String> lessonsCompleted;
@@ -60,7 +60,7 @@ public class User {
         this.uid = uid;
     }
 
-    public void setScore(String score) {this.score = score;}
+    public void setScore(int score) {this.score = score;}
 
     public void setlastStreakDay(String lastStreakDay) {
         this.lastStreakDay = lastStreakDay;

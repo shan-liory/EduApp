@@ -241,7 +241,7 @@ public class RegisterFragment extends Fragment {
                                 if (task.isSuccessful()) {
                                     Uri downloadUri = task.getResult();
 
-                                    Map<String, String> profile = new HashMap<>();
+                                    Map<String, Object> profile = new HashMap<>();
                                     profile.put("name", name);
                                     profile.put("email", email);
                                     profile.put("dob", dob);
@@ -260,7 +260,7 @@ public class RegisterFragment extends Fragment {
                                     user.setUsername(name);
                                     user.setUid(currentUserId);
                                     user.setUrl(downloadUri.toString());
-                                    user.setScore("0");
+                                    user.setScore(0);
                                     user.setlastStreakDay(lastDay);
                                     user.setconsecutiveStreakDays("0");
                                     user.setLessonsCompleted(new ArrayList<String>());
@@ -281,6 +281,7 @@ public class RegisterFragment extends Fragment {
                                                     handler.postDelayed(new Runnable() {
                                                         @Override
                                                         public void run() {
+                                                            FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("lessonsCompleted", FieldValue.arrayUnion("Dummy"));
                                                             Navigation.findNavController(getView()).navigate(R.id.action_registerFragment_to_navigation_home);
                                                         }
                                                     },2000);
@@ -300,7 +301,6 @@ public class RegisterFragment extends Fragment {
                     }
                 }
             });
-            //FirebaseFirestore.getInstance().collection("User").document(currentUserId).update("lessonsCompleted", FieldValue.arrayUnion("Dummy"));
         }
     }
 
