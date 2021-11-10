@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
 import android.text.InputType;
@@ -104,7 +105,7 @@ public class EditProfileFragment extends Fragment {
             editProfile_back_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    requireActivity().onBackPressed();
+                    Navigation.findNavController(v).navigate(R.id.action_editProfileFragment_to_navigation_profile);
                 }
             });
 

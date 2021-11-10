@@ -36,7 +36,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.ktx.Firebase;
+
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
