@@ -1,7 +1,9 @@
 package com.example.eduapp.ihavetofly;
+import com.example.eduapp.LessonFragment;
 import com.example.eduapp.R;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +25,13 @@ public class MinigameActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_minigame);
+
+        findViewById(R.id.minigame_back_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +70,11 @@ public class MinigameActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
     }
 }
