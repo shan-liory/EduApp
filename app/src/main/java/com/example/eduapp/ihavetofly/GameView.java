@@ -25,7 +25,7 @@ public class GameView extends SurfaceView implements Runnable {
     private boolean isPlaying, isGameOver = false;
     private int screenX, screenY, score = 0;
     public static float screenRatioX, screenRatioY;
-    private Paint paint;
+    private Paint paint,paint2;
     private Bird[] birds;
     private SharedPreferences prefs;
     private Random random;
@@ -77,6 +77,11 @@ public class GameView extends SurfaceView implements Runnable {
         paint = new Paint();
         paint.setTextSize(128);
         paint.setColor(Color.WHITE);
+
+        paint2 = new Paint();
+        paint2.setTextSize(200);
+        paint2.setTextAlign(Paint.Align.CENTER);
+        paint.setColor(Color.BLACK);
 
         birds = new Bird[4];
 
@@ -202,9 +207,11 @@ public class GameView extends SurfaceView implements Runnable {
 
             canvas.drawText(score + "", screenX / 2f, 164, paint);
 
+
             if (isGameOver) {
                 isPlaying = false;
                 canvas.drawBitmap(flight.getDead(), flight.x, flight.y, paint);
+                canvas.drawText("Game Over!",screenX/2f,350, paint2);
                 getHolder().unlockCanvasAndPost(canvas);
                 saveIfHighScore();
                 waitBeforeExiting ();
