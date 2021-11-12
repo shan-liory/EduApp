@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
+
 public class StreaksFragment extends BaseFragment {
 
     CalendarPickerView calendar;
@@ -115,7 +115,7 @@ public class StreaksFragment extends BaseFragment {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_streaksFragment_to_navigation_home);
+                ((MainActivity)requireActivity()).onBackPressed();
             }
         });
         calendar.init(new Date(today.getYear()-1, 0, 1), new Date(2022, 3, 1))

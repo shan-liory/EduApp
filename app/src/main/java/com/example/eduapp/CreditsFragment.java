@@ -35,7 +35,7 @@ public class CreditsFragment extends Fragment {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_creditsFragment_to_settingsFragment);
+                ((MainActivity)requireActivity()).onBackPressed();
             }
         });
         contactus_btn.setOnClickListener(new View.OnClickListener() {

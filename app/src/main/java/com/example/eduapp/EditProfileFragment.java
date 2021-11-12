@@ -109,7 +109,7 @@ public class EditProfileFragment extends Fragment {
             editProfile_back_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Navigation.findNavController(v).navigate(R.id.action_editProfileFragment_to_navigation_profile);
+                    ((MainActivity)requireActivity()).onBackPressed();
                 }
             });
 

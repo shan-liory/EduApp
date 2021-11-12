@@ -42,7 +42,7 @@ public class GuideFragment extends Fragment {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_guideFragment_to_navigation_home);
+                ((MainActivity)requireActivity()).onBackPressed();
             }
         });
     }
