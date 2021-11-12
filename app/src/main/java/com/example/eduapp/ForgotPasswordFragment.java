@@ -50,7 +50,7 @@ public class ForgotPasswordFragment extends BaseFragment {
         resetPassword_tV = view.findViewById(R.id.resetPassword_tV);
         back_btn = view.findViewById(R.id.forgotPass_back_btn);
 
-        back_btn.setOnClickListener(v -> requireActivity().onBackPressed());
+        back_btn.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(R.id.action_forgotPasswordFragment_to_loginFragment));
 
         toLogin_btn.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(R.id.action_forgotPasswordFragment_to_loginFragment));
 
