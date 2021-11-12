@@ -1,6 +1,7 @@
 package com.example.eduapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
 
+import com.example.eduapp.ihavetofly.MinigameActivity;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -85,14 +87,17 @@ public class PlaygroundFragment extends BaseFragment {
                 8,
                 getResources().getString(R.string.playground_card3),
                 view.findViewById(R.id.lock_card3),
-                R.id.action_playground_to_factsFragment
+                R.id.action_playground_to_factsFragment // not link to this
         );
 
         cardlist.add(c1);
         cardlist.add(c2);
         cardlist.add(c3);
 
-
+        for(Card c: cardlist){
+            c.card.setStrokeWidth(0);
+            c.card.setClickable(true);
+        }
 
     }
 
@@ -114,8 +119,6 @@ public class PlaygroundFragment extends BaseFragment {
 
                             // Check the status, and set the display of play and unlock buttons
                             for(Card c: cardlist){
-                                c.card.setStrokeWidth(0);
-                                c.card.setClickable(true);
                                 if (score >= c.required_points){
                                     c.lock.setVisibility(View.INVISIBLE);
                                     c.unlock = true;
@@ -129,9 +132,16 @@ public class PlaygroundFragment extends BaseFragment {
                                     String message = "You need to reach " + c.required_points + " score to unlock " + c.title;
                                     c.card.setOnClickListener(v -> Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show());
                                 }
+                                else if(c.required_points == 8){
+                                    c.card.setOnClickListener(v -> {
+                                        Intent i = new Intent(getActivity().getApplicationContext(), MinigameActivity.class);
+                                        startActivity(i);
+                                    });
+                                }
                                 else{
                                     c.card.setOnClickListener(v -> Navigation.findNavController(requireView()).navigate(c.linking_page));
                                 }
+
                             }
                         }
                     }else{

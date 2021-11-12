@@ -12,7 +12,8 @@
         <activity android:name=".ihavetofly.GameActivity"
             android:screenOrientation="landscape"/>
         <activity android:name=".ihavetofly.MinigameActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape"
+            android:noHistory = "true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
