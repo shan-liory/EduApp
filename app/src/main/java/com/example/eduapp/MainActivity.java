@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
     // Preferences
     private boolean bgm = true;
     private boolean soundFX = true;
-    private boolean notifications = true;
     private boolean darkMode = false;
 
     @Override
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_playground, R.id.navigation_profile)
                 .build();
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
         Log.d("LAUNCH", "yoyo");
@@ -94,7 +93,6 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
 
         bgm = kidoozePrefs.getBoolean(getString(R.string.bgm), true);
         soundFX = kidoozePrefs.getBoolean(getString(R.string.soundFX), true);
-        notifications = kidoozePrefs.getBoolean(getString(R.string.notifs), true);
         darkMode = kidoozePrefs.getBoolean(getString(R.string.darkMode), false);
 
         // Set the settings
@@ -154,5 +152,46 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
             default:
                 super.onBackPressed();
         }
+    }
+    public void selectLesson(View v) {
+        Intent i = new Intent(this, QuestionActivity.class);
+
+        switch (v.getId()) {
+            case R.id.AbsL1_btn:
+                i.putExtra("Course", "Abstraction");
+                i.putExtra("Lesson", "Lesson 1");
+                Log.d("lololol", "ran yea");
+                break;
+            case R.id.AbsL2_btn:
+                i.putExtra("Course", "Abstraction");
+                i.putExtra("Lesson", "Lesson 2");
+                break;
+            case R.id.AlgL1_btn:
+                i.putExtra("Course", "Algorithmic Thinking");
+                i.putExtra("Lesson", "Lesson 1");
+                break;
+            case R.id.AlgL2_btn:
+                i.putExtra("Course", "Algorithmic Thinking");
+                i.putExtra("Lesson", "Lesson 2");
+                break;
+            case R.id.DecL1_btn:
+                i.putExtra("Course", "Decomposition");
+                i.putExtra("Lesson", "Lesson 1");
+                break;
+            case R.id.DecL2_btn:
+                i.putExtra("Course", "Decomposition");
+                i.putExtra("Lesson", "Lesson 2");
+                break;
+            case R.id.PatL1_btn:
+                i.putExtra("Course", "Pattern Recognition");
+                i.putExtra("Lesson", "Lesson 1");
+                break;
+            case R.id.PatL2_btn:
+                i.putExtra("Course", "Pattern Recognition");
+                i.putExtra("Lesson", "Lesson 2");
+                break;
+        }
+
+        startActivity(i);
     }
 }
