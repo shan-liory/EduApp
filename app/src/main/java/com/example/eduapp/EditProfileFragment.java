@@ -69,6 +69,8 @@ public class EditProfileFragment extends Fragment {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String currentUserId = user.getUid();
     private MainViewModel mainViewModel;
+    int default_color, girl_color, boy_color;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,7 +90,9 @@ public class EditProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        default_color = getResources().getColor(R.color.yellow);
+        girl_color = getResources().getColor(R.color.red);
+        boy_color = getResources().getColor(R.color.blue);
 
             name_tv_profile = view.findViewById(R.id.name_tv_profile);
             editProfile_dob = view.findViewById(R.id.editProfile_dob);
@@ -193,27 +197,28 @@ public class EditProfileFragment extends Fragment {
         }
 
         private void changeGender(boolean isGirl) {
+
             if (!isGirl) {
-                male_btn.setBackgroundColor(getResources().getColor(R.color.purple_200));
+                male_btn.setBackgroundColor(boy_color);
                 genderString = male_btn.getText().toString();
-                female_btn.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                female_btn.setBackgroundColor(default_color);
             } else {
-                male_btn.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                male_btn.setBackgroundColor(default_color);
                 genderString = female_btn.getText().toString();
-                female_btn.setBackgroundColor(getResources().getColor(R.color.purple_200));
+                female_btn.setBackgroundColor(girl_color);
             }
         }
 
         public void setGenderBackground(String gender) {
             if (gender == null) {
-                male_btn.setBackgroundColor(getResources().getColor(R.color.purple_500));
-                female_btn.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                male_btn.setBackgroundColor(default_color);
+                female_btn.setBackgroundColor(default_color);
             } else if (gender.equals("Male")) {
-                male_btn.setBackgroundColor(getResources().getColor(R.color.purple_200));
-                female_btn.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                male_btn.setBackgroundColor(boy_color);
+                female_btn.setBackgroundColor(default_color);
             } else {
-                male_btn.setBackgroundColor(getResources().getColor(R.color.purple_500));
-                female_btn.setBackgroundColor(getResources().getColor(R.color.purple_200));
+                male_btn.setBackgroundColor(default_color);
+                female_btn.setBackgroundColor(girl_color);
             }
         }
 

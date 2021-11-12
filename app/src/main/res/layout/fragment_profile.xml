@@ -8,12 +8,13 @@
     android:background="@color/backgroundColor">
 
     <ImageButton
-
         android:id="@+id/edit_button"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="@color/transparent"
         app:srcCompat="@drawable/ic_baseline_edit_24"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck">
@@ -129,6 +130,7 @@
         android:paddingVertical="10dp"
         android:text="Log Out"
         app:icon="@drawable/ic_baseline_logout_24"
+        app:cornerRadius="10dp"
         app:iconSize="0dp"
         app:layout_constraintEnd_toEndOf="@+id/settings_btn"
         app:layout_constraintHorizontal_bias="1.0"

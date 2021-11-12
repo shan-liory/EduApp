@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
     BottomNavigationView navView;
     MainViewModel mainViewModel;
     NavController navController;
-
     MediaPlayer mediaPlayer;
 
     // Shared preferences file for settings to play bgm, sound fx, dark mode
