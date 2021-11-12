@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
+
 public class StreaksFragment extends BaseFragment {
 
     CalendarPickerView calendar;
