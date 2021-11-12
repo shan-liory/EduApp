@@ -2,13 +2,19 @@ package com.example.eduapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import java.util.Locale;
+
+import pl.droidsonroids.gif.GifImageView;
 
 public class TutorialActivity extends AppCompatActivity {
 
@@ -24,13 +30,15 @@ public class TutorialActivity extends AppCompatActivity {
         course = intent.getStringExtra("Course");
         lesson = intent.getStringExtra("Lesson");
 
-        String source = String.format("@drawable/" + course + " " + lesson);
+        String source = String.format(course + " " + lesson);
         source = source.replaceAll("\\s+","_");
         source = source.toLowerCase();
-        ((ImageView) findViewById(R.id.gifImageView3)).setImageURI(Uri.parse(source));
+        int resID = getResources().getIdentifier(source, "drawable", this.getPackageName());
+        ((GifImageView) findViewById(R.id.gifImageView3)).setImageResource(resID);
+
     }
 
-    public void onStartClick(){
+    public void onStartClick(View v){
         Intent i = new Intent(this, QuestionActivity.class);
 
         i.putExtra("Course", course);
