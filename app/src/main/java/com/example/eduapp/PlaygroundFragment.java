@@ -15,14 +15,9 @@ import androidx.navigation.Navigation;
 
 import com.example.eduapp.ihavetofly.MinigameActivity;
 import com.google.android.material.card.MaterialCardView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 
@@ -31,7 +26,6 @@ public class PlaygroundFragment extends BaseFragment {
 
     MaterialCardView card1, card2, card3;
     ArrayList<Card> cardlist = new ArrayList<>();
-    int score;
 
     private class Card {
 
@@ -44,8 +38,8 @@ public class PlaygroundFragment extends BaseFragment {
 
         public Card(MaterialCardView card, int required_points, String title, ImageView lock, int linking_page) {
             this.card = card;
-            unlock = false;
             this.required_points = required_points;
+            unlock = false;
             this.title = title;
             this.lock = lock;
             this.linking_page = linking_page;
@@ -113,9 +107,8 @@ public class PlaygroundFragment extends BaseFragment {
         documentReference.get()
                 .addOnCompleteListener(task -> {
                     if (task.getResult().exists()){
-                        if (null != task.getResult().getString("score")) {
-                            String score_data = task.getResult().getString("score");
-                            score = Integer.parseInt(score_data);
+                        if (null != task.getResult().getLong("score")) {
+                            int score = task.getResult().getLong("score").intValue();
 
                             // Check the status, and set the display of play and unlock buttons
                             for(Card c: cardlist){
