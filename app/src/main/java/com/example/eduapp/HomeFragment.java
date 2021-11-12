@@ -104,7 +104,7 @@ public class HomeFragment extends BaseFragment {
         playground_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_notifications);
+                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_playground);
             }
         });
         lesson_btn.setOnClickListener(new View.OnClickListener() {

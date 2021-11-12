@@ -10,9 +10,15 @@
         android:name="com.example.eduapp.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
-    <action
-        android:id="@+id/action_navigation_home_to_guideFragment"
-        app:destination="@id/guideFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_guideFragment"
+            app:destination="@id/guideFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_playground"
+            app:destination="@id/navigation_playground" />
+        <action
+            android:id="@+id/action_navigation_home_to_streaksFragment"
+            app:destination="@id/streaksFragment" />
     </fragment>
 
     <fragment
