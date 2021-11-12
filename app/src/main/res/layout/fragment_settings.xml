@@ -13,13 +13,11 @@
         android:fontFamily="@font/poppins"
         android:text="@string/settings_label"
         android:textColor="@color/textColor"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/Heading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintTop_toBottomOf="@id/guideback_btn"
+         />
 
     <Button
         android:id="@+id/credits_btn"
@@ -39,21 +37,18 @@
         android:layout_marginTop="28dp"
         android:text="Rate Us"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/credits_btn" />
 
     <ImageButton
         android:id="@+id/guideback_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        android:layout_width="46dp"
+        android:backgroundTint="@color/transparent"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24"
         tools:ignore="SpeakableTextPresentCheck,VectorDrawableCompat" />
 
@@ -66,7 +61,10 @@
         android:text="@string/bgm"
         android:textAlignment="viewStart"
         android:textColor="@color/textColor"
+        android:fontFamily="@font/poppins"
         android:textSize="34sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -77,6 +75,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:checked="true"
+        android:fontFamily="@font/poppins"
         android:text="@string/soundFX"
         android:textColor="@color/textColor"
         android:textSize="34sp"
@@ -88,10 +87,11 @@
         android:layout_width="341dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins"
         android:text="@string/darkMode"
         android:textColor="@color/textColor"
         android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/soundfx_switch"
+        app:layout_constraintStart_toStartOf="@+id/soundfx_switch"
         app:layout_constraintTop_toBottomOf="@+id/soundfx_switch" />
 </androidx.constraintlayout.widget.ConstraintLayout>
