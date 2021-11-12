@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/mascot_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EduApp">
+        <activity android:name=".ihavetofly.GameActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".ihavetofly.MinigameActivity"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
