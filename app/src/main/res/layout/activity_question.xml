@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
@@ -37,12 +36,11 @@
         app:layout_constraintBottom_toTopOf="@+id/lblPergunta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cloud3png" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblPergunta"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="208dp"
         android:gravity="center"
@@ -57,33 +55,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/hint_btn"
+    <LinearLayout
+        android:id="@+id/questionButtons"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HINT"
-        app:layout_constraintBottom_toTopOf="@+id/confirm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </Button>
-
-    <Button
-        android:id="@+id/confirm"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/btn_orange"
-        android:text="@string/confirm"
-        android:textColor="@color/colorAccent"
-        android:textAllCaps="false"
-        android:onClick="loadAnswer"
-        android:textSize="18sp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        style="?android:attr/borderlessButtonStyle"/>
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/hint_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/yellow"
+            android:text="Hint" />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="@color/black"
+            android:textAllCaps="false"
+            android:onClick="loadAnswer" />
+    </LinearLayout>
+
 
     <ImageView
         android:id="@+id/imageView7"
@@ -104,15 +106,13 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="20dp"
         android:filterTouchesWhenObscured="false"
         android:onClick="selectChoice"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/choice3"
         app:layout_constraintEnd_toStartOf="@+id/choice2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblPergunta"
-        app:srcCompat="@drawable/cloud3png" />
+        app:layout_constraintTop_toBottomOf="@+id/lblPergunta" />
 
     <ImageView
         android:id="@+id/choice2"
@@ -121,47 +121,41 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginBottom="20dp"
         android:onClick="selectChoice"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/choice4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/choice1"
-        app:layout_constraintTop_toBottomOf="@+id/lblPergunta"
-        app:srcCompat="@drawable/cloud3png" />
+        app:layout_constraintTop_toBottomOf="@+id/lblPergunta" />
 
     <ImageView
         android:id="@+id/choice4"
         android:layout_width="158dp"
         android:layout_height="148dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="9dp"
         android:onClick="selectChoice"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/hint_btn"
+        app:layout_constraintBottom_toTopOf="@+id/questionButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/choice3"
         app:layout_constraintTop_toBottomOf="@+id/choice2"
-        app:layout_constraintVertical_bias="0.032"
-        app:srcCompat="@drawable/cloud3png" />
+        app:layout_constraintVertical_bias="0.032" />
 
     <ImageView
         android:id="@+id/choice3"
         android:layout_width="158dp"
         android:layout_height="148dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="9dp"
         android:onClick="selectChoice"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/hint_btn"
+        app:layout_constraintBottom_toTopOf="@+id/questionButtons"
         app:layout_constraintEnd_toStartOf="@+id/choice4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choice1"
-        app:layout_constraintVertical_bias="0.032"
-        app:srcCompat="@drawable/cloud3png" />
+        app:layout_constraintVertical_bias="0.032" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

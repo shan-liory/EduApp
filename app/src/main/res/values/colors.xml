@@ -28,4 +28,5 @@
     <color name="backgroundColor">#F9E000</color>
     <color name="textColor">#000000</color>
     <color name="red">#FD6363</color>
+    <color name="milk">#FFFDD6</color>
 </resources>
