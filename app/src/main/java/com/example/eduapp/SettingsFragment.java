@@ -72,7 +72,7 @@ public class SettingsFragment extends Fragment {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_settingsFragment_to_navigation_profile);
+                ((MainActivity)requireActivity()).onBackPressed();
             }
         });
         credits_btn.setOnClickListener(new View.OnClickListener() {

@@ -119,9 +119,7 @@
         android:name="com.example.eduapp.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
-        <action
-            android:id="@+id/action_editProfileFragment_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
+
     </fragment>
     <fragment
         android:id="@+id/introduceLesson"
