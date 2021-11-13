@@ -44,13 +44,17 @@ public class TutorialActivity extends AppCompatActivity {
         i.putExtra("Course", course);
         i.putExtra("Lesson", lesson);
         startActivity(i);
-    }
-
-    public void goToHome(View v){
-        Intent home = new Intent(this, MainActivity.class);
-        startActivity(home);
         finish();
     }
 
+    public void goToHome(View v){
+       onBackPressed();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
 }

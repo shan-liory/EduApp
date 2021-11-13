@@ -97,9 +97,7 @@ public class ShowScoreActivity extends AppCompatActivity {
         this.startActivity(Intent.createChooser(shareIntent, "My Score!"));
     }
     public void goToHome(View v){
-        Intent home = new Intent(this, MainActivity.class);
-        startActivity(home);
-        finish();
+      onBackPressed();
     }
 
 
@@ -114,5 +112,9 @@ public class ShowScoreActivity extends AppCompatActivity {
         this.onBackPressed();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
+    }
 }
