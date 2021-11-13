@@ -59,9 +59,11 @@
         <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/font/luckiest_guy.xml" value="0.125" />
         <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
         <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_minigame.xml" value="0.3333333333333333" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_question.xml" value="0.16666666666666666" />
+        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_question.xml" value="0.1" />
         <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_register.xml" value="0.2484472049689441" />
-        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_right.xml" value="0.1" />
+        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_right.xml" value="0.16666666666666666" />
+        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_show_score.xml" value="0.16666666666666666" />
+        <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/activity_wrong.xml" value="0.14666666666666667" />
         <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_competition.xml" value="0.1" />
         <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_credits.xml" value="0.22" />
         <entry key="..\:/hciProject/eduApp/EduApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.1796875" />

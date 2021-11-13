@@ -46,14 +46,68 @@
         android:gravity="center"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:text="Pergunta lorem ipsum et man nain et nain ge"
+        android:text=""
         android:textAlignment="center"
         android:textColor="#FEE60A"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        style="@style/Subheading2"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/questionButtons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblPergunta">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/choice1"
+                android:layout_width="158dp"
+                android:layout_height="148dp"
+                android:filterTouchesWhenObscured="false"
+                android:onClick="selectChoice"
+                android:padding="10dp" />
+
+            <ImageView
+                android:id="@+id/choice2"
+                android:layout_width="158dp"
+                android:layout_height="148dp"
+                android:onClick="selectChoice"
+                android:padding="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/choice3"
+                android:layout_width="158dp"
+                android:layout_height="148dp"
+                android:onClick="selectChoice"
+                android:padding="10dp" />
+
+            <ImageView
+                android:id="@+id/choice4"
+                android:layout_width="158dp"
+                android:layout_height="148dp"
+                android:onClick="selectChoice"
+                android:padding="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/questionButtons"
@@ -73,7 +127,8 @@
             android:layout_marginEnd="20dp"
             android:textColor="@color/black"
             android:backgroundTint="@color/yellow"
-            android:text="Hint" />
+            android:text="Hint"
+            android:paddingVertical="10dp"/>
 
         <Button
             android:id="@+id/confirm"
@@ -81,11 +136,11 @@
             android:layout_height="wrap_content"
             android:text="@string/confirm"
             android:textColor="@color/colorAccent"
+            android:paddingVertical="10dp"
             android:backgroundTint="@color/black"
             android:textAllCaps="false"
             android:onClick="loadAnswer" />
     </LinearLayout>
-
 
     <ImageView
         android:id="@+id/imageView7"
@@ -99,63 +154,7 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/cloudone" />
 
-    <ImageView
-        android:id="@+id/choice1"
-        android:layout_width="158dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="28dp"
-        android:filterTouchesWhenObscured="false"
-        android:onClick="selectChoice"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/choice3"
-        app:layout_constraintEnd_toStartOf="@+id/choice2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblPergunta" />
 
-    <ImageView
-        android:id="@+id/choice2"
-        android:layout_width="158dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="35dp"
-        android:onClick="selectChoice"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/choice4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/choice1"
-        app:layout_constraintTop_toBottomOf="@+id/lblPergunta" />
 
-    <ImageView
-        android:id="@+id/choice4"
-        android:layout_width="158dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="9dp"
-        android:onClick="selectChoice"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/questionButtons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/choice3"
-        app:layout_constraintTop_toBottomOf="@+id/choice2"
-        app:layout_constraintVertical_bias="0.032" />
-
-    <ImageView
-        android:id="@+id/choice3"
-        android:layout_width="158dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="9dp"
-        android:onClick="selectChoice"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/questionButtons"
-        app:layout_constraintEnd_toStartOf="@+id/choice4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choice1"
-        app:layout_constraintVertical_bias="0.032" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
