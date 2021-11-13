@@ -1,5 +1,8 @@
 package com.example.eduapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +20,26 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class PlaygroundFactsFragment extends Fragment {
+public class PlaygroundFactsFragment extends Fragment{
     Button wow;
     TextView facts;
     ImageView picture;
     Random rand = new Random();
+    MediaPlayer audio;
+
+    private SharedPreferences kidoozePrefs;
+    private String kidoozePrefFile = "com.example.android.kidoozePrefs";
+
+    private boolean soundFX = true;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        kidoozePrefs = getContext().getSharedPreferences(kidoozePrefFile, Context.MODE_PRIVATE);
+        soundFX = kidoozePrefs.getBoolean(getString(R.string.soundFX), true);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,7 +72,16 @@ public class PlaygroundFactsFragment extends Fragment {
 
         facts.setText(factsList[randNum]);
         picture.setImageResource(pics[randNum]);
-        wow.setOnClickListener(v -> Navigation.findNavController(requireView()).navigate(R.id.action_factsFragment_to_playground));
-
+        audio = MediaPlayer.create(getActivity(), R.raw.wow);
+        wow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (soundFX) {
+                    audio.start();
+                }
+                Navigation.findNavController(requireView()).navigate(R.id.action_factsFragment_to_playground);
+            }
+        });
     }
+
 }

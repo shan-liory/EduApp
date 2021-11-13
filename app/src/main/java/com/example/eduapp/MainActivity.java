@@ -139,6 +139,11 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
     }
 
     @Override
+    public void setSoundFX(boolean soundFX) {
+        this.soundFX = soundFX;
+    }
+
+    @Override
     public void onBackPressed() {
         //top level destinations
         Log.d("HELLO", navController+"");

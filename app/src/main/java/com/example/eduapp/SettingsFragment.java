@@ -128,17 +128,16 @@ public class SettingsFragment extends Fragment {
                 }
             }
         });
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        SharedPreferences.Editor preferencesEditor = kidoozePrefs.edit();
-
-//        preferencesEditor.putBoolean(getString(R.string.bgm), bgm_switch.isChecked());
-        preferencesEditor.putBoolean(getString(R.string.soundFX), soundFX_switch.isChecked());
-//        preferencesEditor.putBoolean(getString(R.string.darkMode), darkMode_switch.isChecked());
-        preferencesEditor.apply();
+        soundFX_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                preferencesEditor.putBoolean(getString(R.string.soundFX), b);
+                preferencesEditor.apply();
+                if (settingsChangedListener != null) {
+                    settingsChangedListener.setSoundFX(b);
+                }
+            }
+        });
     }
 
     public void reloadFragment() {

@@ -8,6 +8,7 @@ import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +19,13 @@ import android.widget.TextView;
 public class MinigameActivity extends AppCompatActivity {
 
     private boolean isMute;
+    private boolean bgm;
 
+    MediaPlayer mediaPlayer;
+
+    // Shared preferences file for settings to play bgm, sound fx, dark mode
+    private SharedPreferences kidoozePrefs;
+    private String kidoozePrefFile = "com.example.android.kidoozePrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +64,17 @@ public class MinigameActivity extends AppCompatActivity {
 
         TextView highScoreTxt = findViewById(R.id.highScoreTxt);
 
+        // Load and read shared preference file
+        kidoozePrefs = getSharedPreferences(kidoozePrefFile, MODE_PRIVATE);
+
         final SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
         highScoreTxt.setText("HighScore: " + prefs.getInt("highscore", 0));
 
-        isMute = prefs.getBoolean("isMute", false);
+        bgm = kidoozePrefs.getBoolean(getString(R.string.bgm), true);
+        isMute = !bgm;
+
+        // Set the settings
+        playMusic(!isMute);
 
         final ImageView volumeCtrl = findViewById(R.id.volumeCtrl);
 
@@ -74,15 +88,16 @@ public class MinigameActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 isMute = !isMute;
-                if (isMute)
+                playMusic(!isMute);
+                if (isMute){
                     volumeCtrl.setImageResource(R.drawable.ic_volume_off_black_24dp);
-                else
+                }
+                else {
                     volumeCtrl.setImageResource(R.drawable.ic_volume_up_black_24dp);
-
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("isMute", isMute);
+                }
+                SharedPreferences.Editor editor = kidoozePrefs.edit();
+                editor.putBoolean(getString(R.string.bgm), !isMute);
                 editor.apply();
-
             }
         });
 
@@ -92,4 +107,27 @@ public class MinigameActivity extends AppCompatActivity {
         super.onBackPressed();
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        playMusic(false);
+        mediaPlayer.release();
+    }
+
+    // Plays bgm if bgm settings is true, overrode from OnSettingsChangedListener interface
+    public void playMusic(boolean bgm) {
+        if (bgm) {
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.bgm_game);
+            }
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+        } else {
+            if (mediaPlayer != null) {
+                mediaPlayer.pause();
+            }
+        }
+    }
+
 }
