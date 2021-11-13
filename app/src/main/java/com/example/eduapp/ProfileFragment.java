@@ -95,6 +95,7 @@ public class ProfileFragment extends BaseFragment {
                 Navigation.findNavController(view).navigate(R.id.action_navigation_profile_to_settingsFragment);
             }
         });
+        profile_progressBar.setMax(total_lessons);
     }
 
     @Override
