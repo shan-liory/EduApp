@@ -17,11 +17,8 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColorHint">@color/editTextGray</item>
     </style>
-<<<<<<< HEAD
-=======
     <style name="Theme.EduApp.PopUp">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
->>>>>>> ede0970289241665faaae9cabadf9aba04174730
 </resources>

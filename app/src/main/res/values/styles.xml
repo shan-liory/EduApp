@@ -50,7 +50,6 @@
         <item name="cornerRadius">0dp</item>
         <item name="android:textColor">@color/black</item>
     </style>
-<<<<<<< HEAD
     <style name="lesson_btn">
         <item name="cornerRadius">10dp</item>
         <item name="android:padding">20dp</item>
@@ -65,8 +64,5 @@
     <style name="settings_btn">
         <item name="android:textColor">@color/black</item>
     </style>
-=======
 
-
->>>>>>> ede0970289241665faaae9cabadf9aba04174730
 </resources>
