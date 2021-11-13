@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
         }
     }
     public void selectLesson(View v) {
-        Intent i = new Intent(this, QuestionActivity.class);
+        Intent i = new Intent(this, TutorialActivity.class);
 
         switch (v.getId()) {
             case R.id.AbsL1_btn:

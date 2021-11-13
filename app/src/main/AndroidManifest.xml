@@ -13,9 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EduApp">
         <activity
+            android:name=".TutorialActivity"
+            android:exported="true" />
+        <activity
             android:name=".ihavetofly.popUpGuideActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.EduApp.PopUp"/>
+            android:theme="@style/Theme.EduApp.PopUp" />
         <activity
             android:name=".ihavetofly.GameActivity"
             android:screenOrientation="landscape" />
