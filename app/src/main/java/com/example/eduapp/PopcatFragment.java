@@ -1,5 +1,7 @@
 package com.example.eduapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,11 +22,20 @@ public class PopcatFragment extends BaseFragment {
     private ImageButton mBackButton;
     private TextView mScoreView;
 
+    private SharedPreferences kidoozePrefs;
+    private String kidoozePrefFile = "com.example.android.kidoozePrefs";
+
+    private boolean soundFX = true;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
+        kidoozePrefs = getContext().getSharedPreferences(kidoozePrefFile, Context.MODE_PRIVATE);
+        soundFX = kidoozePrefs.getBoolean(getString(R.string.soundFX), true);
+
     }
 
     @Override
@@ -49,7 +60,9 @@ public class PopcatFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 v.setSelected(!v.isSelected());
-                audio.start();
+                if (soundFX) {
+                    audio.start();
+                }
                 showScore();
             }
         });

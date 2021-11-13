@@ -2,16 +2,19 @@ package com.example.eduapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -76,10 +79,32 @@ public class QuestionActivity extends AppCompatActivity {
     private int mRemainingHints = 2;
     Set except;
 
+    MediaPlayer mediaPlayer;
+
+    // Shared preferences file for settings to play bgm, sound fx, dark mode
+    private SharedPreferences kidoozePrefs;
+    private String kidoozePrefFile = "com.example.android.kidoozePrefs";
+
+    // Preferences
+    private boolean bgm = true;
+    private boolean soundFX = true;
+    private boolean darkMode = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        // Load and read shared preference file
+        kidoozePrefs = getSharedPreferences(kidoozePrefFile, MODE_PRIVATE);
+
+        bgm = kidoozePrefs.getBoolean(getString(R.string.bgm), true);
+        soundFX = kidoozePrefs.getBoolean(getString(R.string.soundFX), true);
+        darkMode = kidoozePrefs.getBoolean(getString(R.string.darkMode), false);
+
+        // Set the settings
+        playMusic(bgm);
+        setDarkMode(darkMode);
 
         //test hints
         random = new Random();
@@ -420,6 +445,42 @@ public class QuestionActivity extends AppCompatActivity {
             mHintButton.setEnabled(false);
         } else {
             mHintButton.setEnabled(true);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        playMusic(false);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bgm = kidoozePrefs.getBoolean(getString(R.string.bgm), true);
+        playMusic(bgm);
+    }
+
+    // Plays bgm if bgm settings is true, overrode from OnSettingsChangedListener interface
+    public void playMusic(boolean bgm) {
+        if (bgm) {
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.bgm_lesson);
+            }
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+        } else {
+            if (mediaPlayer != null) {
+                mediaPlayer.pause();
+            }
+        }
+    }
+
+    public void setDarkMode(boolean darkMode) {
+        if (darkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
 }
