@@ -21,6 +21,16 @@
         <item name="android:gravity">center</item>
         <item name="marginHorizontal">20dp</item>
     </style>
+    <style name="Subheading1">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="Subheading2">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
     <style name="Back_btn">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -36,8 +46,22 @@
         <item name="android:gravity">center</item>
     </style>
     <style name="Gender_btn">
-        <item name="backgroundTint">@color/yellow</item>
+        <item name="backgroundTint">@color/genderBg</item>
         <item name="cornerRadius">0dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="lesson_btn">
+        <item name="cornerRadius">10dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="backgroundTint">@color/blue</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="Corner_card">
+        <item name="cardCornerRadius">32dp</item>
+        <item name="cardElevation">30dp</item>
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+    <style name="settings_btn">
         <item name="android:textColor">@color/black</item>
     </style>
 </resources>

@@ -18,10 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Lessons"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textSize="34sp"
-            android:textStyle="bold"
+            style="@style/Heading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="33dp"
             android:text="Abstraction"
-            android:textColor="@color/textColor"
-            android:textSize="24sp"
+            style="@style/Subheading2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_dashboard" />
@@ -46,9 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="33dp"
             android:text="Algorithmic Thinking"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textSize="24sp"
+            style="@style/Subheading2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/AbsL1_btn" />
@@ -60,8 +54,7 @@
             android:layout_marginTop="33dp"
             android:layout_marginBottom="25dp"
             android:text="Decomposition"
-            android:textColor="@color/textColor"
-            android:textSize="24sp"
+            style="@style/Subheading2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/AlgL2_btn" />
@@ -73,8 +66,7 @@
             android:layout_marginTop="33dp"
             android:layout_marginBottom="25dp"
             android:text="Pattern Recognition"
-            android:textColor="@color/textColor"
-            android:textSize="24sp"
+            style="@style/Subheading2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DecL2_btn" />
@@ -86,6 +78,7 @@
             android:layout_marginStart="40dp"
             android:onClick="selectLesson"
             android:text="Lesson 1"
+            style="@style/lesson_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/AbsL2_btn" />
 
@@ -96,6 +89,7 @@
             android:layout_marginStart="40dp"
             android:onClick="selectLesson"
             android:text="Lesson 1"
+            style="@style/lesson_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/AlgL2_btn" />
 
@@ -106,6 +100,7 @@
             android:layout_marginStart="40dp"
             android:onClick="selectLesson"
             android:text="Lesson 1"
+            style="@style/lesson_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/DecL2_btn" />
 
@@ -116,6 +111,7 @@
             android:layout_marginStart="40dp"
             android:onClick="selectLesson"
             android:text="Lesson 1"
+            style="@style/lesson_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/PatL2_btn" />
 
@@ -127,6 +123,7 @@
             android:layout_marginEnd="40dp"
             android:onClick="selectLesson"
             android:text="Lesson 2"
+            style="@style/lesson_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -138,6 +135,7 @@
             android:layout_marginEnd="40dp"
             android:onClick="selectLesson"
             android:text="Lesson 2"
+            style="@style/lesson_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -149,6 +147,7 @@
             android:layout_marginEnd="40dp"
             android:onClick="selectLesson"
             android:text="Lesson 2"
+            style="@style/lesson_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -160,6 +159,7 @@
             android:layout_marginEnd="40dp"
             android:onClick="selectLesson"
             android:text="Lesson 2"
+            style="@style/lesson_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -171,6 +171,7 @@
             android:textColor="@color/textColor"
             android:textSize="50sp"
             android:layout_marginTop="8dp"
+            style="@style/lesson_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PatL2_btn" />

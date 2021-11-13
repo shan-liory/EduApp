@@ -108,7 +108,7 @@ public class LoginFragment extends Fragment {
                             Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                         } else {
                             progressDialog.dismiss();
-                            Toast.makeText(getContext(), "" + task.getException(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Invalid email or password", Toast.LENGTH_SHORT).show();
                         }
                     }
                     );

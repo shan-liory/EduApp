@@ -28,6 +28,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -90,7 +91,7 @@ public class EditProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        default_color = getResources().getColor(R.color.yellow);
+        default_color = getResources().getColor(R.color.genderBg);
         girl_color = getResources().getColor(R.color.red);
         boy_color = getResources().getColor(R.color.blue);
 
@@ -197,7 +198,6 @@ public class EditProfileFragment extends Fragment {
         }
 
         private void changeGender(boolean isGirl) {
-
             if (!isGirl) {
                 male_btn.setBackgroundColor(boy_color);
                 genderString = male_btn.getText().toString();
@@ -210,15 +210,14 @@ public class EditProfileFragment extends Fragment {
         }
 
         public void setGenderBackground(String gender) {
-            if (gender == null) {
-                male_btn.setBackgroundColor(default_color);
-                female_btn.setBackgroundColor(default_color);
-            } else if (gender.equals("Male")) {
-                male_btn.setBackgroundColor(boy_color);
-                female_btn.setBackgroundColor(default_color);
-            } else {
-                male_btn.setBackgroundColor(default_color);
-                female_btn.setBackgroundColor(girl_color);
+            if (gender != null) {
+                if (gender.equals("Male")) {
+                    male_btn.setBackgroundColor(boy_color);
+                    female_btn.setBackgroundColor(default_color);
+                } else {
+                    male_btn.setBackgroundColor(default_color);
+                    female_btn.setBackgroundColor(girl_color);
+                }
             }
         }
 

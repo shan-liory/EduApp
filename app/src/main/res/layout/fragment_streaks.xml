@@ -47,10 +47,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
                     android:text="@string/streaks"
-                    android:textAlignment="center"
-                    android:textColor="@color/textColor"
-                    android:textSize="48sp"
-                    android:textStyle="bold" />
+                    style="@style/Heading" />
 
                 <com.savvi.rangedatepicker.CalendarPickerView
                     android:id="@+id/calendar_view"
@@ -82,25 +79,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginVertical="8dp"
                     android:layout_marginEnd="8dp"
                     android:text="Complete a lesson everyday to increase your streaks!"
-                    android:textAlignment="center"
-                    android:textColor="@color/textColor"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textColor="@color/textColor"
-                    android:textSize="50sp"
-                    android:textStyle="bold" />
+                    style="@style/Subheading2"
+                    />
 
             </LinearLayout>
         </ScrollView>

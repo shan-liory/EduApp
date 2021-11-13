@@ -9,6 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="backgroundColor">#212121</color>
+    <color name="Factsbg">#212121</color>
     <color name="textColor">#FFFFFF</color>
+    <color name="genderBg">#FF8C00</color>
+    <color name="Btn">#808080</color>
+    <color name="popcatBg1">#424242</color>
 
 </resources>

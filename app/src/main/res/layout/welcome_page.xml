@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/backgroundColor"
+    android:background="@color/yellow"
     android:orientation="vertical">
 
     <ImageView
@@ -29,14 +29,16 @@
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:text="Login"
+                android:paddingVertical="10dp"
                 android:layout_gravity="center"
-                app:backgroundTint="#1DA5E3"
+                app:backgroundTint="@color/blue"
                 android:layout_marginBottom="30dp"/>
             <Button
                 android:id="@+id/welcome_signUp_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:paddingVertical="10dp"
                 style="?attr/materialButtonOutlinedStyle"
                 android:text="Create an account"
                 android:textColor="@color/black" />

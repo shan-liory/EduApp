@@ -10,11 +10,8 @@
 
 
     <color name="colorPrimary">#E68D09</color>
-
     <color name="colorPrimaryDark">#FE7A0A</color>
-
     <color name="colorAccent">#FEE60A</color>
-
     <color name="colorBase">#F2B30F</color>
 
     <color name="colorOrangeBaseDark">#E84C02</color>
@@ -29,4 +26,10 @@
     <color name="textColor">#000000</color>
     <color name="red">#FD6363</color>
     <color name="milk">#FFFDD6</color>
+    <color name="green">#41C88E</color>
+    <color name="editTextGray">#575757</color>
+    <color name="genderBg">#F9E000</color>
+    <color name="Factsbg">#FD6363</color>
+    <color name="Btn">#FF000000</color>
+    <color name="popcatBg1">#FFFACC</color>
 </resources>

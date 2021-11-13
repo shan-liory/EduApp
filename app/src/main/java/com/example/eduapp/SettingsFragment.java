@@ -15,6 +15,7 @@ import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -35,9 +36,9 @@ public class SettingsFragment extends Fragment {
     ImageButton back_btn;
     Button credits_btn;
     Button rateus_btn;
-    Switch bgm_switch;
-    Switch soundFX_switch;
-    Switch darkMode_switch;
+    SwitchCompat bgm_switch;
+    SwitchCompat soundFX_switch;
+    SwitchCompat darkMode_switch;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -123,6 +124,7 @@ public class SettingsFragment extends Fragment {
                 if (settingsChangedListener != null) {
                     settingsChangedListener.setDarkMode(b);
                     //reloadFragment();
+                    requireActivity().recreate();
                 }
             }
         });
