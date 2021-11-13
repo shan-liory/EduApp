@@ -27,6 +27,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -57,7 +58,8 @@ public class EditProfileFragment extends Fragment {
     EditText name_tv_profile, editProfile_dob;
     TextView gender, editProfile_dob_tv, editProfile_title,desc_profileImage;
     Button male_btn, female_btn, updateProfile_btn;
-    ImageView editProfile_back_btn, editProfileImage;
+    ImageView editProfileImage;
+    ImageButton editProfile_back_btn;
     String genderString;
     final int PICK_IMAGE = 1;
     Uri imageUri;

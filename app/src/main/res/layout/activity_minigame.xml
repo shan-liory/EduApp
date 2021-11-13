@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/gameTitle"
         android:layout_alignParentLeft="true"
+        android:backgroundTint="@color/transparent"
         android:layout_marginLeft="13dp"
         android:layout_marginBottom="5dp"
         android:clickable="true"
@@ -27,15 +28,15 @@
         tools:ignore="SpeakableTextPresentCheck,VectorDrawableCompat" />
 
     <TextView
+        android:id="@+id/gameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="48sp"
-        android:text="I have to fly!"
-        android:textColor="@color/white"
         android:layout_above="@id/play"
         android:layout_below="@id/highScoreTxt"
         android:layout_centerHorizontal="true"
-        android:id="@+id/gameTitle"/>
+        android:text="I have to fly!"
+        android:textColor="@color/white"
+        android:textSize="48sp" />
 
     <TextView
         android:id="@+id/play"
@@ -45,6 +46,15 @@
         android:text="Play"
         android:textColor="@color/black"
         android:textSize="64sp" />
+
+    <Button
+        android:id="@+id/howtoplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/play"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/red"
+        android:text="How to play?" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,11 +44,17 @@ import java.util.*;
 public class ProfileFragment extends BaseFragment {
 
 
-    TextView text_profile, text_dob;
+    TextView text_profile, profile_progressText;
     Button logout_btn;
+    ProgressBar profile_progressBar;
     ImageView profile_image;
     ImageButton edit_btn;
     Button settings_btn;
+    List<String> lessonsCompleted;
+    Long scoreResult = Long.valueOf(0);
+    int num_compLessons = 0;
+    int total_lessons = 8;
+
 
 
     @Override
@@ -67,7 +74,9 @@ public class ProfileFragment extends BaseFragment {
         edit_btn = view.findViewById(R.id.edit_button);
         settings_btn = view.findViewById(R.id.settings_btn);
 
-        text_profile.setText(mainViewModel.getTest());
+        profile_progressText = view.findViewById(R.id.profile_progressText);
+        profile_progressBar= view.findViewById(R.id.profile_progressBar);
+
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,8 +119,17 @@ public class ProfileFragment extends BaseFragment {
                         String urlResult = task.getResult().getString("url");
                         String dobResult = task.getResult().getString(("dob"));
 
+                        scoreResult = task.getResult().getLong("score");
+                        lessonsCompleted = (List<String>) task.getResult().get("lessonsCompleted");
+                        num_compLessons = lessonsCompleted.size();
+                        profile_progressText.setText(num_compLessons + "/ " + total_lessons);
+                        profile_progressBar.setProgress(num_compLessons);
+
+
                         Picasso.get().load(urlResult).into(profile_image);
                         text_profile.setText(nameResult);
+
+
 
 
                     }else{
@@ -124,34 +142,8 @@ public class ProfileFragment extends BaseFragment {
     }
 
     private void logoutUser() {
-//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-//        alertDialogBuilder.setTitle("Exit Application?");
-//        alertDialogBuilder
-//                .setMessage("Confirm Signing Out?")
-//                .setCancelable(false)
-//                .setPositiveButton("Yes",
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                FirebaseAuth.getInstance().signOut();
-//                                android.os.Process.killProcess(android.os.Process.myPid());
-//                                System.exit(1);
-//
-//                            }
-//                        })
-//
-//                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-//
-//        AlertDialog alertDialog = alertDialogBuilder.create();
-//        alertDialog.show();
-//
         FirebaseAuth.getInstance().signOut();
         Navigation.findNavController(getView()).navigate(R.id.action_navigation_profile_to_welcomeActivity);
-
-
     }
 
     //add streak is just to +1 into streak days

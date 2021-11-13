@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.eduapp">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/mascot_foreground"
@@ -9,16 +12,21 @@
         android:roundIcon="@mipmap/mascot_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EduApp">
-        <activity android:name=".ihavetofly.GameActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".ihavetofly.MinigameActivity"
+        <activity
+            android:name=".ihavetofly.popUpGuideActivity"
             android:screenOrientation="landscape"
-            android:noHistory = "true"/>
+            android:theme="@style/Theme.EduApp.PopUp"/>
+        <activity
+            android:name=".ihavetofly.GameActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ihavetofly.MinigameActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
+            android:configChanges="uiMode"
             android:exported="true"
-            android:label="@string/app_name"
-            android:configChanges="uiMode">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,6 +41,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -40,11 +49,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource = "@xml/provider_path"
-                />
+                android:resource="@xml/provider_path" />
         </provider>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

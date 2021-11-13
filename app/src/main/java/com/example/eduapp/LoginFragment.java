@@ -61,7 +61,12 @@ public class LoginFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
 
 
-        login_back_btn.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_welcomeActivity));
+        login_back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().onBackPressed();
+            }
+        });
         forgotPassword.setOnClickListener(v -> Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_forgotPasswordFragment));
 
         login_btn.setOnClickListener(v -> performLogin());
@@ -105,7 +110,7 @@ public class LoginFragment extends Fragment {
 //
 
                             sendUserToNextActivity();
-                            Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                         } else {
                             progressDialog.dismiss();
                             Toast.makeText(getContext(), "Invalid email or password", Toast.LENGTH_SHORT).show();

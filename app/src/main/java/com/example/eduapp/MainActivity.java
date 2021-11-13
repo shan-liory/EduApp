@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements OnSettingsChanged
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        mainViewModel.setTest("something");
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
