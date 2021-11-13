@@ -64,5 +64,8 @@
     <style name="settings_btn">
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="factsContent">
+        <item name="autoSizeTextType">uniform</item>
+    </style>
 
 </resources>

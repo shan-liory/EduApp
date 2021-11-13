@@ -29,6 +29,7 @@
             android:textSize="30sp"
             android:layout_weight="20"
             android:autoSizeTextType="uniform"
+            style="@style/factsContent"
             android:layout_marginHorizontal="40dp"/>
         <ImageView
             android:id="@+id/factsPic"
