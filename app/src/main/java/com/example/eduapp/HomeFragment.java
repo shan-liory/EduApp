@@ -1,5 +1,6 @@
 package com.example.eduapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -33,9 +35,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 public class HomeFragment extends BaseFragment {
 
@@ -44,11 +49,13 @@ public class HomeFragment extends BaseFragment {
     Button xp_btn;
     Button streaks_btn;
     TextView welcome_text;
-    Button lesson_btn;
-    Button playground_btn;
+    CardView lesson_btn;
+    CardView playground_btn;
     TextView progress_Text;
     ProgressBar progressBar;
     List<String> lessonsCompleted;
+    List<Integer> nextLesson;
+    TextView buttonLessonText;
 
     int xp_unicode = 0x1F31F;
     int fire_unicode = 0x1F525;
@@ -58,6 +65,11 @@ public class HomeFragment extends BaseFragment {
     int total_lessons = 8;
     int streaks = 0;
     Long scoreResult = Long.valueOf(0);
+
+    List<String> lessonNames = Arrays.asList("Abstraction", "Algorithmic Thinking", "Decomposition", "Pattern Recognition");
+    List<String> lessonNumbers = Arrays.asList("Lesson 1", "Lesson 2");
+
+    List<String> lessonTitles = Arrays.asList("What Comes Next?", "Art Fun!", "Sandwich Time", "Burger Time", "What's That On The Tree?", "Pizzalicious", "Puzzle 1.0", "Puzzle 2.0");
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,10 +102,13 @@ public class HomeFragment extends BaseFragment {
         xp_btn = view.findViewById(R.id.XP_btn);
         streaks_btn = view.findViewById(R.id.streaks_btn);
         welcome_text = view.findViewById(R.id.welcomeText);
-        lesson_btn = view.findViewById(R.id.lesson_btn);
-        playground_btn = view.findViewById(R.id.playground_btn);
+        lesson_btn = view.findViewById(R.id.main_lessonButton);
+        playground_btn = view.findViewById(R.id.main_playgroundButton);
         progress_Text = view.findViewById(R.id.progress_text);
         progressBar = view.findViewById(R.id.progressBar);
+        buttonLessonText = view.findViewById(R.id.main_lessonText);
+
+        setUpHome();
 
         guide_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +125,10 @@ public class HomeFragment extends BaseFragment {
         lesson_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(getActivity(), TutorialActivity.class);
+                i.putExtra("Course", lessonNames.get(nextLesson.get(0)));
+                i.putExtra("Lesson", lessonNumbers.get(nextLesson.get(1)));
+                startActivity(i);
             }
         });
         streaks_btn.setOnClickListener(new View.OnClickListener() {
@@ -120,9 +138,7 @@ public class HomeFragment extends BaseFragment {
             }
         });
         progressBar.setMax(total_lessons);
-        lesson_btn.setText("Start a new lesson?\n\n" + next_lesson + " >>");
 
-        setUpHome();
 //        progressBar.setProgress(num_compLessons);
 //        progress_Text.setText(num_compLessons + " out of " + total_lessons + " lessons completed");
 //        xp_btn.setText(score + " " + new String(Character.toChars(xp_unicode)));
@@ -160,6 +176,11 @@ public class HomeFragment extends BaseFragment {
                             xp_btn.setText(scoreResult + " " + new String(Character.toChars(xp_unicode)));
                             progress_Text.setText(num_compLessons + " out of " + total_lessons + " lessons completed");
                             progressBar.setProgress(num_compLessons);
+
+                            nextLesson = generateRandomLesson(lessonsCompleted, num_compLessons);
+
+                            String lessonTitle = getLessonTitle(lessonNames.get(nextLesson.get(0)) + " " + lessonNumbers.get(nextLesson.get(1)));
+                            buttonLessonText.setText(lessonTitle + " >>");
 
                         }else{
                             Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
@@ -230,5 +251,47 @@ public class HomeFragment extends BaseFragment {
                     }
                 });
 
+    }
+
+    public List<Integer> generateRandomLesson(List<String> lessonsCompleted, int numLessonsCompleted) {
+        Random rand = new Random();
+        Integer title = 0;
+        Integer number = 0;
+        String lessonTitle = "";
+
+        if (numLessonsCompleted < total_lessons) {
+            do {
+                title = rand.nextInt(lessonNames.size());
+                number = rand.nextInt(lessonNumbers.size());
+                lessonTitle = lessonNames.get(title) + " " + lessonNumbers.get(number);
+            }
+            while (lessonsCompleted.contains(lessonTitle));
+        }
+
+        List<Integer> lessonSelection = Arrays.asList(title, number);
+
+        return lessonSelection;
+    }
+
+    public String getLessonTitle(String lessonTitle) {
+        if (lessonTitle.equals("Abstraction Lesson 1")) {
+            return lessonTitles.get(0);
+        } else if (lessonTitle.equals("Abstraction Lesson 2")){
+            return lessonTitles.get(1);
+        } else if (lessonTitle.equals("Algorithmic Thinking Lesson 1")){
+            return lessonTitles.get(2);
+        } else if (lessonTitle.equals("Algorithmic Thinking Lesson 2")){
+            return lessonTitles.get(3);
+        } else if (lessonTitle.equals("Decomposition Lesson 1")){
+            return lessonTitles.get(4);
+        } else if (lessonTitle.equals("Decomposition Lesson 2")){
+            return lessonTitles.get(5);
+        } else if (lessonTitle.equals("Pattern Recognition Lesson 1")){
+            return lessonTitles.get(6);
+        } else if (lessonTitle.equals("Pattern Recognition Lesson 2")){
+            return lessonTitles.get(7);
+        } else {
+            return lessonTitles.get(0);
+        }
     }
 }
