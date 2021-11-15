@@ -69,7 +69,7 @@ public class HomeFragment extends BaseFragment {
     List<String> lessonNames = Arrays.asList("Abstraction", "Algorithmic Thinking", "Decomposition", "Pattern Recognition");
     List<String> lessonNumbers = Arrays.asList("Lesson 1", "Lesson 2");
 
-    List<String> lessonTitles = Arrays.asList("What Comes Next?", "Art Fun!", "Sandwich Time", "Burger Time", "What's That On The Tree?", "Pizzalicious", "Puzzle 1.0", "Puzzle 2.0");
+    List<String> lessonTitles = Arrays.asList("What Comes Next?", "Art Fun!", "Sandwich Time", "Burger Time", "What's That on The Tree?", "Pizzalicious!", "Puzzle 1.0", "Puzzle 2.0");
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

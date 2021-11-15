@@ -13,7 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
-            android:paddingHorizontal="8dp">
+            android:paddingHorizontal="8dp"
+            android:background="@drawable/lesson_background">
 
             <ImageButton
                 android:id="@+id/guide_btn"
@@ -57,7 +58,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:fillViewport="true"
+            android:background="@drawable/lesson_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -133,9 +135,9 @@
                     android:backgroundTint="@color/milk"
                     app:strokeWidth="0dp" >
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="170dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:paddingVertical="16dp"
                         android:paddingHorizontal="10dp"
@@ -145,24 +147,27 @@
                         >
 
                         <TextView
+                            android:id="@+id/textView8"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
                             android:text="@string/yourProgress"
+                            android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:textColor="@color/black"/>
+                            android:layout_marginHorizontal="10dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.progressindicator.LinearProgressIndicator
                             android:id="@+id/progressBar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="16dp"
-                            android:layout_marginEnd="8dp"
-                            android:progress="0"
+                            android:layout_marginHorizontal="10dp"
                             android:max="100"
+                            android:progress="0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView8"
                             app:trackColor="#FFFFFF"
                             app:trackCornerRadius="5dp"
                             app:trackThickness="10dp" />
@@ -171,26 +176,28 @@
                             android:id="@+id/progress_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="4dp"
-                            android:layout_marginEnd="8dp"
                             android:text="@string/lessonsCompleted"
-                            android:textSize="15sp"
                             android:textAlignment="center"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
                             android:text="@string/hardWork"
-                            android:textSize="17sp"
+                            android:textAlignment="center"
                             android:textColor="@color/black"
-                            android:textAlignment="center" />
+                            android:textSize="17sp"
+                            android:layout_marginHorizontal="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/progress_text" />
 
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
 
 
