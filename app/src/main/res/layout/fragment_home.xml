@@ -76,7 +76,6 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:text="@string/welcome"
-                    android:textColor="@color/textColor"
                     style="@style/Heading"/>
 
                 <com.google.android.material.card.MaterialCardView

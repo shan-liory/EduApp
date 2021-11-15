@@ -36,7 +36,6 @@
                     android:padding="40dp"
                     android:text="Lessons"
                     android:textAlignment="center"
-                    android:textColor="@color/textColor"
                     android:textSize="34sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"

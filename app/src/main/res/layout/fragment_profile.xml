@@ -34,7 +34,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="hello"
-            android:textColor="@color/textColor"
             style="@style/Subheading2"
             android:padding="6dp"
             app:layout_constraintEnd_toEndOf="parent"
