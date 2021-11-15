@@ -112,16 +112,13 @@ public class MinigameActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         playMusic(false);
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-        }
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        playMusic(!isMute);
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        playMusic(!isMute);
+    }
 
     // Plays bgm if bgm settings is true, overrode from OnSettingsChangedListener interface
     public void playMusic(boolean bgm) {
