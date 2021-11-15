@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
             android:paddingHorizontal="8dp"
-            android:background="@drawable/lesson_background">
+            style="@style/layout_bground">
 
             <ImageButton
                 android:id="@+id/guide_btn"
@@ -59,14 +59,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
-            android:background="@drawable/lesson_background">
+            style="@style/layout_bground">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingVertical="10dp"
-                android:paddingHorizontal="8dp" >
+                android:paddingHorizontal="8dp">
 
                 <TextView
                     android:id="@+id/welcomeText"
@@ -76,6 +76,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:text="@string/welcome"
+                    android:textColor="@color/textColor"
                     style="@style/Heading"/>
 
                 <com.google.android.material.card.MaterialCardView

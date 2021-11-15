@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:isScrollContainer="true"
-        android:background="@drawable/lesson_background">
+        style="@style/layout_bground">
 
         <ImageButton
             android:id="@+id/edit_button"
@@ -34,6 +34,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="hello"
+            android:textColor="@color/textColor"
             style="@style/Subheading2"
             android:padding="6dp"
             app:layout_constraintEnd_toEndOf="parent"

@@ -62,5 +62,8 @@
     <style name="factsContent">
         <item name="autoSizeTextType">uniform</item>
     </style>
+    <style name="layout_bground">
+        <item name="android:background">@drawable/lesson_background</item>
+    </style>
 
 </resources>

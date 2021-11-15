@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit Profile"
+            android:textColor="@color/textColor"
             android:id="@+id/editProfile_title"
             android:layout_marginVertical="20dp"
             style="@style/Heading"
@@ -120,7 +121,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginTop="10dp"
-                        android:text="Choose your gender" />
+                        android:text="Choose your gender"
+                        android:textColor="@color/textColor"/>
 
                     <LinearLayout
                         android:id="@+id/editProfile_second"
@@ -173,7 +175,8 @@
                             android:id="@+id/editProfile_dob_tv"
                             android:layout_width="180dp"
                             android:layout_height="wrap_content"
-                            android:text="Date of Birth" />
+                            android:text="Date of Birth"
+                            android:textColor="@color/textColor"/>
 
                         <EditText
                             android:id="@+id/editProfile_dob"
@@ -182,7 +185,8 @@
                             android:fontFamily="@font/poppins"
                             android:hint="2019-08-31"
                             android:inputType="date"
-                            android:textColorHint="#AFA7A7" />
+                            android:textColorHint="#AFA7A7"
+                            />
 
                     </LinearLayout>
                 </RelativeLayout>

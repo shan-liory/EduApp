@@ -22,7 +22,7 @@
                 android:layout_weight="2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@drawable/lesson_background">
+                style="@style/layout_bground">
 
                 <TextView
                     android:id="@+id/text_dashboard"

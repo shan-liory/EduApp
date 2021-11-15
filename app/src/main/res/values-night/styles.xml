@@ -19,4 +19,7 @@
         <item name="cardElevation">30dp</item>
         <item name="cardBackgroundColor">@color/black</item>
     </style>
+    <style name="layout_bground">
+        <item name="android:background">@drawable/lesson_background_night</item>
+    </style>
 </resources>
