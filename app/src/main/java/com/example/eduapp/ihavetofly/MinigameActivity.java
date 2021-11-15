@@ -117,11 +117,11 @@ public class MinigameActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        playMusic(!isMute);
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        playMusic(!isMute);
+//    }
 
     // Plays bgm if bgm settings is true, overrode from OnSettingsChangedListener interface
     public void playMusic(boolean bgm) {

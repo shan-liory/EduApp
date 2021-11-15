@@ -156,7 +156,7 @@ public class EditProfileFragment extends Fragment {
                                 editProfile_dob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
                         }, year, month, day);
-                picker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                picker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 picker.show();
 
             }
