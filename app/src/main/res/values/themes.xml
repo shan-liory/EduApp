@@ -15,7 +15,6 @@
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColorHint">@color/editTextGray</item>
     </style>
     <style name="Theme.EduApp.PopUp">
         <item name="android:windowIsTranslucent">true</item>
