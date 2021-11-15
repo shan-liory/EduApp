@@ -13,8 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
-            android:paddingHorizontal="8dp"
-            style="@style/layout_bground">
+            android:paddingHorizontal="8dp">
 
             <ImageButton
                 android:id="@+id/guide_btn"
